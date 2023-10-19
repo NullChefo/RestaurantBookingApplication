@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: docker.io/postgres:alpine
+    container_name: restaurant_app-postgres
+    # user: "1000:1000" # Specify a non-root user by UID:GID
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: restaurant_app_database
+    volumes:
+      - restaurant_app-postgres-volume:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+volumes:
+  restaurant_app-postgres-volume:
+    driver: local
