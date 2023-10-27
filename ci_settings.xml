@@ -6,7 +6,7 @@
 			<configuration>
 				<httpHeaders>
 					<property>
-						<name>stu2301697001</name>
+						<name>gitlab-maven</name>
 						<value>${env.CI_JOB_TOKEN}</value>
 					</property>
 				</httpHeaders>
