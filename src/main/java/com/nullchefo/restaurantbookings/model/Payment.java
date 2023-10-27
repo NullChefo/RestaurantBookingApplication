@@ -3,6 +3,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.nullchefo.restaurantbookings.model.enums.PaymentMethodEnum;
+import com.nullchefo.restaurantbookings.model.enums.PaymentStatusEnum;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -7,7 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-
+// TODO can be user with role DonationRecipient
 @Entity
 public class DonationRecipient {
 	@Id
