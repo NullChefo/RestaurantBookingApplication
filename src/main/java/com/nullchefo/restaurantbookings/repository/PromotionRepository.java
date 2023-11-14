@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 import com.nullchefo.restaurantbookings.model.Promotion;
 @Repository
-public interface PromotionRepository extends JpaRepository<Promotion, UUID> {
+public interface PromotionRepository extends JpaRepository<Promotion, Long> {
 }

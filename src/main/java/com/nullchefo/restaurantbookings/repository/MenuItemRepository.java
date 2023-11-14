@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 import com.nullchefo.restaurantbookings.model.MenuItem;
 @Repository
-public interface MenuItemRepository extends JpaRepository<MenuItem, UUID> {
+public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
 }

@@ -1,27 +1,29 @@
 package com.nullchefo.restaurantbookings.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 import com.nullchefo.restaurantbookings.model.enums.PaymentMethodEnum;
 import com.nullchefo.restaurantbookings.model.enums.PaymentStatusEnum;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 @Entity
-public class Payment {
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
-
+public class Payment extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
-	private Customer customer;
+	private User user;
 
 	private PaymentStatusEnum paymentStatus;
 	private PaymentMethodEnum paymentMethod;

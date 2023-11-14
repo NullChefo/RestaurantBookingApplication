@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 import com.nullchefo.restaurantbookings.model.Location;
 @Repository
-public interface LocationRepository extends JpaRepository<Location, UUID> {
+public interface LocationRepository extends JpaRepository<Location, Long> {
 }

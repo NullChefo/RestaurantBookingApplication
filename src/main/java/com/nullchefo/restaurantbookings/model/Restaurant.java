@@ -12,13 +12,20 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 @Entity
-public class Restaurant {
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
-
+public class Restaurant extends BaseEntity {
 	private String name;
 
 	@OneToOne

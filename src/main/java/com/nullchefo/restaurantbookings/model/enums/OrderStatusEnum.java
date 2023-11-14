@@ -12,7 +12,7 @@ public enum OrderStatusEnum {
 
 	private final String status;
 
-	OrderStatusEnum(String status) {
+	private OrderStatusEnum(String status) {
 		this.status = status;
 	}
 

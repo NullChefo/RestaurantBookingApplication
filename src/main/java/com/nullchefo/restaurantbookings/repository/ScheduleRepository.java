@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 import com.nullchefo.restaurantbookings.model.Schedule;
 @Repository
-public interface ScheduleRepository extends JpaRepository<Schedule, UUID> {
+public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 }

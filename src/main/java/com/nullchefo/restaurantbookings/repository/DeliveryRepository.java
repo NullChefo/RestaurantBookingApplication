@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 import com.nullchefo.restaurantbookings.model.Delivery;
 
 @Repository
-public interface DeliveryRepository extends JpaRepository<Delivery, UUID> {
+public interface DeliveryRepository extends JpaRepository<Delivery, Long> {
 }

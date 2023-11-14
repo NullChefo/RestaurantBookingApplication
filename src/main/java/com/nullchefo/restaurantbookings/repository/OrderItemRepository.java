@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 import com.nullchefo.restaurantbookings.model.OrderItem;
 @Repository
-public interface OrderItemRepository extends JpaRepository<OrderItem, UUID> {
+public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 }

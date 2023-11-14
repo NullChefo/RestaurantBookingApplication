@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 import com.nullchefo.restaurantbookings.model.Review;
 @Repository
-public interface ReviewRepository extends JpaRepository<Review, UUID> {
+public interface ReviewRepository extends JpaRepository<Review, Long> {
 }

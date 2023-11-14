@@ -11,12 +11,20 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-@Entity
-public class Location {
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
+@Getter
+@Setter
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
+@Entity
+public class Location extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")

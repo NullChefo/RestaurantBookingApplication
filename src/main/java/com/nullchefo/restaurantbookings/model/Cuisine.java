@@ -10,14 +10,21 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 //Вид кухня
+@Getter
+@Setter
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 @Entity
-public class Cuisine {
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
+public class Cuisine extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")

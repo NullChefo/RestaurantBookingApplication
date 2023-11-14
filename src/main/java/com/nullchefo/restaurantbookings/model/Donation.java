@@ -9,14 +9,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
-public class Donation {
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
+@Getter
+@Setter
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
+public class Donation extends BaseEntity {
+
 	private LocalDateTime donationTime;
 	private String donatedFoodDescription;
 	private int quantity;

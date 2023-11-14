@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 import com.nullchefo.restaurantbookings.model.Notification;
 @Repository
-public interface NotificationRepository extends JpaRepository<Notification, UUID> {
+public interface NotificationRepository extends JpaRepository<Notification, Long> {
 }

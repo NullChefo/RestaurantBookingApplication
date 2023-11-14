@@ -1,17 +1,17 @@
 spring:
-  h2:
-    console:
-   ## http://localhost:8080/h2-console
-      enabled: true
-  #  datasource:
-  #  url: jdbc:postgresql://127.0.0.1:5432/restaurant_app_database
-  #  username: user
-  #  password: password
+#  h2:
+#    console:
+#   ## http://localhost:8080/h2-console
+#      enabled: true
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
+    url: jdbc:postgresql://127.0.0.1:5432/restaurant_app_database
+    username: user
     password: password
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password: password
   jpa:
     hibernate:
       # TODO make validate

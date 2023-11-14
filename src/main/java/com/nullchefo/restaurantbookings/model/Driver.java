@@ -11,12 +11,20 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 @Entity
-public class Driver {
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
+public class Driver extends BaseEntity {
 
 	// TODO fix
 	@ManyToMany

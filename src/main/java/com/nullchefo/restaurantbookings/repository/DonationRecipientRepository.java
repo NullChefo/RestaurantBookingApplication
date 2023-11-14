@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 import com.nullchefo.restaurantbookings.model.DonationRecipient;
 @Repository
-public interface DonationRecipientRepository extends JpaRepository<DonationRecipient, UUID> {
+public interface DonationRecipientRepository extends JpaRepository<DonationRecipient, Long> {
 }
