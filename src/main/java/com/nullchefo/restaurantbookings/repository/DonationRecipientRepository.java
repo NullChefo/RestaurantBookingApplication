@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.nullchefo.restaurantbookings.model.DonationRecipient;
+import com.nullchefo.restaurantbookings.entity.DonationRecipient;
 @Repository
-public interface DonationRecipientRepository extends JpaRepository<DonationRecipient, Long> {
+public interface DonationRecipientRepository extends JpaRepository<DonationRecipient, UUID> {
 }
