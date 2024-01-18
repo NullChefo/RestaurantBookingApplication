@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 /**
  * Not in used
  */
-@Deprecated(forRemoval = true)
 @Component
 public class MapperUtility {
 	public void copyProps(Object src, Object target) {

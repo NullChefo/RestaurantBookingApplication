@@ -1,17 +1,38 @@
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+
+logging:
+  level:
+    org.atmosphere: warn
+
 spring:
-#  h2:
-#    console:
-#   ## http://localhost:8080/h2-console
-#      enabled: true
+  application:
+    name: restaurant-bookings-service
+  output.ansi.enabled: ALWAYS
+  devtools:
+    livereload:
+      enabled: true
+
+  thymeleaf:
+    prefix: classpath:/templates/email
+    suffix: .html
+
+  mustache:
+    check-template-location: false
+  #  h2:
+  #    console:
+  #   ## http://localhost:8080/h2-console
+  #      enabled: true
   datasource:
     url: jdbc:postgresql://127.0.0.1:5432/restaurant_app_database
     username: user
     password: password
-#  datasource:
-#    url: jdbc:h2:mem:testdb
-#    driver-class-name: org.h2.Driver
-#    username: sa
-#    password: password
+  #  datasource:
+  #    url: jdbc:h2:mem:testdb
+  #    driver-class-name: org.h2.Driver
+  #    username: sa
+  #    password: password
   jpa:
     hibernate:
       # TODO make validate
@@ -21,7 +42,10 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-#        dialect: org.hibernate.dialect.H2Dialect
+    #        dialect: org.hibernate.dialect.H2Dialect
+    sql:
+      init:
+        mode: always
     show-sql: true
     ## TODO make true
   flyway:
@@ -30,3 +54,90 @@ spring:
   docker:
     compose:
       enabled: false
+
+
+  mail:
+    #smtp.gmail.com
+    host: ${MAIL_HOST:host}
+    #587
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:username}
+    password: ${MAIL_PASSWORD:password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+#          starttls:
+#            enable: true
+        ssl:
+          enable: true
+#          protocols: TLSv1.2
+#        starttls:
+#          enable: true
+    default-encoding: UTF-8
+
+
+springdoc:
+  api-docs:
+    path: /api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+vaadin:
+  launch-browser: true
+  whitelisted-packages: com.vaadin, org.vaadin, dev.hilla, com.nullchefo
+  pnpm:
+    enable: true
+
+
+management:
+  server:
+    # actuator port
+    port: 8081
+  #  server:
+  #    port: 8081
+  #    ssl:
+  #      enabled: false
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_URL:"http://localhost:9411"}
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        all: true
+        http.server.requests: true
+  tracing:
+    sampling:
+      probability: 1.0
+  prometheus:
+    metrics:
+      export:
+        step: 3s
+  info:
+    env:
+      enabled: true
+    java:
+      enabled: true
+    os:
+      enabled: true
+
+address:
+  front_end:
+    base_url: ${FE_ADDRESS:http://localhost:8080}
+    successfully_logged_out: ${address.front_end.base_url}/auth/logout
+    thanks_for_registration_url: ${address.front_end.base_url}/auth/verifyRegistration
+    validate_registration_url: ${address.front_end.base_url}/auth/verifyRegistration
+    password_reset_url: ${address.front_end.base_url}/auth/savePassword
+
+

@@ -10,12 +10,12 @@ import com.nullchefo.restaurantbookings.service.OrderService;
 @RequestMapping(path = "/order")
 public class OrderController {
 
-	private final OrderService orderService;
-
-	private final ModelMapper modelMapper;
-
-	public OrderController(final OrderService orderService, final ModelMapper modelMapper) {
-		this.orderService = orderService;
-		this.modelMapper = modelMapper;
-	}
+//	private final OrderService orderService;
+//
+//	private final ModelMapper modelMapper;
+//
+//	public OrderController(final OrderService orderService, final ModelMapper modelMapper) {
+//		this.orderService = orderService;
+//		this.modelMapper = modelMapper;
+//	}
 }

@@ -9,7 +9,7 @@ import com.nullchefo.restaurantbookings.entity.Notification;
 import com.nullchefo.restaurantbookings.repository.NotificationRepository;
 
 @Service
-public class NotificationService extends BaseService<Notification>{
+public class NotificationService extends BaseService<Notification> {
 
 	private final NotificationRepository notificationRepository;
 

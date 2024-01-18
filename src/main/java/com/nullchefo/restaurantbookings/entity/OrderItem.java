@@ -1,4 +1,5 @@
 package com.nullchefo.restaurantbookings.entity;
+
 import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
@@ -27,11 +28,9 @@ public class OrderItem extends BaseEntity {
 
 	private String note;
 
-
 	private BigDecimal priceWithoutVAT;
 
 	private byte VATPercentage;
-
 
 	// Other order item attributes (quantity, total price, etc.)
 }

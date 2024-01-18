@@ -1,4 +1,5 @@
 package com.nullchefo.restaurantbookings.entity;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -25,14 +26,13 @@ public class Payment extends BaseEntity {
 	@JoinColumn(name = "customer_id")
 	private User user;
 
-
-	// TODO order
+	@ManyToOne
+	private Order order;
 
 	private PaymentStatusEnum paymentStatus;
 	private PaymentMethodEnum paymentMethod;
 
 	private BigDecimal total;
 	private LocalDateTime dateTime;
-
 
 }

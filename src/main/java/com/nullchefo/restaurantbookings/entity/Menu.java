@@ -1,4 +1,5 @@
 package com.nullchefo.restaurantbookings.entity;
+
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -17,7 +18,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
-public class Menu extends BaseEntity{
+public class Menu extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")
@@ -29,8 +30,7 @@ public class Menu extends BaseEntity{
 	private String name;
 	private String description;
 
-
-	//TODO make menu - categories - menu-item
-
+	@OneToMany(mappedBy = "menu")
+	private List<Category> categories;
 
 }

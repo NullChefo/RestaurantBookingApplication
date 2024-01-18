@@ -10,12 +10,25 @@ import com.nullchefo.restaurantbookings.service.PaymentService;
 @RequestMapping(path = "/payment")
 public class PaymentController {
 
-	private final PaymentService paymentService;
+//	private final PaymentService paymentService;
+//
+//	private final ModelMapper modelMapper;
+//
+//	public PaymentController(final PaymentService paymentService, final ModelMapper modelMapper) {
+//		this.paymentService = paymentService;
+//		this.modelMapper = modelMapper;
+//	}
 
-	private final ModelMapper modelMapper;
 
-	public PaymentController(final PaymentService paymentService, final ModelMapper modelMapper) {
-		this.paymentService = paymentService;
-		this.modelMapper = modelMapper;
-	}
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -9,7 +9,7 @@ import com.nullchefo.restaurantbookings.entity.Driver;
 import com.nullchefo.restaurantbookings.repository.DriverRepository;
 
 @Service
-public class DriverService extends BaseService<Driver>{
+public class DriverService extends BaseService<Driver> {
 	private final DriverRepository driverRepository;
 
 	public DriverService(final DriverRepository driverRepository) {

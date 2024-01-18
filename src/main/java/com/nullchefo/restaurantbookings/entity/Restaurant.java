@@ -1,4 +1,5 @@
 package com.nullchefo.restaurantbookings.entity;
+
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -37,6 +38,5 @@ public class Restaurant extends BaseEntity {
 
 	@OneToMany(mappedBy = "restaurant")
 	private List<Cuisine> cuisines; // Added relationship to Donation
-
 
 }

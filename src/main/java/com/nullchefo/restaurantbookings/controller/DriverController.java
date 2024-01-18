@@ -10,13 +10,12 @@ import com.nullchefo.restaurantbookings.service.DriverService;
 @RequestMapping(path = "/driver")
 public class DriverController {
 
-
-	private final DriverService driverService;
-
-	private final ModelMapper modelMapper;
-
-	public DriverController(final DriverService driverService, final ModelMapper modelMapper) {
-		this.driverService = driverService;
-		this.modelMapper = modelMapper;
-	}
+//	private final DriverService driverService;
+//
+//	private final ModelMapper modelMapper;
+//
+//	public DriverController(final DriverService driverService, final ModelMapper modelMapper) {
+//		this.driverService = driverService;
+//		this.modelMapper = modelMapper;
+//	}
 }

@@ -1,4 +1,5 @@
 package com.nullchefo.restaurantbookings.entity;
+
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -16,7 +17,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
-public class Promotion extends BaseEntity{
+public class Promotion extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;

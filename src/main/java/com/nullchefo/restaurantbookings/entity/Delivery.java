@@ -25,7 +25,6 @@ public class Delivery extends BaseEntity {
 	@ManyToOne
 	private Driver driver;
 
-
 	// TODO make it entity
 	private String location;
 

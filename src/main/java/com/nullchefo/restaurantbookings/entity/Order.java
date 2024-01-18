@@ -1,11 +1,14 @@
 package com.nullchefo.restaurantbookings.entity;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 import com.nullchefo.restaurantbookings.entity.enums.OrderStatusEnum;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -22,7 +25,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity(name = "orders")// postgres not good if order
-public class Order extends BaseEntity{
+public class Order extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
@@ -32,19 +35,16 @@ public class Order extends BaseEntity{
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
 
-	@ManyToMany
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@JoinTable(name = "order_menu_items",
 			   joinColumns = @JoinColumn(name = "order_id"),
 			   inverseJoinColumns = @JoinColumn(name = "menu_item_id")
 	)
 	private List<MenuItem> items;
 
-
-
 	private LocalDateTime orderedAt;
 	private BigDecimal total;
 
 	private OrderStatusEnum orderStatus;
-
 
 }

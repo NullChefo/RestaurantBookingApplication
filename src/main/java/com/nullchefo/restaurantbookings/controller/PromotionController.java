@@ -10,12 +10,12 @@ import com.nullchefo.restaurantbookings.service.PromotionService;
 @RequestMapping(path = "/promotion")
 public class PromotionController {
 
-	private final PromotionService promotionService;
-
-	private final ModelMapper modelMapper;
-
-	public PromotionController(final PromotionService promotionService, final ModelMapper modelMapper) {
-		this.promotionService = promotionService;
-		this.modelMapper = modelMapper;
-	}
+//	private final PromotionService promotionService;
+//
+//	private final ModelMapper modelMapper;
+//
+//	public PromotionController(final PromotionService promotionService, final ModelMapper modelMapper) {
+//		this.promotionService = promotionService;
+//		this.modelMapper = modelMapper;
+//	}
 }

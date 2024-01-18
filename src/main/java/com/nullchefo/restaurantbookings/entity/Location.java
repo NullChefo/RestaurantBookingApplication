@@ -21,11 +21,14 @@ public class Location extends BaseEntity {
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
 
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
 	private String address;
 
 	private String latitude;
 
 	private String longitude;
-
 
 }

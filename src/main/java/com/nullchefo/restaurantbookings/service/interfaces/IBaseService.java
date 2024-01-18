@@ -11,17 +11,13 @@ public interface IBaseService<U extends BaseEntity> {
 
 	public U findBy(Long id);
 
-
 	public Optional<U> findByIdOptional(Long id);
 
 	public U create(U entity);
 
-
 	public U update(U entity);
 
-
 	public boolean delete(long id);
-
 
 }
 

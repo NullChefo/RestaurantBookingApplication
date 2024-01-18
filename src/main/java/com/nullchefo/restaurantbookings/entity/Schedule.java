@@ -15,7 +15,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
-public class Schedule extends BaseEntity{
+public class Schedule extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")

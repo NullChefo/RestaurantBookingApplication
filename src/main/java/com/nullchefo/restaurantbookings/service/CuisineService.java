@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.nullchefo.restaurantbookings.entity.Cuisine;
 import com.nullchefo.restaurantbookings.repository.CuisineRepository;
+
 @Service
-public class CuisineService extends BaseService<Cuisine>{
+public class CuisineService extends BaseService<Cuisine> {
 
 	private final CuisineRepository cuisineRepository;
 

@@ -10,12 +10,11 @@ import com.nullchefo.restaurantbookings.service.CuisineService;
 @RequestMapping(path = "/cuisine")
 public class CuisineController {
 
-	private CuisineService cuisineService;
-
-	private final ModelMapper modelMapper;
-
-	public CuisineController(final CuisineService cuisineService, final ModelMapper modelMapper) {
-		this.cuisineService = cuisineService;
-		this.modelMapper = modelMapper;
-	}
+//	private final ModelMapper modelMapper;
+//	private CuisineService cuisineService;
+//
+//	public CuisineController(final CuisineService cuisineService, final ModelMapper modelMapper) {
+//		this.cuisineService = cuisineService;
+//		this.modelMapper = modelMapper;
+//	}
 }

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restaurant-application
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: restaurant-application
+  template:
+    metadata:
+      labels:
+        app: restaurant-application
+    spec:
+      containers:
+        - name: restaurant-application
+          image: restaurant-application:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: '1'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: restaurant-application-balancer
+spec:
+  selector:
+    app: restaurant-application
+  ports:
+    - protocol: TCP
+      port: 8000 # The port to expose to the outside
+      targetPort: 8080 # The port the application is running on in the pods
+  type: LoadBalancer
+  sessionAffinity: ClientIP

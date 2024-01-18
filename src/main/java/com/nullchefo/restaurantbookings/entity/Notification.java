@@ -1,4 +1,5 @@
 package com.nullchefo.restaurantbookings.entity;
+
 import java.time.LocalDateTime;
 
 import com.nullchefo.restaurantbookings.entity.enums.NotificationTypeEnum;
@@ -20,7 +21,7 @@ import lombok.Setter;
 @Entity
 public class Notification extends BaseEntity {
 	@ManyToOne
-	@JoinColumn(name = "customer_id")
+	@JoinColumn(name = "user_id")
 	private User user;
 	private String content;
 	private NotificationTypeEnum notificationType;

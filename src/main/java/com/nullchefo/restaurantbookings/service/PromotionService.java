@@ -9,7 +9,7 @@ import com.nullchefo.restaurantbookings.entity.Promotion;
 import com.nullchefo.restaurantbookings.repository.PromotionRepository;
 
 @Service
-public class PromotionService extends BaseService<Promotion>{
+public class PromotionService extends BaseService<Promotion> {
 
 	private final PromotionRepository promotionRepository;
 

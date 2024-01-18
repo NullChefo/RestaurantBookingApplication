@@ -1,9 +1,11 @@
 package com.nullchefo.restaurantbookings.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,23 +24,13 @@ public class Booking extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
-
-	// Make it to be more than one customer per booking
-	@ManyToOne
-	private User user;
-
+	@ManyToMany
+	private List<User> users;
 	private String customerInformation;
-
 	private LocalDateTime date;
-
-	// nullable
-	@ManyToOne
+	@ManyToOne(optional = true)
 	private Order preOrderMeal;
-
 	private byte reservedSeats;
-
 	private String notes;
-
-
 
 }

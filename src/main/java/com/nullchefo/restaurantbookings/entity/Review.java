@@ -1,4 +1,5 @@
 package com.nullchefo.restaurantbookings.entity;
+
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;

@@ -10,11 +10,11 @@ import com.nullchefo.restaurantbookings.service.ReviewService;
 @RequestMapping(path = "/review")
 public class ReviewController {
 
-	private final ReviewService reviewService;
-	private final ModelMapper modelMapper;
-
-	public ReviewController(final ReviewService reviewService, final ModelMapper modelMapper) {
-		this.reviewService = reviewService;
-		this.modelMapper = modelMapper;
-	}
+//	private final ReviewService reviewService;
+//	private final ModelMapper modelMapper;
+//
+//	public ReviewController(final ReviewService reviewService, final ModelMapper modelMapper) {
+//		this.reviewService = reviewService;
+//		this.modelMapper = modelMapper;
+//	}
 }

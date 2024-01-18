@@ -9,7 +9,7 @@ import com.nullchefo.restaurantbookings.entity.Restaurant;
 import com.nullchefo.restaurantbookings.repository.RestaurantRepository;
 
 @Service
-public class RestaurantService extends BaseService<Restaurant>{
+public class RestaurantService extends BaseService<Restaurant> {
 
 	private final RestaurantRepository restaurantRepository;
 

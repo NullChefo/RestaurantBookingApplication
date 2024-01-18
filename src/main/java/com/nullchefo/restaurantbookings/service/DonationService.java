@@ -9,7 +9,7 @@ import com.nullchefo.restaurantbookings.entity.Donation;
 import com.nullchefo.restaurantbookings.repository.DonationRepository;
 
 @Service
-public class DonationService extends BaseService<Donation>{
+public class DonationService extends BaseService<Donation> {
 
 	private final DonationRepository donationRepository;
 

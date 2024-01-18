@@ -10,12 +10,12 @@ import com.nullchefo.restaurantbookings.service.DonationService;
 @RequestMapping(path = "/donations")
 public class DonationController {
 
-	private final DonationService donationService;
+//	private final DonationService donationService;
 
-	private final ModelMapper modelMapper;
-
-	public DonationController(final DonationService donationService, final ModelMapper modelMapper) {
-		this.donationService = donationService;
-		this.modelMapper = modelMapper;
-	}
+//	private final ModelMapper modelMapper;
+//
+//	public DonationController(final DonationService donationService, final ModelMapper modelMapper) {
+//		this.donationService = donationService;
+//		this.modelMapper = modelMapper;
+//	}
 }
