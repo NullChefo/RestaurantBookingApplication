@@ -3,9 +3,6 @@ package com.nullchefo.restaurantbookings.entity;
 import java.util.List;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +17,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 public class Driver extends BaseEntity {
-
 
 	@OneToMany(mappedBy = "driver")
 	private List<Delivery> deliveries;

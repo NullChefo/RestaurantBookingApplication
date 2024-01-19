@@ -443,7 +443,8 @@
             <table cellpadding="0" cellspacing="0" class="email-content" role="presentation" width="100%">
                 <tr>
                     <td class="email-masthead">
-                        <a class="f-fallback email-masthead_name" th:href="${project_url}" th:text="${project_name}"></a>
+                        <a class="f-fallback email-masthead_name" th:href="${project_url}"
+                           th:text="${project_name}"></a>
                     </td>
                 </tr>
                 <!-- Email Body -->
@@ -487,7 +488,9 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                        <p class="u-margin-bottom-none" th:text="'If you initiated this log-in, awesome! We just wanted to make sure it’s you. If you did NOT initiate this log-in, you should immediately '"><a th:href="${action_url}"> change your ${project_name} password </a></p>
+                                        <p class="u-margin-bottom-none"
+                                           th:text="'If you initiated this log-in, awesome! We just wanted to make sure it’s you. If you did NOT initiate this log-in, you should immediately '">
+                                            <a th:href="${action_url}"> change your ${project_name} password </a></p>
 
                                         <table align="center" cellpadding="0" cellspacing="0" class="body-action"
                                                role="presentation" width="100%">
@@ -499,8 +502,8 @@
                                                         <tr>
                                                             <td align="center">
                                                                 <a class="f-fallback button"
-                                                                   th:href="${action_url}"
-                                                                   target="_blank">Change your password →</a>
+                                                                   target="_blank"
+                                                                   th:href="${action_url}">Change your password →</a>
                                                             </td>
                                                         </tr>
                                                     </table>

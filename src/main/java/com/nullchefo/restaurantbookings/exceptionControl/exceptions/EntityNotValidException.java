@@ -1,6 +1,6 @@
 package com.nullchefo.restaurantbookings.exceptionControl.exceptions;
 
-public class EntityNotValidException extends RuntimeException{
+public class EntityNotValidException extends RuntimeException {
 
 	public EntityNotValidException(final String message) {
 		super(message);

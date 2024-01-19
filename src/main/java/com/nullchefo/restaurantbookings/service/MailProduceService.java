@@ -3,8 +3,6 @@ package com.nullchefo.restaurantbookings.service;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -20,11 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class MailProduceService {
 
-	private final String validateRegistrationURL;
-	private final String passwordResetURL;
-	private final MailListRepository mailListRepository;
-	private final MailSenderService mailSenderService;
-
 	private final static String PROJECT_NAME = "Masters Degree project";
 	private final static String PROJECT_URL = "https://nullchefo.com/uni";
 	private final static String THANKS_FROM_NAME = "Stefan Kehayov";
@@ -32,19 +25,16 @@ public class MailProduceService {
 	private final static String ORGANISATIONAL_EXTRA_INFO = "Faculty of mathematics and informatics";
 	private final static String ORGANISATION_ADDRESS = "4700 bul. Bulgaria 256";
 	private final static String SUPPORT_EMAIL = "support@nullchefo.com";
-
 	private final static String EMAIL_VERIFICATION_TEMPLATE_NAME = "email_verification";
 	private final static String EMAIL_VERIFICATION_TEMPLATE_SUBJECT = "Email verification for " + PROJECT_NAME;
-
-
 	private final static String PASSWORD_RESET_TEMPLATE_NAME = "password_reset";
 	private final static String PASSWORD_RESET_TEMPLATE_SUBJECT = "Reset your password for " + PROJECT_NAME;
-
 	private final static String LOGIN_MAIL_TEMPLATE_NAME = "login_mail";
-
 	private final static String LOGIN_MAIL_TEMPLATE_SUBJECT = "Did you logged-in in " + PROJECT_NAME;
-
-
+	private final String validateRegistrationURL;
+	private final String passwordResetURL;
+	private final MailListRepository mailListRepository;
+	private final MailSenderService mailSenderService;
 
 	public MailProduceService(
 
@@ -76,12 +66,14 @@ public class MailProduceService {
 		Context context = setDefaultContext();
 
 		context.setVariable("action_url", url);
-		context.setVariable("user_first_name", user.getName());
-
-
+		context.setVariable("user_first_name", user.getFirstName());
 
 		// String to, String subject, String templateName, Context context
-		mailSenderService.sendEmail(user, EMAIL_VERIFICATION_TEMPLATE_SUBJECT , EMAIL_VERIFICATION_TEMPLATE_NAME, context);
+		mailSenderService.sendEmail(
+				user,
+				EMAIL_VERIFICATION_TEMPLATE_SUBJECT,
+				EMAIL_VERIFICATION_TEMPLATE_NAME,
+				context);
 
 		log.info(
 				"Click the link to email verify: {}",
@@ -97,9 +89,6 @@ public class MailProduceService {
 
 	}
 
-
-
-
 	public void passwordResetTokenMail(User user, String token) {
 		MailList mailList = mailListRepository.findByUser(user);
 
@@ -111,21 +100,16 @@ public class MailProduceService {
 
 		final String templateName = "password_reset";
 
-
-
 		String url =
 				passwordResetURL
 						+ "/"
 						+ token;
 
-
 		Context context = setDefaultContext();
 		context.setVariable("action_url", url);
-		context.setVariable("user_first_name", user.getName());
+		context.setVariable("user_first_name", user.getFirstName());
 
-		mailSenderService.sendEmail(user, PASSWORD_RESET_TEMPLATE_SUBJECT , PASSWORD_RESET_TEMPLATE_NAME, context);
-
-
+		mailSenderService.sendEmail(user, PASSWORD_RESET_TEMPLATE_SUBJECT, PASSWORD_RESET_TEMPLATE_NAME, context);
 
 		log.info(
 				"Click the link to Reset your Password: {}",
@@ -140,16 +124,15 @@ public class MailProduceService {
 
 	}
 
-
 	// TODO use
 	public void sendLoginMail(User user, String ipAddress) {
 		Context context = setDefaultContext();
 		context.setVariable("user_ip", ipAddress);
 		context.setVariable("action_url", passwordResetURL);
-		context.setVariable("user_first_name", user.getName());
+		context.setVariable("user_first_name", user.getFirstName());
 		context.setVariable("login-time", getCurrentFormattedDate());
 
-		mailSenderService.sendEmail(user, PASSWORD_RESET_TEMPLATE_SUBJECT , PASSWORD_RESET_TEMPLATE_NAME, context);
+		mailSenderService.sendEmail(user, PASSWORD_RESET_TEMPLATE_SUBJECT, PASSWORD_RESET_TEMPLATE_NAME, context);
 	}
 
 	private String getCurrentFormattedDate() {
@@ -158,12 +141,12 @@ public class MailProduceService {
 		return currentDate.format(myFormatObject);
 	}
 
-	private Context setDefaultContext(){
+	private Context setDefaultContext() {
 		Context context = new Context();
 
 		context.setVariable("project_name", PROJECT_NAME);
-		context.setVariable("project_url" , PROJECT_URL);
-		context.setVariable("project_name" , PROJECT_NAME);
+		context.setVariable("project_url", PROJECT_URL);
+		context.setVariable("project_name", PROJECT_NAME);
 		context.setVariable("thanks_from_name", THANKS_FROM_NAME);
 		context.setVariable("organization_address", ORGANISATION_ADDRESS);
 		context.setVariable("organisational_extra_info", ORGANISATIONAL_EXTRA_INFO);

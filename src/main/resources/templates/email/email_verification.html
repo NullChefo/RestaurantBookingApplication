@@ -438,20 +438,23 @@
 </head>
 
 <body>
-<span class="preheader" th:text="'Thanks for trying out ' + ${project_name} + '. We’ve pulled together some information and resources to help you get started.'"></span>
+<span class="preheader"
+      th:text="'Thanks for trying out ' + ${project_name} + '. We’ve pulled together some information and resources to help you get started.'"></span>
 <table cellpadding="0" cellspacing="0" class="email-wrapper" role="presentation" width="100%">
     <tr>
         <td align="center">
             <table cellpadding="0" cellspacing="0" class="email-content" role="presentation" width="100%">
                 <tr>
                     <td class="email-masthead">
-                        <a class="f-fallback email-masthead_name" th:href="${project_url}" th:text="${project_name}"></a>
+                        <a class="f-fallback email-masthead_name" th:href="${project_url}"
+                           th:text="${project_name}"></a>
                     </td>
                 </tr>
                 <!-- Email Body -->
                 <tr>
                     <td cellpadding="0" cellspacing="0" class="email-body" width="570">
-                        <table align="center" cellpadding="0" cellspacing="0" class="email-body_inner" role="presentation" width="570">
+                        <table align="center" cellpadding="0" cellspacing="0" class="email-body_inner"
+                               role="presentation" width="570">
                             <!-- Body content -->
                             <tr>
                                 <td class="content-cell">
@@ -459,13 +462,16 @@
                                         <h1 th:text="'Welcome, ' + ${user_first_name} + '!'"></h1>
                                         <p th:text="'Thanks for trying ' + ${project_name} + '. I’m thrilled to have you on board. To get the most out of the ' + ${project_name} + ', do this primary next step:'"></p>
                                         <!-- Action -->
-                                        <table align="center" cellpadding="0" cellspacing="0" class="body-action" role="presentation" width="100%">
+                                        <table align="center" cellpadding="0" cellspacing="0" class="body-action"
+                                               role="presentation" width="100%">
                                             <tr>
                                                 <td align="center">
-                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                                    <table border="0" cellpadding="0" cellspacing="0"
+                                                           role="presentation" width="100%">
                                                         <tr>
                                                             <td align="center">
-                                                                <a class="f-fallback button" th:href="${action_url}" target="_blank">Activate account</a>
+                                                                <a class="f-fallback button" target="_blank"
+                                                                   th:href="${action_url}">Activate account</a>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -476,8 +482,10 @@
                                         <table class="body-sub" role="presentation">
                                             <tr>
                                                 <td>
-                                                    <p class="f-fallback sub" th:text="'If you’re having trouble with the button above, copy and paste the URL below into your web browser.'"></p>
-                                                    <p class="f-fallback sub"><a th:href="${action_url}" th:text="${action_url}"></a></p>
+                                                    <p class="f-fallback sub"
+                                                       th:text="'If you’re having trouble with the button above, copy and paste the URL below into your web browser.'"></p>
+                                                    <p class="f-fallback sub"><a th:href="${action_url}"
+                                                                                 th:text="${action_url}"></a></p>
                                                 </td>
                                             </tr>
                                         </table>
@@ -489,7 +497,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <table align="center" cellpadding="0" cellspacing="0" class="email-footer" role="presentation" width="570">
+                        <table align="center" cellpadding="0" cellspacing="0" class="email-footer" role="presentation"
+                               width="570">
                             <tr>
                                 <td align="center" class="content-cell">
                                     <p class="f-fallback sub align-center">
@@ -508,7 +517,6 @@
     </tr>
 </table>
 </body>
-
 
 
 </html>

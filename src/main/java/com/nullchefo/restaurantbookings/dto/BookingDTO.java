@@ -1,4 +1,4 @@
 package com.nullchefo.restaurantbookings.dto;
 
-public class BookingDTO extends BaseDTO{
+public class BookingDTO extends BaseDTO {
 }

@@ -17,21 +17,21 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @AnonymousAllowed
 public class HelloWorldView extends HorizontalLayout {
 
-    private TextField name;
-    private Button sayHello;
+	private TextField name;
+	private Button sayHello;
 
-    public HelloWorldView() {
-        name = new TextField("Your name");
-        sayHello = new Button("Say hello");
-        sayHello.addClickListener(e -> {
-            Notification.show("Hello " + name.getValue());
-        });
-        sayHello.addClickShortcut(Key.ENTER);
+	public HelloWorldView() {
+		name = new TextField("Your name");
+		sayHello = new Button("Say hello");
+		sayHello.addClickListener(e -> {
+			Notification.show("Hello " + name.getValue());
+		});
+		sayHello.addClickShortcut(Key.ENTER);
 
-        setMargin(true);
-        setVerticalComponentAlignment(Alignment.END, name, sayHello);
+		setMargin(true);
+		setVerticalComponentAlignment(Alignment.END, name, sayHello);
 
-        add(name, sayHello);
-    }
+		add(name, sayHello);
+	}
 
 }

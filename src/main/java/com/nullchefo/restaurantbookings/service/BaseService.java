@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.nullchefo.restaurantbookings.entity.BaseEntity;
@@ -57,6 +59,14 @@ public abstract class BaseService<U extends BaseEntity> {
 			return true;
 		}
 		return false;
+	}
+
+	public Page<U> list(Pageable pageable) {
+		return getRepo().findAll(pageable);
+	}
+
+	public long count() {
+		return getRepo().count();
 	}
 
 }

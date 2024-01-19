@@ -444,7 +444,8 @@
                 <tr>
                     <td class="email-masthead">
                         <!-- value = https://nullchefo.com/uni -->
-                        <a class="f-fallback email-masthead_name" th:href="${project_url}" th:text="${project_name}"></a>
+                        <a class="f-fallback email-masthead_name" th:href="${project_url}"
+                           th:text="${project_name}"></a>
                     </td>
                 </tr>
                 <!-- Email Body -->
@@ -470,7 +471,9 @@
                                                            role="presentation" width="100%">
                                                         <tr>
                                                             <td align="center">
-                                                                <a class="f-fallback button button--green" th:href="${action_url}" th:text="${action_url}">Check and update your billing info→</a>
+                                                                <a class="f-fallback button button--green"
+                                                                   th:href="${action_url}" th:text="${action_url}">Check
+                                                                    and update your billing info→</a>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -495,15 +498,16 @@
                                                                             before we can process it.
                                                                         </li>
                                                                     </ul>
-                                                                    <p class="u-margin-bottom-none" th:text="'You can see more details on your recent order and why the payment failed on the ' + ${invoice_url} + 'invoice page.'"></p>
+                                                                    <p class="u-margin-bottom-none"
+                                                                       th:text="'You can see more details on your recent order and why the payment failed on the ' + ${invoice_url} + 'invoice page.'"></p>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                     </table>
-                                        <p th:text="'We’ll try charging your card again in ' + ${charge_again_date} + ' days and let you know if the payment is successful.'"></p>
-                                        <p th:text="'If you have any questions or need our help, you can reach our support team at ' + ${support_email} + ' or just reply to this email.'"></p>
-                                        <p>Thanks,
-                                            <p th:text="'Thanks,' + '<br>' + ${thanks_from_name}"></p>
+                                                    <p th:text="'We’ll try charging your card again in ' + ${charge_again_date} + ' days and let you know if the payment is successful.'"></p>
+                                                    <p th:text="'If you have any questions or need our help, you can reach our support team at ' + ${support_email} + ' or just reply to this email.'"></p>
+                                                    <p>Thanks,
+                                                    <p th:text="'Thanks,' + '<br>' + ${thanks_from_name}"></p>
                                     </div>
                                 </td>
                             </tr>

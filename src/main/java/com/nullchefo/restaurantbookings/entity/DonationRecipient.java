@@ -3,7 +3,6 @@ package com.nullchefo.restaurantbookings.entity;
 import java.util.List;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

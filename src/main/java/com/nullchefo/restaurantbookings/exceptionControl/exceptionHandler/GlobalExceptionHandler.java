@@ -11,25 +11,28 @@ import com.nullchefo.restaurantbookings.exceptionControl.exceptions.EntityNotVal
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-	@ExceptionHandler({ EntityNotFoundException.class})
+	@ExceptionHandler({ EntityNotFoundException.class })
 	public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException exception) {
 		return ResponseEntity
 				.status(HttpStatus.INTERNAL_SERVER_ERROR)
 				.body(exception.getMessage());
 	}
-	@ExceptionHandler({ EntityAlreadyExistsException.class})
+
+	@ExceptionHandler({ EntityAlreadyExistsException.class })
 	public ResponseEntity<Object> handleEntityAlreadyExistsException(EntityAlreadyExistsException exception) {
 		return ResponseEntity
 				.status(HttpStatus.INTERNAL_SERVER_ERROR)
 				.body(exception.getMessage());
 	}
-	@ExceptionHandler({ EntityNotValidException.class})
+
+	@ExceptionHandler({ EntityNotValidException.class })
 	public ResponseEntity<Object> handleEntityNotValidException(EntityNotValidException exception) {
 		return ResponseEntity
 				.status(HttpStatus.UNPROCESSABLE_ENTITY)
 				.body(exception.getMessage());
 	}
-	@ExceptionHandler({RuntimeException.class})
+
+	@ExceptionHandler({ RuntimeException.class })
 	public ResponseEntity<Object> handleRuntimeException(RuntimeException exception) {
 		return ResponseEntity
 				.status(HttpStatus.INTERNAL_SERVER_ERROR)

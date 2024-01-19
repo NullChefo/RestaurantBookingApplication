@@ -10,7 +10,6 @@ import org.thymeleaf.context.Context;
 
 import com.nullchefo.restaurantbookings.entity.SentEmail;
 import com.nullchefo.restaurantbookings.entity.User;
-import com.nullchefo.restaurantbookings.repository.SentEmailRepository;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -25,10 +24,10 @@ public class MailSenderService {
 	private final String sender;
 	private final SentEmailService sentEmailService;
 
-
 	@Autowired
-	public MailSenderService(JavaMailSender mailSender, TemplateEngine templateEngine, @Value("${spring.mail.username}") String sender,
-							 SentEmailService sentEmailService) {
+	public MailSenderService(
+			JavaMailSender mailSender, TemplateEngine templateEngine, @Value("${spring.mail.username}") String sender,
+			SentEmailService sentEmailService) {
 		this.mailSender = mailSender;
 		this.templateEngine = templateEngine;
 		this.sender = sender;
@@ -42,14 +41,9 @@ public class MailSenderService {
 		// Use JavaMailSender to send the email with the processed Thymeleaf template
 		// You need to implement this part based on your requirements and the JavaMailSender usage
 
-
-
-
 		MimeMessage mimeMessage
 				= mailSender.createMimeMessage();
 		MimeMessageHelper mimeMessageHelper;
-
-
 
 		SentEmail email = new SentEmail();
 		email.setUser(to);
@@ -70,11 +64,9 @@ public class MailSenderService {
 
 			mimeMessageHelper.setText(emailContent, true);
 
-
 			mailSender.send(mimeMessage);
 
 			email.setSent(true);
-
 
 		}
 
@@ -82,13 +74,9 @@ public class MailSenderService {
 		catch (MessagingException e) {
 			log.error(e.getMessage());
 			email.setSent(false);
-		}finally {
+		} finally {
 			log.info(sentEmailService.create(email).toString());
 		}
-
-
-
-
 
 	}
 }

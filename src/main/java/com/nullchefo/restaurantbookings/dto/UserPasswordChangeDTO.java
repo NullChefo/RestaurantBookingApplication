@@ -8,11 +8,11 @@ import lombok.Data;
 @Builder
 public class UserPasswordChangeDTO {
 
-    @NotNull
-    private String email;
-    @NotNull
-    private String oldPassword;
-    @NotNull
-    private String newPassword;
+	@NotNull
+	private String email;
+	@NotNull
+	private String oldPassword;
+	@NotNull
+	private String newPassword;
 
 }

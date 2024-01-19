@@ -1,7 +1,5 @@
 package com.nullchefo.restaurantbookings.entity;
 
-import org.thymeleaf.context.Context;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -17,7 +15,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
-public class SentEmail extends BaseEntity{
+public class SentEmail extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")

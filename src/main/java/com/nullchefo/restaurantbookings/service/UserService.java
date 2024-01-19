@@ -23,12 +23,11 @@ import com.nullchefo.restaurantbookings.repository.EmailVerificationTokenReposit
 import com.nullchefo.restaurantbookings.repository.PasswordResetTokenRepository;
 import com.nullchefo.restaurantbookings.repository.UserRepository;
 
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class UsersService extends BaseService<User> {
+public class UserService extends BaseService<User> {
 
 	private final UserRepository userRepository;
 
@@ -41,11 +40,12 @@ public class UsersService extends BaseService<User> {
 	private final MailProduceService mailProduceService;
 
 	@Autowired
-	public UsersService(final UserRepository userRepository,
-						final PasswordEncoder passwordEncoder,
-						final EmailVerificationTokenRepository emailVerificationTokenRepository,
-						PasswordResetTokenRepository passwordResetTokenRepository,
-						MailProduceService mailProduceService) {
+	public UserService(
+			final UserRepository userRepository,
+			final PasswordEncoder passwordEncoder,
+			final EmailVerificationTokenRepository emailVerificationTokenRepository,
+			PasswordResetTokenRepository passwordResetTokenRepository,
+			MailProduceService mailProduceService) {
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.emailVerificationTokenRepository = emailVerificationTokenRepository;
@@ -58,10 +58,7 @@ public class UsersService extends BaseService<User> {
 		return this.userRepository;
 	}
 
-
-
-
-	public void createUser(@RequestBody final UserRegistrationDTO userRegistrationDTO){
+	public void createUser(@RequestBody final UserRegistrationDTO userRegistrationDTO) {
 
 		final Optional<User> optionalUser = userRepository.findByEmail(userRegistrationDTO.getEmail());
 
@@ -70,61 +67,56 @@ public class UsersService extends BaseService<User> {
 			throw new EntityAlreadyExistsException("User with that email already exists!");
 		}
 
-//		user = new User();
-//
-//		user.setPassword(passwordEncoder.encode(user.getPassword()));
-//
-//		final String validationToken = UUID.randomUUID().toString();
-//
-//
-//
-//		user.setRole("USER");
-//
-//		user.setVerified(false);
-//
-//		user.setVerifiedToken(mapperUtility.generateToken());
-//
-//		user.setVerifiedTokenExpiry(mapperUtility.generateTokenExpiry());
-//
-//		user.setVerificationSent(false);
-//
-//		user.setVerificationSentOn(mapperUtility.generateTimestamp());
-//
-//		user.setVerificationSentTo(user.getEmail());
-//
-//		user.setVerificationSentVia("EMAIL");
-//
-//
-//
-//
-//		userRepository.save(user);
-//
-//
-//
-//		Thread.ofVirtual().start(() -> {
-//			// sets the verification token for the user
-//			saveVerificationTokenForUser(token, user);
-//		});
-//
-//
-//
-//		Thread.ofVirtual().start(() -> {
-//			// // sends the verification token
-//			mailProducerService.sendEmailVerification(user, token);
-//		});
-
+		//		user = new User();
+		//
+		//		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		//
+		//		final String validationToken = UUID.randomUUID().toString();
+		//
+		//
+		//
+		//		user.setRole("USER");
+		//
+		//		user.setVerified(false);
+		//
+		//		user.setVerifiedToken(mapperUtility.generateToken());
+		//
+		//		user.setVerifiedTokenExpiry(mapperUtility.generateTokenExpiry());
+		//
+		//		user.setVerificationSent(false);
+		//
+		//		user.setVerificationSentOn(mapperUtility.generateTimestamp());
+		//
+		//		user.setVerificationSentTo(user.getEmail());
+		//
+		//		user.setVerificationSentVia("EMAIL");
+		//
+		//
+		//
+		//
+		//		userRepository.save(user);
+		//
+		//
+		//
+		//		Thread.ofVirtual().start(() -> {
+		//			// sets the verification token for the user
+		//			saveVerificationTokenForUser(token, user);
+		//		});
+		//
+		//
+		//
+		//		Thread.ofVirtual().start(() -> {
+		//			// // sends the verification token
+		//			mailProducerService.sendEmailVerification(user, token);
+		//		});
 
 	}
 
-
-
-
-
 	private void saveVerificationTokenForUser(String token, User user) {
-//		EmailVerificationToken verificationToken
-//				= new EmailVerificationToken(user, token);
-//
-//		emailVerificationTokenRepository.save(verificationToken);
+		//		EmailVerificationToken verificationToken
+		//				= new EmailVerificationToken(user, token);
+		//
+		//		emailVerificationTokenRepository.save(verificationToken);
 	}
 
 	public void changePassword(final UserPasswordChangeDTO passwordChangeDTO) {
@@ -214,12 +206,12 @@ public class UsersService extends BaseService<User> {
 	}
 
 	public void changePassword(User user, String newPassword) {
-		user.setPassword(passwordEncoder.encode(newPassword));
+		user.setHashedPassword(passwordEncoder.encode(newPassword));
 		userRepository.save(user);
 	}
 
 	public boolean checkIfValidOldPassword(User user, String oldPassword) {
-		return passwordEncoder.matches(oldPassword, user.getPassword());
+		return passwordEncoder.matches(oldPassword, user.getHashedPassword());
 	}
 
 	public void savePassword(final String token, final UserPasswordChangeDTO passwordChangeDTO) {
@@ -252,7 +244,7 @@ public class UsersService extends BaseService<User> {
 		mailProduceService.passwordResetTokenMail(user, token);
 	}
 
-	public void resetPassword(final UserPasswordChangeDTO passwordModel)  {
+	public void resetPassword(final UserPasswordChangeDTO passwordModel) {
 		User user = findUserByEmail(passwordModel.getEmail());
 		if (user != null) {
 			String token = UUID.randomUUID().toString();
@@ -264,8 +256,8 @@ public class UsersService extends BaseService<User> {
 
 	}
 
-//	public Optional<User> getCurrentUser() {
-//
-//	}
+	//	public Optional<User> getCurrentUser() {
+	//
+	//	}
 
 }

@@ -2,6 +2,9 @@ package com.nullchefo.restaurantbookings.service;
 
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +23,9 @@ public class RestaurantService extends BaseService<Restaurant> {
 	@Override
 	protected JpaRepository<Restaurant, UUID> getRepo() {
 		return this.restaurantRepository;
+	}
+
+	public Page<Restaurant> list(Pageable pageable, Specification<Restaurant> filter) {
+		return restaurantRepository.findAll(filter, pageable);
 	}
 }

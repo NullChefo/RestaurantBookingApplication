@@ -1,16 +1,27 @@
 package com.nullchefo.restaurantbookings.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nullchefo.restaurantbookings.entity.enums.RoleEnum;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,17 +52,24 @@ public class User extends BaseEntity {
 	@OneToMany
 	private List<Location> listOfLocations;
 
-	@Column(nullable = false, length = 256)
-	private String name;
 	private boolean deleted = false;
-	@Column(name = "password", length = 1000, columnDefinition = "text", nullable = false)
-	private String password;
+	@Column(nullable = false, length = 256)
+	private String username;
+	//	private String name;
+
+	@Column(nullable = false, length = 50)
+	private String firstName;
+	@Column(nullable = true, length = 100)
+	private String lastName;
+
+	@JsonIgnore
+	private String hashedPassword;
+	@Enumerated(EnumType.STRING)
+	@ElementCollection(fetch = FetchType.EAGER)
+	private Set<RoleEnum> roles;
+	@Email
 	@Column(nullable = false, length = 256, unique = true)
 	private String email;
-	@Column(name = "IS_ACTIVE")
-	private boolean isActive = true;
-	@Column(name = "IS_EXPIRED")
-	private boolean isExpired = false;
 	@Column(name = "LAST_LOGGED_AT")
 	private LocalDateTime lastLoggedAt;
 	@Column(length = 30)
@@ -59,7 +77,18 @@ public class User extends BaseEntity {
 	@ManyToOne
 	private Location currentLocation;
 
+	@Lob
+	@Column(length = 1000000)
+	private byte[] profilePicture;
 
+	private LocalDate dateOfBirth;
+	private String occupation;
+	private boolean important;
+
+
+	// TODO!!! remove;
+	// fails OrdersDetails
+	private String role;
 
 	// Management boolean values
 

@@ -15,14 +15,14 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @Uses(Icon.class)
 public class MyCustomViewView extends Composite<VerticalLayout> {
 
-    public MyCustomViewView() {
-        VerticalLayout layoutColumn2 = new VerticalLayout();
-        getContent().setWidth("100%");
-        getContent().getStyle().set("flex-grow", "1");
-        layoutColumn2.setWidthFull();
-        getContent().setFlexGrow(1.0, layoutColumn2);
-        layoutColumn2.setWidth("100%");
-        layoutColumn2.getStyle().set("flex-grow", "1");
-        getContent().add(layoutColumn2);
-    }
+	public MyCustomViewView() {
+		VerticalLayout layoutColumn2 = new VerticalLayout();
+		getContent().setWidth("100%");
+		getContent().getStyle().set("flex-grow", "1");
+		layoutColumn2.setWidthFull();
+		getContent().setFlexGrow(1.0, layoutColumn2);
+		layoutColumn2.setWidth("100%");
+		layoutColumn2.getStyle().set("flex-grow", "1");
+		getContent().add(layoutColumn2);
+	}
 }
