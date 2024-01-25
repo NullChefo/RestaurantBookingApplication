@@ -45,10 +45,6 @@ public class User extends BaseEntity {
 	)
 	private List<Restaurant> favoriteRestaurants;
 
-	// Other customer attributes (name, contact information, etc.)
-
-	// TODO make it List<Location>
-
 	@OneToMany
 	private List<Location> listOfLocations;
 
@@ -85,20 +81,14 @@ public class User extends BaseEntity {
 	private String occupation;
 	private boolean important;
 
-
 	// TODO!!! remove;
 	// fails OrdersDetails
 	private String role;
 
 	// Management boolean values
-
-	@Builder.Default
 	private boolean enabled = false; // email verified
-	@Builder.Default
 	private boolean credentialsNonExpired = true;
-	@Builder.Default
 	private boolean accountNotLocked = true;
-	@Builder.Default
 	private boolean accountNotExpired = true;
 
 }

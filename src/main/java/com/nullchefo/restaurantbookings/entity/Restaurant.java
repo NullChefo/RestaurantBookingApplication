@@ -3,6 +3,7 @@ package com.nullchefo.restaurantbookings.entity;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,9 @@ import lombok.Setter;
 @Entity
 public class Restaurant extends BaseEntity {
 	private String name;
+
+	@ManyToOne
+	private User owner;
 
 	@OneToOne
 	private Location location;

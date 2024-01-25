@@ -11,6 +11,9 @@ import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import java.util.stream.Stream;
+
+import lombok.Getter;
+
 public class RegistrationForm extends FormLayout {
 
 	private H3 title;
@@ -25,8 +28,10 @@ public class RegistrationForm extends FormLayout {
 
 	private Checkbox allowMarketing;
 
+	@Getter
 	private Span errorMessageField;
 
+	@Getter
 	private Button submitButton;
 
 
@@ -36,7 +41,7 @@ public class RegistrationForm extends FormLayout {
 		lastName = new TextField("Last name");
 		email = new EmailField("Email");
 
-		allowMarketing = new Checkbox("Allow Marketing Emails?");
+		allowMarketing = new Checkbox("Allow marketing emails?");
 		allowMarketing.getStyle().set("margin-top", "10px");
 
 		password = new PasswordField("Password");
@@ -47,7 +52,7 @@ public class RegistrationForm extends FormLayout {
 
 		errorMessageField = new Span();
 
-		submitButton = new Button("Join the community");
+		submitButton = new Button("Sign up");
 		submitButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
 		add(title, firstName, lastName, email, password,
@@ -74,10 +79,6 @@ public class RegistrationForm extends FormLayout {
 	public PasswordField getPasswordField() { return password; }
 
 	public PasswordField getPasswordConfirmField() { return passwordConfirm; }
-
-	public Span getErrorMessageField() { return errorMessageField; }
-
-	public Button getSubmitButton() { return submitButton; }
 
 	private void setRequiredIndicatorVisible(HasValueAndElement<?, ?>... components) {
 		Stream.of(components).forEach(comp -> comp.setRequiredIndicatorVisible(true));

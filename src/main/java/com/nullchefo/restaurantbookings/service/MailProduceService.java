@@ -1,5 +1,8 @@
 package com.nullchefo.restaurantbookings.service;
 
+
+import static com.nullchefo.restaurantbookings.utils.StaticContent.*;
+
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
@@ -18,13 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class MailProduceService {
 
-	private final static String PROJECT_NAME = "Masters Degree project";
-	private final static String PROJECT_URL = "https://nullchefo.com/uni";
-	private final static String THANKS_FROM_NAME = "Stefan Kehayov";
-	private final static String ORGANISATION_NAME = "Plovdiv University \"Paisii Hilendarski\"";
-	private final static String ORGANISATIONAL_EXTRA_INFO = "Faculty of mathematics and informatics";
-	private final static String ORGANISATION_ADDRESS = "4700 bul. Bulgaria 256";
-	private final static String SUPPORT_EMAIL = "support@nullchefo.com";
+
 	private final static String EMAIL_VERIFICATION_TEMPLATE_NAME = "email_verification";
 	private final static String EMAIL_VERIFICATION_TEMPLATE_SUBJECT = "Email verification for " + PROJECT_NAME;
 	private final static String PASSWORD_RESET_TEMPLATE_NAME = "password_reset";

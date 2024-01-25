@@ -11,7 +11,7 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @AnonymousAllowed
 //@Route("/auth/registration")
 @PageTitle("Registration")
-@Route(value = "registration")
+@Route(value = "register")
 public class RegistrationView  extends VerticalLayout implements BeforeEnterObserver {
 	RegistrationForm registrationForm = new RegistrationForm();
 	public RegistrationView() {

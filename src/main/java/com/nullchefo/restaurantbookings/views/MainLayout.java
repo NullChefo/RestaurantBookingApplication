@@ -7,18 +7,26 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import com.nullchefo.restaurantbookings.configuration.security.AuthenticatedUser;
 import com.nullchefo.restaurantbookings.entity.User;
-import com.nullchefo.restaurantbookings.views.about.AboutView;
-import com.nullchefo.restaurantbookings.views.admindashboard.AdminDashboardView;
-import com.nullchefo.restaurantbookings.views.checkoutform.CheckoutFormView;
-import com.nullchefo.restaurantbookings.views.creditcardform.CreditCardFormView;
-import com.nullchefo.restaurantbookings.views.helloworld.HelloWorldView;
-import com.nullchefo.restaurantbookings.views.mycustomview.MyCustomViewView;
-import com.nullchefo.restaurantbookings.views.ordersdetail.OrdersDetailView;
-import com.nullchefo.restaurantbookings.views.restaurantaddress.RestaurantAddressView;
-import com.nullchefo.restaurantbookings.views.restaurantdashboard.RestaurantDashboardView;
-import com.nullchefo.restaurantbookings.views.restaurants.RestaurantsView;
-import com.nullchefo.restaurantbookings.views.restaurantview.RestaurantViewView;
-import com.nullchefo.restaurantbookings.views.supportchat.SupportChatView;
+import com.nullchefo.restaurantbookings.views.informational.about.AboutView;
+import com.nullchefo.restaurantbookings.views.informational.contacts.ContactsView;
+import com.nullchefo.restaurantbookings.views.informational.cookiesInfo.CookiesInfoView;
+import com.nullchefo.restaurantbookings.views.informational.developerDisclaimer.DeveloperDisclaimerView;
+import com.nullchefo.restaurantbookings.views.informational.disclamer.DisclaimerView;
+import com.nullchefo.restaurantbookings.views.informational.faq.FaqView;
+import com.nullchefo.restaurantbookings.views.informational.legalInformation.LegalInformationView;
+import com.nullchefo.restaurantbookings.views.informational.privacyPolicy.PrivacyPolicyView;
+import com.nullchefo.restaurantbookings.views.informational.termsOfService.TermsOfServiceView;
+import com.nullchefo.restaurantbookings.views.starterProject.admindashboard.AdminDashboardView;
+import com.nullchefo.restaurantbookings.views.starterProject.checkoutform.CheckoutFormView;
+import com.nullchefo.restaurantbookings.views.starterProject.creditcardform.CreditCardFormView;
+import com.nullchefo.restaurantbookings.views.starterProject.helloworld.HelloWorldView;
+import com.nullchefo.restaurantbookings.views.starterProject.mycustomview.MyCustomViewView;
+import com.nullchefo.restaurantbookings.views.starterProject.ordersdetail.OrdersDetailView;
+import com.nullchefo.restaurantbookings.views.starterProject.restaurantaddress.RestaurantAddressView;
+import com.nullchefo.restaurantbookings.views.starterProject.restaurantdashboard.RestaurantDashboardView;
+import com.nullchefo.restaurantbookings.views.starterProject.restaurants.RestaurantsView;
+import com.nullchefo.restaurantbookings.views.starterProject.restaurantview.RestaurantViewView;
+import com.nullchefo.restaurantbookings.views.starterProject.supportchat.SupportChatView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -32,6 +40,7 @@ import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.Scroller;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.PageTitle;
@@ -81,6 +90,7 @@ public class MainLayout extends AppLayout {
 	private SideNav createNavigation() {
 		SideNav nav = new SideNav();
 
+		// TODO add home, restorants, user, orders, addresses
 		if (accessChecker.hasAccess(HelloWorldView.class)) {
 			nav.addItem(new SideNavItem("Hello World", HelloWorldView.class, LineAwesomeIcon.GLOBE_SOLID.create()));
 
@@ -137,6 +147,54 @@ public class MainLayout extends AppLayout {
 
 		}
 
+		if (accessChecker.hasAccess(AboutView.class)) {
+			nav.addItem(new SideNavItem("About", AboutView.class,
+										LineAwesomeIcon.INFO_SOLID.create()));
+
+		}
+
+		if (accessChecker.hasAccess(ContactsView.class)) {
+			nav.addItem(new SideNavItem("Contacts", ContactsView.class,
+										LineAwesomeIcon.ADDRESS_CARD.create()));
+		}
+
+		if (accessChecker.hasAccess(CookiesInfoView.class)) {
+			nav.addItem(new SideNavItem("Cookies information", CookiesInfoView.class,
+										LineAwesomeIcon.COOKIE_SOLID.create()));
+		}
+
+
+		if (accessChecker.hasAccess(DeveloperDisclaimerView.class)) {
+			nav.addItem(new SideNavItem("Developer disclaimer", DeveloperDisclaimerView.class,
+										LineAwesomeIcon.EXCLAMATION_SOLID.create()));
+		}
+
+		if (accessChecker.hasAccess(DisclaimerView.class)) {
+			nav.addItem(new SideNavItem("Disclaimer", DisclaimerView.class,
+										LineAwesomeIcon.EXCLAMATION_SOLID.create()));
+		}
+
+		if (accessChecker.hasAccess(FaqView.class)) {
+			nav.addItem(new SideNavItem("FAQ", FaqView.class,
+										LineAwesomeIcon.QUESTION_SOLID.create()));
+		}
+
+		if (accessChecker.hasAccess(LegalInformationView.class)) {
+			nav.addItem(new SideNavItem("Legal information", LegalInformationView.class,
+										LineAwesomeIcon.BALANCE_SCALE_SOLID.create()));
+		}
+
+		if (accessChecker.hasAccess(PrivacyPolicyView.class)) {
+			nav.addItem(new SideNavItem("Privacy policy", PrivacyPolicyView.class,
+										LineAwesomeIcon.USER_SECRET_SOLID.create()));
+		}
+
+		if (accessChecker.hasAccess(TermsOfServiceView.class)) {
+			nav.addItem(new SideNavItem("Terms of service ", TermsOfServiceView.class,
+										LineAwesomeIcon.BOOK_SOLID.create()));
+		}
+
+
 		return nav;
 	}
 
@@ -174,8 +232,19 @@ public class MainLayout extends AppLayout {
 
 			layout.add(userMenu);
 		} else {
+
 			Anchor loginLink = new Anchor("login", "Sign in");
-			layout.add(loginLink);
+			Anchor registerLink = new Anchor("register", "Sign up");
+
+			VerticalLayout verticalLayout = new VerticalLayout();
+
+			verticalLayout.setSpacing(false);
+			verticalLayout.setPadding(false);
+
+			verticalLayout.add(loginLink);
+			verticalLayout.add(registerLink);
+
+			layout.add(verticalLayout);
 		}
 
 		return layout;
