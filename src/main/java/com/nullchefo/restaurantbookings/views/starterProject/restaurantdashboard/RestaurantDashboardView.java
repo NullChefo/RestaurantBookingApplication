@@ -37,9 +37,11 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 
+import jakarta.annotation.security.RolesAllowed;
+
 @PageTitle("Restaurant Dashboard")
 @Route(value = "restaurant-dashboard", layout = MainLayout.class)
-@AnonymousAllowed
+@RolesAllowed("ADMIN")
 public class RestaurantDashboardView extends Main {
 
 	public RestaurantDashboardView() {

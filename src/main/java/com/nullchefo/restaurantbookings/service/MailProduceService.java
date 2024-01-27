@@ -76,6 +76,8 @@ public class MailProduceService {
 				"Click the link to email verify: {}",
 				url);
 
+		log.trace("Click the link to email verify: {}",
+				  url);
 		if (mailList.getSentMailsForUser() == null) {
 			mailList.setSentMailsForUser(1);
 		} else {

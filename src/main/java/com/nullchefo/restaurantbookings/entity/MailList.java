@@ -30,7 +30,7 @@ public class MailList {
 	@Builder.Default
 	private boolean signedForAnnouncements = false;
 	@Builder.Default
-	private boolean signedForPromotions = false;
+	private boolean signedForMarketing = false;
 	@Builder.Default
 	private boolean signedForNotifications = false;
 

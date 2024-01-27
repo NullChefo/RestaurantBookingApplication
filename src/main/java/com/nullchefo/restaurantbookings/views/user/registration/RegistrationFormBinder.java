@@ -1,6 +1,11 @@
 package com.nullchefo.restaurantbookings.views.user.registration;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.nullchefo.restaurantbookings.dto.UserRegistrationDTO;
 import com.nullchefo.restaurantbookings.entity.User;
+import com.nullchefo.restaurantbookings.service.UserService;
+import com.nullchefo.restaurantbookings.views.user.thankYouForRegistration.ThanksForRegistrationView;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
@@ -17,8 +22,12 @@ public class RegistrationFormBinder {
 	 */
 	private boolean enablePasswordValidation;
 
-	public RegistrationFormBinder(RegistrationForm registrationForm) {
+	private final UserService userService;
+
+
+	public RegistrationFormBinder(RegistrationForm registrationForm, UserService userService) {
 		this.registrationForm = registrationForm;
+		this.userService = userService;
 	}
 
 	/**
@@ -26,12 +35,20 @@ public class RegistrationFormBinder {
 	 * to the registration form
 	 */
 	public void addBindingAndValidation() {
-		BeanValidationBinder<User> binder = new BeanValidationBinder<>(User.class);
+		BeanValidationBinder<UserRegistrationDTO> binder = new BeanValidationBinder<>(UserRegistrationDTO.class);
 		binder.bindInstanceFields(registrationForm);
 
-		// A custom validator for password fields
+		// // not goof
+		// // A custom validator for password fields
+		//	binder.forField(registrationForm.getPasswordField())
+		//		  .withValidator(this::passwordValidator).bind("hashedPassword");
+
+		// GOOD
+		binder.bind(registrationForm.getPasswordField(), UserRegistrationDTO::getPassword, UserRegistrationDTO::setPassword);
+		// Additional validation if needed
 		binder.forField(registrationForm.getPasswordField())
-			  .withValidator(this::passwordValidator).bind("hashedPassword");
+			  .withValidator(this::passwordValidator)
+			  .bind(UserRegistrationDTO::getPassword, UserRegistrationDTO::setPassword);
 
 		// The second password field is not connected to the Binder, but we
 		// want the binder to re-check the password validator when the field
@@ -51,15 +68,23 @@ public class RegistrationFormBinder {
 		registrationForm.getSubmitButton().addClickListener(event -> {
 			try {
 				// Create empty bean to store the details into
-				User userBean = new User();
+				UserRegistrationDTO userBean = new UserRegistrationDTO();
 
 				// Run validators and write the values to the bean
 				binder.writeBean(userBean);
-
 				// Typically, you would here call backend to store the bean
 
-				// Show success message if everything went well
-				showSuccess(userBean);
+				try {
+					userService.registerUser(userBean);
+					showSuccess(userBean);
+				}
+				catch (Exception e) {
+					showError(e.getMessage());
+				}
+
+
+
+
 			} catch (ValidationException exception) {
 				// validation errors are already visible for each field,
 				// and bean-level errors are shown in the status label.
@@ -103,12 +128,21 @@ public class RegistrationFormBinder {
 	/**
 	 * We call this method when form submission has succeeded
 	 */
-	private void showSuccess(User userBean) {
+	private void showSuccess(UserRegistrationDTO userBean) {
 		Notification notification =
 				Notification.show("Data saved, welcome " + userBean.getFirstName());
 		notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+		notification.setDuration(1000);
+		//redirect the user to another view
+		registrationForm.getUI().ifPresent(ui -> ui.navigate(ThanksForRegistrationView.class));
 
-		// Here you'd typically redirect the user to another view
 	}
+
+	private void showError(String error) {
+		Notification notification =
+				Notification.show("There was a error with your request! \n Please contact support! \n Error:" + error );
+		notification.setDuration(5000);
+
+		notification.addThemeVariants(NotificationVariant.LUMO_ERROR);}
 
 }

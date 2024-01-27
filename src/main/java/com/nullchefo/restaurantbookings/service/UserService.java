@@ -14,14 +14,17 @@ import org.webjars.NotFoundException;
 import com.nullchefo.restaurantbookings.dto.UserPasswordChangeDTO;
 import com.nullchefo.restaurantbookings.dto.UserRegistrationDTO;
 import com.nullchefo.restaurantbookings.entity.EmailVerificationToken;
+import com.nullchefo.restaurantbookings.entity.MailList;
 import com.nullchefo.restaurantbookings.entity.PasswordResetToken;
 import com.nullchefo.restaurantbookings.entity.User;
 import com.nullchefo.restaurantbookings.exceptionControl.exceptions.EntityAlreadyExistsException;
 import com.nullchefo.restaurantbookings.exceptionControl.exceptions.EntityNotFoundException;
 import com.nullchefo.restaurantbookings.exceptionControl.exceptions.EntityNotValidException;
 import com.nullchefo.restaurantbookings.repository.EmailVerificationTokenRepository;
+import com.nullchefo.restaurantbookings.repository.MailListRepository;
 import com.nullchefo.restaurantbookings.repository.PasswordResetTokenRepository;
 import com.nullchefo.restaurantbookings.repository.UserRepository;
+import com.nullchefo.restaurantbookings.utils.MapperUtility;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,18 +42,24 @@ public class UserService extends BaseService<User> {
 
 	private final MailProduceService mailProduceService;
 
+	private final MapperUtility mapperUtility;
+
+	private final MailListRepository mailListRepository;
+
 	@Autowired
 	public UserService(
 			final UserRepository userRepository,
 			final PasswordEncoder passwordEncoder,
 			final EmailVerificationTokenRepository emailVerificationTokenRepository,
 			PasswordResetTokenRepository passwordResetTokenRepository,
-			MailProduceService mailProduceService) {
+			MailProduceService mailProduceService, MapperUtility mapperUtility, MailListRepository mailListRepository) {
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.emailVerificationTokenRepository = emailVerificationTokenRepository;
 		this.passwordResetTokenRepository = passwordResetTokenRepository;
 		this.mailProduceService = mailProduceService;
+		this.mapperUtility = mapperUtility;
+		this.mailListRepository = mailListRepository;
 	}
 
 	@Override
@@ -58,65 +67,74 @@ public class UserService extends BaseService<User> {
 		return this.userRepository;
 	}
 
-	public void createUser(@RequestBody final UserRegistrationDTO userRegistrationDTO) {
+	public void registerUser(final UserRegistrationDTO userDto) {
 
-		final Optional<User> optionalUser = userRepository.findByEmail(userRegistrationDTO.getEmail());
+		final Optional<User> optionalUser = userRepository.findByEmail(userDto.getEmail());
 
 		if (optionalUser.isPresent()) {
-			log.error(String.format("User with email %s already exists!", userRegistrationDTO.getEmail()));
+			log.error(String.format("User with email %s already exists!", userDto.getEmail()));
 			throw new EntityAlreadyExistsException("User with that email already exists!");
 		}
 
-		//		user = new User();
-		//
-		//		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		//
-		//		final String validationToken = UUID.randomUUID().toString();
-		//
-		//
-		//
-		//		user.setRole("USER");
-		//
-		//		user.setVerified(false);
-		//
-		//		user.setVerifiedToken(mapperUtility.generateToken());
-		//
-		//		user.setVerifiedTokenExpiry(mapperUtility.generateTokenExpiry());
-		//
-		//		user.setVerificationSent(false);
-		//
-		//		user.setVerificationSentOn(mapperUtility.generateTimestamp());
-		//
-		//		user.setVerificationSentTo(user.getEmail());
-		//
-		//		user.setVerificationSentVia("EMAIL");
-		//
-		//
-		//
-		//
-		//		userRepository.save(user);
-		//
-		//
-		//
-		//		Thread.ofVirtual().start(() -> {
-		//			// sets the verification token for the user
-		//			saveVerificationTokenForUser(token, user);
-		//		});
-		//
-		//
-		//
-		//		Thread.ofVirtual().start(() -> {
-		//			// // sends the verification token
-		//			mailProducerService.sendEmailVerification(user, token);
-		//		});
+		User user = new User();
+		mapperUtility.copyProps(userDto, user);
+		user.setHashedPassword(passwordEncoder.encode(userDto.getPassword()));
 
+		if (userDto.isCompany()) {
+			user.setRole("COMPANY");
+		} else {
+			user.setRole("USER");
+		}
+
+		final String validationToken = UUID.randomUUID().toString();
+		user.setEnabled(false);
+
+		try {
+			userRepository.save(user);
+		} catch (Exception e) {
+
+			log.error(String.format("Error in saving {%s} with error: {%s}", user, e));
+			throw e;
+		}
+
+		userRepository.save(user);
+		Thread.ofVirtual().start(() -> {
+			// sets the verification token for the user
+			saveVerificationTokenForUser(validationToken, user);
+		});
+
+		Thread.ofVirtual().start(() -> {
+			// sets the verification token for the user
+			saveUserIntoMailList(user, userDto);
+		});
+
+		Thread.ofVirtual().start(() -> {
+			// // sends the verification token
+			mailProduceService.sendEmailVerification(user, validationToken);
+		});
 	}
 
+
+	private void saveUserIntoMailList(final User user, final UserRegistrationDTO userRegisterDTO) {
+		MailList mailList = MailList
+				.builder()
+				.signedForNotifications(userRegisterDTO.isSubscribeForNotifications())
+				.signedForAnnouncements(userRegisterDTO.isSubscribeForAnnouncements())
+				.signedForMarketing(userRegisterDTO.isSubscribeForMarketing())
+				.user(user)
+				.build();
+
+		log.trace(String.valueOf(mailList));
+		mailListRepository.save(mailList);
+	}
+
+
 	private void saveVerificationTokenForUser(String token, User user) {
-		//		EmailVerificationToken verificationToken
-		//				= new EmailVerificationToken(user, token);
-		//
-		//		emailVerificationTokenRepository.save(verificationToken);
+				EmailVerificationToken verificationToken
+						= new EmailVerificationToken(user, token);
+		log.trace(String.valueOf(verificationToken));
+
+				emailVerificationTokenRepository.save(verificationToken);
 	}
 
 	public void changePassword(final UserPasswordChangeDTO passwordChangeDTO) {

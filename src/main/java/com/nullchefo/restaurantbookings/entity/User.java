@@ -48,14 +48,13 @@ public class User extends BaseEntity {
 	@OneToMany
 	private List<Location> listOfLocations;
 
-	private boolean deleted = false;
+
 	@Column(nullable = false, length = 256)
 	private String username;
-	//	private String name;
 
 	@Column(nullable = false, length = 50)
 	private String firstName;
-	@Column(nullable = true, length = 100)
+	@Column( length = 100)
 	private String lastName;
 
 	@JsonIgnore
@@ -91,4 +90,5 @@ public class User extends BaseEntity {
 	private boolean accountNotLocked = true;
 	private boolean accountNotExpired = true;
 
+	private boolean deleted = false;
 }

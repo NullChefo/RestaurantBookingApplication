@@ -7,24 +7,21 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import com.nullchefo.restaurantbookings.configuration.security.AuthenticatedUser;
 import com.nullchefo.restaurantbookings.entity.User;
-import com.nullchefo.restaurantbookings.views.informational.about.AboutView;
-import com.nullchefo.restaurantbookings.views.informational.contacts.ContactsView;
+
+import com.nullchefo.restaurantbookings.views.informational.about.AboutViewV2;
+import com.nullchefo.restaurantbookings.views.informational.businessToBusiness.B2BView;
+import com.nullchefo.restaurantbookings.views.informational.contacts.ContactView;
 import com.nullchefo.restaurantbookings.views.informational.cookiesInfo.CookiesInfoView;
 import com.nullchefo.restaurantbookings.views.informational.developerDisclaimer.DeveloperDisclaimerView;
 import com.nullchefo.restaurantbookings.views.informational.disclamer.DisclaimerView;
 import com.nullchefo.restaurantbookings.views.informational.faq.FaqView;
+import com.nullchefo.restaurantbookings.views.informational.home.HomeView;
+import com.nullchefo.restaurantbookings.views.informational.jobs.JobsView;
 import com.nullchefo.restaurantbookings.views.informational.legalInformation.LegalInformationView;
 import com.nullchefo.restaurantbookings.views.informational.privacyPolicy.PrivacyPolicyView;
 import com.nullchefo.restaurantbookings.views.informational.termsOfService.TermsOfServiceView;
 import com.nullchefo.restaurantbookings.views.starterProject.admindashboard.AdminDashboardView;
-import com.nullchefo.restaurantbookings.views.starterProject.checkoutform.CheckoutFormView;
-import com.nullchefo.restaurantbookings.views.starterProject.creditcardform.CreditCardFormView;
-import com.nullchefo.restaurantbookings.views.starterProject.helloworld.HelloWorldView;
-import com.nullchefo.restaurantbookings.views.starterProject.mycustomview.MyCustomViewView;
-import com.nullchefo.restaurantbookings.views.starterProject.ordersdetail.OrdersDetailView;
-import com.nullchefo.restaurantbookings.views.starterProject.restaurantaddress.RestaurantAddressView;
 import com.nullchefo.restaurantbookings.views.starterProject.restaurantdashboard.RestaurantDashboardView;
-import com.nullchefo.restaurantbookings.views.starterProject.restaurants.RestaurantsView;
 import com.nullchefo.restaurantbookings.views.starterProject.restaurantview.RestaurantViewView;
 import com.nullchefo.restaurantbookings.views.starterProject.supportchat.SupportChatView;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -90,33 +87,38 @@ public class MainLayout extends AppLayout {
 	private SideNav createNavigation() {
 		SideNav nav = new SideNav();
 
-		// TODO add home, restorants, user, orders, addresses
-		if (accessChecker.hasAccess(HelloWorldView.class)) {
-			nav.addItem(new SideNavItem("Hello World", HelloWorldView.class, LineAwesomeIcon.GLOBE_SOLID.create()));
+		//		// TODO add home, restorants, user, orders, addresses
+		//		if (accessChecker.hasAccess(HelloWorldView.class)) {
+		//			nav.addItem(new SideNavItem("Hello World", HelloWorldView.class, LineAwesomeIcon.GLOBE_SOLID.create()));
+		//
+		//		}
+
+
+
+		if (accessChecker.hasAccess(HomeView.class)) {
+			nav.addItem(new SideNavItem("Home", HomeView.class, LineAwesomeIcon.HOME_SOLID.create()));
 
 		}
-		if (accessChecker.hasAccess(AboutView.class)) {
-			nav.addItem(new SideNavItem("About", AboutView.class, LineAwesomeIcon.FILE.create()));
 
-		}
-		if (accessChecker.hasAccess(RestaurantsView.class)) {
-			nav.addItem(new SideNavItem("Restaurants", RestaurantsView.class, LineAwesomeIcon.FILTER_SOLID.create()));
 
-		}
-		if (accessChecker.hasAccess(RestaurantAddressView.class)) {
-			nav.addItem(new SideNavItem("Restaurant Address", RestaurantAddressView.class,
-										LineAwesomeIcon.MAP_MARKER_SOLID.create()));
-
-		}
-		if (accessChecker.hasAccess(CheckoutFormView.class)) {
-			nav.addItem(new SideNavItem("Checkout Form", CheckoutFormView.class, LineAwesomeIcon.CREDIT_CARD.create()));
-
-		}
-		if (accessChecker.hasAccess(CreditCardFormView.class)) {
-			nav.addItem(new SideNavItem("Credit Card Form", CreditCardFormView.class,
-										LineAwesomeIcon.CREDIT_CARD.create()));
-
-		}
+//		if (accessChecker.hasAccess(RestaurantsView.class)) {
+//			nav.addItem(new SideNavItem("Restaurants", RestaurantsView.class, LineAwesomeIcon.FILTER_SOLID.create()));
+//
+//		}
+//		if (accessChecker.hasAccess(RestaurantAddressView.class)) {
+//			nav.addItem(new SideNavItem("Restaurant Address", RestaurantAddressView.class,
+//										LineAwesomeIcon.MAP_MARKER_SOLID.create()));
+//
+//		}
+//		if (accessChecker.hasAccess(CheckoutFormView.class)) {
+//			nav.addItem(new SideNavItem("Checkout Form", CheckoutFormView.class, LineAwesomeIcon.CREDIT_CARD.create()));
+//
+//		}
+//		if (accessChecker.hasAccess(CreditCardFormView.class)) {
+//			nav.addItem(new SideNavItem("Credit Card Form", CreditCardFormView.class,
+//										LineAwesomeIcon.CREDIT_CARD.create()));
+//
+//		}
 		if (accessChecker.hasAccess(RestaurantViewView.class)) {
 			nav.addItem(new SideNavItem("Restaurant View", RestaurantViewView.class,
 										LineAwesomeIcon.TH_LIST_SOLID.create()));
@@ -132,29 +134,29 @@ public class MainLayout extends AppLayout {
 										LineAwesomeIcon.CHART_AREA_SOLID.create()));
 
 		}
-		if (accessChecker.hasAccess(OrdersDetailView.class)) {
-			nav.addItem(
-					new SideNavItem("Orders Detail", OrdersDetailView.class, LineAwesomeIcon.COLUMNS_SOLID.create()));
-
-		}
+//		if (accessChecker.hasAccess(OrdersDetailView.class)) {
+//			nav.addItem(
+//					new SideNavItem("Orders Detail", OrdersDetailView.class, LineAwesomeIcon.COLUMNS_SOLID.create()));
+//
+//		}
 		if (accessChecker.hasAccess(SupportChatView.class)) {
 			nav.addItem(new SideNavItem("Support Chat", SupportChatView.class, LineAwesomeIcon.COMMENTS.create()));
 
 		}
-		if (accessChecker.hasAccess(MyCustomViewView.class)) {
-			nav.addItem(new SideNavItem("My Custom View", MyCustomViewView.class,
-										LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+//		if (accessChecker.hasAccess(MyCustomViewView.class)) {
+//			nav.addItem(new SideNavItem("My Custom View", MyCustomViewView.class,
+//										LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+//
+//		}
 
-		}
+//		if (accessChecker.hasAccess(AboutView.class)) {
+//			nav.addItem(new SideNavItem("About", AboutView.class,
+//										LineAwesomeIcon.INFO_SOLID.create()));
+//
+//		}
 
-		if (accessChecker.hasAccess(AboutView.class)) {
-			nav.addItem(new SideNavItem("About", AboutView.class,
-										LineAwesomeIcon.INFO_SOLID.create()));
-
-		}
-
-		if (accessChecker.hasAccess(ContactsView.class)) {
-			nav.addItem(new SideNavItem("Contacts", ContactsView.class,
+		if (accessChecker.hasAccess(ContactView.class)) {
+			nav.addItem(new SideNavItem("Contacts", ContactView.class,
 										LineAwesomeIcon.ADDRESS_CARD.create()));
 		}
 
@@ -162,7 +164,6 @@ public class MainLayout extends AppLayout {
 			nav.addItem(new SideNavItem("Cookies information", CookiesInfoView.class,
 										LineAwesomeIcon.COOKIE_SOLID.create()));
 		}
-
 
 		if (accessChecker.hasAccess(DeveloperDisclaimerView.class)) {
 			nav.addItem(new SideNavItem("Developer disclaimer", DeveloperDisclaimerView.class,
@@ -192,6 +193,21 @@ public class MainLayout extends AppLayout {
 		if (accessChecker.hasAccess(TermsOfServiceView.class)) {
 			nav.addItem(new SideNavItem("Terms of service ", TermsOfServiceView.class,
 										LineAwesomeIcon.BOOK_SOLID.create()));
+		}
+
+		if (accessChecker.hasAccess(AboutViewV2.class)) {
+			nav.addItem(new SideNavItem("About", AboutViewV2.class, LineAwesomeIcon.FILE.create()));
+
+		}
+
+		if (accessChecker.hasAccess(JobsView.class)) {
+			nav.addItem(new SideNavItem("Jobs", JobsView.class, LineAwesomeIcon.USER_NINJA_SOLID.create()));
+
+		}
+
+		if (accessChecker.hasAccess(B2BView.class)) {
+			nav.addItem(new SideNavItem("B2B", B2BView.class, LineAwesomeIcon.EMPIRE.create()));
+
 		}
 
 

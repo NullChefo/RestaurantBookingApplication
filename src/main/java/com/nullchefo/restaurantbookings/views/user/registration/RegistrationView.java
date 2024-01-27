@@ -1,5 +1,8 @@
 package com.nullchefo.restaurantbookings.views.user.registration;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.nullchefo.restaurantbookings.service.UserService;
 import com.nullchefo.restaurantbookings.views.MainLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEnterEvent;
@@ -13,8 +16,12 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @PageTitle("Registration")
 @Route(value = "register")
 public class RegistrationView  extends VerticalLayout implements BeforeEnterObserver {
+	private final UserService userService;
+
+
 	RegistrationForm registrationForm = new RegistrationForm();
-	public RegistrationView() {
+	public RegistrationView(UserService userService) {
+		this.userService = userService;
 		addClassName("login-view");
 		setSizeFull();
 		setAlignItems(Alignment.CENTER);
@@ -25,7 +32,7 @@ public class RegistrationView  extends VerticalLayout implements BeforeEnterObse
 
 		add(registrationForm);
 
-		RegistrationFormBinder registrationFormBinder = new RegistrationFormBinder(registrationForm);
+		RegistrationFormBinder registrationFormBinder = new RegistrationFormBinder(registrationForm, this.userService);
 		registrationFormBinder.addBindingAndValidation();
 	}
 

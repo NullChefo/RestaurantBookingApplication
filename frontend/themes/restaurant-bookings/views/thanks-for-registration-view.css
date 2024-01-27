@@ -1,0 +1,100 @@
+/* Add any custom styles here */
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.pt-14 {
+    padding-top: 3.5rem; /* Equivalent to 14 units in Tailwind */
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.text-white {
+    color: white;
+}
+
+.bg-gray-800 {
+    background-color: #2d3748; /* Equivalent to gray-800 in Tailwind */
+}
+
+.shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-amber-700 {
+    /* Add your custom shadow styles here */
+}
+
+.md.w-30rem {
+/* Add your custom styles for md:w-[30rem] breakpoint */
+    @media (min-width: 768px) {
+        width: 30rem;
+    }
+}
+
+.w-20rem {
+    width: 20rem; /* Equivalent to w-[20rem] in Tailwind */
+}
+
+.mr-3 {
+    margin-right: 0.75rem; /* Equivalent to 3 units in Tailwind */
+}
+
+.ml-3 {
+    margin-left: 0.75rem; /* Equivalent to 3 units in Tailwind */
+}
+
+.rounded-3xl {
+    border-radius: 1.125rem; /* Equivalent to rounded-3xl in Tailwind */
+}
+
+.pt-5 {
+    padding-top: 1.25rem; /* Equivalent to 5 units in Tailwind */
+}
+
+.text-5xl {
+    font-size: 3rem; /* Equivalent to 5xl in Tailwind */
+}
+
+.items-center {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-9xl {
+    font-size: 5.625rem; /* Equivalent to 9xl in Tailwind */
+}
+
+.mt-10 {
+    margin-top: 2.5rem; /* Equivalent to 10 units in Tailwind */
+}
+
+.p-10 {
+    padding: 2.5rem; /* Equivalent to 10 units in Tailwind */
+}
+
+.mb-10 {
+    margin-bottom: 2.5rem; /* Equivalent to 10 units in Tailwind */
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.underline-offset-4 {
+    text-underline-offset: 0.25rem; /* Equivalent to underline-offset-4 in Tailwind */
+}
+
+.font-bold {
+    font-weight: bold;
+}

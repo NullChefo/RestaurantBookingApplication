@@ -9,9 +9,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserRegistrationDTO extends BaseDTO {
 
-	private String name;
+	private String firstName;
+	private String lastName;
+	private boolean isCompany;
+	private boolean subscribeForMarketing;
+	private boolean subscribeForAnnouncements;
+	private boolean subscribeForNotifications;
 	private String password;
 	private String email;
-	private String phone;
-	private String address;
+
 }
