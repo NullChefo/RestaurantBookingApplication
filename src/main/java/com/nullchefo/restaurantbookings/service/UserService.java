@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -46,13 +47,16 @@ public class UserService extends BaseService<User> {
 
 	private final MailListRepository mailListRepository;
 
+	private final boolean isDevelopmentEnvironment;
+
 	@Autowired
 	public UserService(
 			final UserRepository userRepository,
 			final PasswordEncoder passwordEncoder,
 			final EmailVerificationTokenRepository emailVerificationTokenRepository,
 			PasswordResetTokenRepository passwordResetTokenRepository,
-			MailProduceService mailProduceService, MapperUtility mapperUtility, MailListRepository mailListRepository) {
+			MailProduceService mailProduceService, MapperUtility mapperUtility, MailListRepository mailListRepository,
+			@Value("${properties.is_development_environment}") boolean isDevelopmentEnvironment) {
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.emailVerificationTokenRepository = emailVerificationTokenRepository;
@@ -60,6 +64,7 @@ public class UserService extends BaseService<User> {
 		this.mailProduceService = mailProduceService;
 		this.mapperUtility = mapperUtility;
 		this.mailListRepository = mailListRepository;
+		this.isDevelopmentEnvironment = isDevelopmentEnvironment;
 	}
 
 	@Override
@@ -69,25 +74,30 @@ public class UserService extends BaseService<User> {
 
 	public void registerUser(final UserRegistrationDTO userDto) {
 
-		final Optional<User> optionalUser = userRepository.findByEmail(userDto.getEmail());
+		final Optional<User> optionalUser = userRepository.findByUsername(userDto.getUsername());
 
 		if (optionalUser.isPresent()) {
-			log.error(String.format("User with email %s already exists!", userDto.getEmail()));
-			throw new EntityAlreadyExistsException("User with that email already exists!");
+			log.error(String.format("User with username %s already exists!", userDto.getUsername()));
+			throw new EntityAlreadyExistsException("User with that username already exists!");
 		}
 
 		User user = new User();
 		mapperUtility.copyProps(userDto, user);
 		user.setHashedPassword(passwordEncoder.encode(userDto.getPassword()));
 
-		if (userDto.isCompany()) {
+		if (userDto.isOrganization()) {
 			user.setRole("COMPANY");
 		} else {
 			user.setRole("USER");
 		}
 
 		final String validationToken = UUID.randomUUID().toString();
-		user.setEnabled(false);
+
+		if (isDevelopmentEnvironment) {
+			user.setEnabled(true);
+		} else {
+			user.setEnabled(false);
+		}
 
 		try {
 			userRepository.save(user);
@@ -98,10 +108,6 @@ public class UserService extends BaseService<User> {
 		}
 
 		userRepository.save(user);
-		Thread.ofVirtual().start(() -> {
-			// sets the verification token for the user
-			saveVerificationTokenForUser(validationToken, user);
-		});
 
 		Thread.ofVirtual().start(() -> {
 			// sets the verification token for the user
@@ -109,11 +115,16 @@ public class UserService extends BaseService<User> {
 		});
 
 		Thread.ofVirtual().start(() -> {
+			// sets the verification token for the user
+			saveVerificationTokenForUser(validationToken, user);
+		});
+
+		Thread.ofVirtual().start(() -> {
 			// // sends the verification token
 			mailProduceService.sendEmailVerification(user, validationToken);
 		});
-	}
 
+	}
 
 	private void saveUserIntoMailList(final User user, final UserRegistrationDTO userRegisterDTO) {
 		MailList mailList = MailList
@@ -128,13 +139,12 @@ public class UserService extends BaseService<User> {
 		mailListRepository.save(mailList);
 	}
 
-
 	private void saveVerificationTokenForUser(String token, User user) {
-				EmailVerificationToken verificationToken
-						= new EmailVerificationToken(user, token);
+		EmailVerificationToken verificationToken
+				= new EmailVerificationToken(user, token);
 		log.trace(String.valueOf(verificationToken));
 
-				emailVerificationTokenRepository.save(verificationToken);
+		emailVerificationTokenRepository.save(verificationToken);
 	}
 
 	public void changePassword(final UserPasswordChangeDTO passwordChangeDTO) {
@@ -152,30 +162,34 @@ public class UserService extends BaseService<User> {
 		}
 	}
 
-	public void validateVerificationToken(String token) {
+	public boolean validateVerificationToken(String token) {
 		EmailVerificationToken verificationToken
 				= emailVerificationTokenRepository.findByToken(token);
 
 		if (verificationToken == null) {
-			throw new EntityNotValidException("Token is not valid");
+			// throw new EntityNotValidException("Token is not valid");
+			log.trace("Token is not null");
 		}
 
 		User user = verificationToken.getUser();
+
 		Calendar cal = Calendar.getInstance();
 
 		if ((verificationToken.getExpirationTime().getTime()
 				- cal.getTime().getTime()) <= 0) {
 			emailVerificationTokenRepository.delete(verificationToken);
-
-			throw new EntityNotValidException("Token is expired");
+			// throw new EntityNotValidException("Token is expired");
+			log.trace(String.format("Token is expired %s", token));
+			return false;
 		}
 		user.setEnabled(true);
 		userRepository.save(user);
 		emailVerificationTokenRepository.delete(verificationToken);
 		log.trace(String.valueOf(verificationToken));
+		return true;
 	}
 
-	public EmailVerificationToken generateNewVerificationToken(String oldToken) {
+	private EmailVerificationToken generateNewVerificationToken(String oldToken) {
 		EmailVerificationToken verificationToken
 				= emailVerificationTokenRepository.findByToken(oldToken);
 		if (verificationToken == null) {
@@ -191,7 +205,7 @@ public class UserService extends BaseService<User> {
 	}
 
 	public User findUserByEmail(String email) {
-		return userRepository.findByEmailIgnoreCaseAndDeleted(email, false);
+		return userRepository.findByEmailIgnoreCaseAndDeleted(email, false).orElse(null);
 	}
 
 	public void createPasswordResetTokenForUser(User user, String token) {
@@ -247,15 +261,17 @@ public class UserService extends BaseService<User> {
 		}
 	}
 
-	public void resendVerificationToken(final String token) {
+	public boolean resendVerificationToken(final String token) {
 		EmailVerificationToken emailVerificationToken
 				= generateNewVerificationToken(token);
 		if (emailVerificationToken == null) {
-			throw new EntityNotValidException("Invalid token!");
+		//	throw new EntityNotValidException("Invalid token!");
+			log.trace("Invalid token!");
 		}
 
 		User user = emailVerificationToken.getUser();
 		mailProduceService.sendEmailVerification(user, emailVerificationToken.getToken());
+		return true;
 	}
 
 	public void passwordResetTokenMail(final User user, String token) {
@@ -273,9 +289,5 @@ public class UserService extends BaseService<User> {
 		}
 
 	}
-
-	//	public Optional<User> getCurrentUser() {
-	//
-	//	}
 
 }

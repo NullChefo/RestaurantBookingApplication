@@ -12,9 +12,11 @@ import com.nullchefo.restaurantbookings.entity.User;
 public interface UserRepository extends JpaRepository<User, UUID> {
 	Optional<User> findByEmail(String email);
 
+	Optional<User> findByEmailOrUsername(String email, String username);
+
 	Optional<User> findByEmailIgnoreCase(String email);
 
-	User findByEmailIgnoreCaseAndDeleted(String email, boolean deleted);
+	Optional<User> findByEmailIgnoreCaseAndDeleted(String email, boolean deleted);
 
-	User findByUsername(String username);
+	Optional<User> findByUsername(String username);
 }

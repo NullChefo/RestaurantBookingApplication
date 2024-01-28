@@ -32,10 +32,10 @@ public class HydrateDatabase {
 
 		if (userRepository.count() == 0L) {
 
+			// admin/admin
 			User adminUser = User.builder()
 								 .email("admin@example.com")
 								 .hashedPassword(passwordEncoder.encode("admin"))
-
 								 .firstName("admin")
 								 .lastName("admin")
 								 .username("admin")
@@ -46,6 +46,24 @@ public class HydrateDatabase {
 								 .roles(Set.of(RoleEnum.ADMIN))
 								 .phone("0898888888")
 								 .build();
+			userRepository.save(adminUser);
+
+
+			// user/user
+			User user = User.builder()
+								 .email("user@example.com")
+								 .hashedPassword(passwordEncoder.encode("user"))
+								 .firstName("user")
+								 .lastName("user")
+								 .username("user")
+								 .role(RoleEnum.CUSTOMER.name())
+								 .enabled(true)
+								 .dateOfBirth(LocalDate.of(1900, 1, 1))
+								 .important(false)
+								 .roles(Set.of(RoleEnum.CUSTOMER))
+								 .phone("0898888858")
+								 .build();
+			userRepository.save(user);
 
 			//restaurant/restaurant
 			User restaurantUser = User.builder()
@@ -70,7 +88,7 @@ public class HydrateDatabase {
 								  .hashedPassword(passwordEncoder.encode("driver"))
 								  .firstName("driver")
 								  .lastName("driver")
-								  .username("driver")
+									.username("driver")
 								  .role(RoleEnum.DRIVER.name())
 								  .enabled(true)
 								  .dateOfBirth(LocalDate.of(1900, 1, 1))

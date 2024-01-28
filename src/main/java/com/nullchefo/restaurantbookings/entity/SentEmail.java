@@ -22,7 +22,7 @@ public class SentEmail extends BaseEntity {
 	private User user;
 	private String subject;
 	private String templateName;
-	private String body;
+	private String context;
 	private boolean sent;
 
 }

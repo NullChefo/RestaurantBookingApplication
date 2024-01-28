@@ -49,7 +49,7 @@ public class User extends BaseEntity {
 	private List<Location> listOfLocations;
 
 
-	@Column(nullable = false, length = 256)
+	@Column(nullable = false, length = 256, unique = true)
 	private String username;
 
 	@Column(nullable = false, length = 50)
@@ -63,7 +63,7 @@ public class User extends BaseEntity {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private Set<RoleEnum> roles;
 	@Email
-	@Column(nullable = false, length = 256, unique = true)
+	@Column(nullable = false, length = 256, unique = false)
 	private String email;
 	@Column(name = "LAST_LOGGED_AT")
 	private LocalDateTime lastLoggedAt;

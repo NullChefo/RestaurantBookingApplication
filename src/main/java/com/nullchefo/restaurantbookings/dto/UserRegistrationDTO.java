@@ -11,11 +11,12 @@ public class UserRegistrationDTO extends BaseDTO {
 
 	private String firstName;
 	private String lastName;
-	private boolean isCompany;
+	private boolean isOrganization;
 	private boolean subscribeForMarketing;
 	private boolean subscribeForAnnouncements;
 	private boolean subscribeForNotifications;
 	private String password;
 	private String email;
+	private String username;
 
 }

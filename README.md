@@ -4,6 +4,13 @@
 
 - https://github.com/ActiveCampaign/postmark-templates
 
+
+# To Run in dev use the following env variables
+```
+MAIL_HOST=smtp.gmail.com;MAIL_PORT=587;MAIL_USERNAME=example@example.com;MAIL_PASSWORD=example;SPRING_PROFILES_ACTIVE=dev
+```
+
+
 # Starter application url
 
 https://start.vaadin.com/app/p?id=2434bfed-0490-49d0-8050-7ed38aa55d69&preview=

@@ -20,10 +20,12 @@ import com.nullchefo.restaurantbookings.views.informational.jobs.JobsView;
 import com.nullchefo.restaurantbookings.views.informational.legalInformation.LegalInformationView;
 import com.nullchefo.restaurantbookings.views.informational.privacyPolicy.PrivacyPolicyView;
 import com.nullchefo.restaurantbookings.views.informational.termsOfService.TermsOfServiceView;
-import com.nullchefo.restaurantbookings.views.starterProject.admindashboard.AdminDashboardView;
-import com.nullchefo.restaurantbookings.views.starterProject.restaurantdashboard.RestaurantDashboardView;
-import com.nullchefo.restaurantbookings.views.starterProject.restaurantview.RestaurantViewView;
-import com.nullchefo.restaurantbookings.views.starterProject.supportchat.SupportChatView;
+import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.admindashboard.AdminDashboardView;
+import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.restaurantdashboard.RestaurantDashboardView;
+import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.restaurantview.RestaurantViewView;
+import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.supportchat.SupportChatView;
+import com.nullchefo.restaurantbookings.views.user.editUser.EditUserView;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -34,6 +36,7 @@ import com.vaadin.flow.component.html.Footer;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Header;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.Scroller;
@@ -62,6 +65,7 @@ public class MainLayout extends AppLayout {
 		setPrimarySection(Section.DRAWER);
 		addDrawerContent();
 		addHeaderContent();
+
 	}
 
 	private void addHeaderContent() {
@@ -72,6 +76,7 @@ public class MainLayout extends AppLayout {
 		viewTitle.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
 
 		addToNavbar(true, toggle, viewTitle);
+
 	}
 
 	private void addDrawerContent() {
@@ -119,21 +124,21 @@ public class MainLayout extends AppLayout {
 //										LineAwesomeIcon.CREDIT_CARD.create()));
 //
 //		}
-		if (accessChecker.hasAccess(RestaurantViewView.class)) {
-			nav.addItem(new SideNavItem("Restaurant View", RestaurantViewView.class,
-										LineAwesomeIcon.TH_LIST_SOLID.create()));
-
-		}
+//		if (accessChecker.hasAccess(RestaurantViewView.class)) {
+//			nav.addItem(new SideNavItem("Restaurant View", RestaurantViewView.class,
+//										LineAwesomeIcon.TH_LIST_SOLID.create()));
+//
+//		}
 		if (accessChecker.hasAccess(AdminDashboardView.class)) {
 			nav.addItem(new SideNavItem("Admin Dashboard", AdminDashboardView.class,
 										LineAwesomeIcon.CHART_AREA_SOLID.create()));
 
 		}
-		if (accessChecker.hasAccess(RestaurantDashboardView.class)) {
-			nav.addItem(new SideNavItem("Restaurant Dashboard", RestaurantDashboardView.class,
-										LineAwesomeIcon.CHART_AREA_SOLID.create()));
-
-		}
+//		if (accessChecker.hasAccess(RestaurantDashboardView.class)) {
+//			nav.addItem(new SideNavItem("Restaurant Dashboard", RestaurantDashboardView.class,
+//										LineAwesomeIcon.CHART_AREA_SOLID.create()));
+//
+//		}
 //		if (accessChecker.hasAccess(OrdersDetailView.class)) {
 //			nav.addItem(
 //					new SideNavItem("Orders Detail", OrdersDetailView.class, LineAwesomeIcon.COLUMNS_SOLID.create()));
@@ -214,6 +219,19 @@ public class MainLayout extends AppLayout {
 		return nav;
 	}
 
+	private Footer createFooterForMainLayout(){
+		Footer footer = new Footer();
+		footer.addClassNames(LumoUtility.Padding.Horizontal.LARGE, LumoUtility.Padding.Vertical.XSMALL);
+
+		Span span = new Span("© 2021 Restaurant booking. All rights reserved.");
+		span.addClassNames(LumoUtility.TextColor.TERTIARY, LumoUtility.FontSize.XSMALL);
+
+		footer.add(span);
+		return footer;
+	}
+
+
+
 	private Footer createFooter() {
 		Footer layout = new Footer();
 
@@ -242,6 +260,14 @@ public class MainLayout extends AppLayout {
 			div.getElement().getStyle().set("align-items", "center");
 			div.getElement().getStyle().set("gap", "var(--lumo-space-s)");
 			userName.add(div);
+			// submenu
+
+			userName.getSubMenu().addItem("Edit user", e -> {
+				// See if works
+				UI.getCurrent().navigate(EditUserView.class);
+			});
+
+
 			userName.getSubMenu().addItem("Sign out", e -> {
 				authenticatedUser.logout();
 			});

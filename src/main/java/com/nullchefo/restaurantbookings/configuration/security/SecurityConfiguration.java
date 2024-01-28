@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.nullchefo.restaurantbookings.views.user.login.LoginView;
+import com.nullchefo.restaurantbookings.views.auth.login.LoginView;
 import com.vaadin.flow.spring.security.VaadinWebSecurity;
 
 @EnableWebSecurity

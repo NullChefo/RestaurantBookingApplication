@@ -15,7 +15,7 @@ spring:
       enabled: true
 
 #  thymeleaf:
-#    prefix: classpath:/templates
+#    prefix: classpath:/templates/email
 #    suffix: .html
 
   mustache:
@@ -63,17 +63,17 @@ spring:
     port: ${MAIL_PORT:587}
     username: ${MAIL_USERNAME:username}
     password: ${MAIL_PASSWORD:password}
-    #    properties:
-    #      mail:
-    #        smtp:
-    #          auth: true
-    #          starttls:
-    #            enable: true
-    #        ssl:
-    #          enable: true
-    #        protocols: TLSv1.2
-    #        starttls:
-    #          enable: true
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#        ssl:
+#          enable: true
+#        protocols: TLSv1.2
+#        starttls:
+#          enable: true
     properties:
       mail:
         smtp:
@@ -145,6 +145,5 @@ address:
     thanks_for_registration_url: ${address.front_end.base_url}/auth/verifyRegistration
     validate_registration_url: ${address.front_end.base_url}/auth/verifyRegistration
     password_reset_url: ${address.front_end.base_url}/auth/savePassword
-
 properties:
-  is_development_environment: false
+  is_development_environment: true

@@ -11,6 +11,90 @@ services:
       - restaurant_app-postgres-volume:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+
+#  rabbitmq:
+#    image: rabbitmq:management-alpine
+#    container_name: rabbitmq_social_media
+#    expose:
+#      - "5672"
+#      - "15672"
+#    environment:
+#      - RABBITMQ_DEFAULT_USER=example_user
+#      - RABBITMQ_DEFAULT_PASS=example_password
+#    ports:
+#      - "5672:5672"
+#      - "15672:15672"
+#    #    volumes:
+#    #      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+#    #      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+#    restart: unless-stopped
+#
+#  prometheus:
+#    #   image: grafana/grafana:9.3.6
+#    image: prom/prometheus:latest
+#    container_name: prometheus_social_media
+#    ports:
+#      - "9090:9090"
+#    volumes:
+#      - ./platform/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+#    restart: unless-stopped
+#
+#  tempo:
+#    # image: grafana/tempo:2.0.0
+#    image: grafana/tempo:latest
+#    container_name: tempo_social_media
+#    command: -config.file /etc/tempo-config.yml
+#    ports:
+#      - "3110:3100"     # Tempo
+#      - "4317:4317"     # OTLP
+#      - "9411:9411"     # Zipkin
+#    volumes:
+#      - ./platform/tempo/tempo.yml:/etc/tempo-config.yml
+#    restart: unless-stopped
+#
+#  # Observability
+#  grafana:
+#    # image: grafana/grafana:9.3.6
+#    image: grafana/grafana:latest
+#    container_name: grafana_social_media
+#    depends_on:
+#      - loki
+#      - prometheus
+#      - tempo
+#    ports:
+#      - "3000:3000"
+#    environment:
+#      - GF_AUTH_ANONYMOUS_ENABLED=true
+#      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+#      - GF_AUTH_DISABLE_LOGIN_FORM=true
+#    volumes:
+#      - ./platform/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+#      - ./platform/grafana/dashboards:/etc/grafana/provisioning/dashboards
+#      - ./platform/grafana/grafana.ini:/etc/grafana/grafana.ini
+#  #    restart: unless-stopped
+#
+#
+#    ## Zipkin
+#  zipkin:
+#    image: openzipkin/zipkin
+#    container_name: zipkin
+#    expose:
+#      - "9411"
+#    ports:
+#      - "9411:9411"
+#    restart: unless-stopped
+#
+#  loki:
+#    # image: grafana/loki:2.7.3
+#    image: grafana/loki:latest
+#    container_name: loki_social_media
+#    command: -config.file=/etc/loki/local-config.yaml
+#    ports:
+#      - "3100:3100"
+#    restart: unless-stopped
+
+
 volumes:
   restaurant_app-postgres-volume:
     driver: local

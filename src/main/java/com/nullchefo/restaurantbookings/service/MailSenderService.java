@@ -50,7 +50,7 @@ public class MailSenderService {
 		email.setSubject(subject);
 		email.setTemplateName(templateName);
 		// TODO can i add the context
-		email.setBody(emailContent);
+		email.setContext(String.valueOf(context));
 
 		try {
 
