@@ -18,7 +18,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 @PageTitle("Credit Card Form")
-@Route(value = "credit-card-form", layout = MainLayout.class)
+@Route(value = "credit-card-form-not", layout = MainLayout.class)
 @AnonymousAllowed
 public class CreditCardFormView extends Div {
 

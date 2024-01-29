@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nullchefo.restaurantbookings.entity.Booking;
 
+@Deprecated
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, UUID>, JpaSpecificationExecutor<Booking> {
 }

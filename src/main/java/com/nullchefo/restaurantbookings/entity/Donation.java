@@ -1,3 +1,20 @@
+/*
+ * Copyright 2024 Stefan Kehayov
+ *
+ * All rights reserved. Unauthorized use, reproduction, or distribution
+ * of this software, or any portion of it, is strictly prohibited.
+ *
+ * The software is provided "as is", without warranty of any kind,
+ * express or implied, including but not limited to the warranties
+ * of merchantability, fitness for a particular purpose, and noninfringement.
+ * In no event shall the authors or copyright holders be liable for any claim,
+ * damages, or other liability, whether in an action of contract, tort, or otherwise,
+ * arising from, out of, or in connection with the software or the use or other dealings
+ * in the software.
+ *
+ * Usage of this software by corporations, for machine learning, or AI purposes
+ * is expressly prohibited.
+ */
 package com.nullchefo.restaurantbookings.entity;
 
 import java.time.LocalDateTime;
@@ -14,7 +31,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Builder
 @AllArgsConstructor
 @Entity
 public class Donation extends BaseEntity {
@@ -23,16 +39,12 @@ public class Donation extends BaseEntity {
 	private String donatedFoodDescription;
 	private int quantity;
 
-	// Other donation-related properties and methods
-
-	// You may include recipient information if necessary
-
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
 
 	@ManyToOne
-	private DonationRecipient donationRecipient; // Added relationship to HomelessPerson
+	private DonationRecipient donationRecipient;
 
 }
 

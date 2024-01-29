@@ -53,7 +53,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 import jakarta.annotation.security.RolesAllowed;
 
 @PageTitle("Checkout Form")
-@Route(value = "checkout-form", layout = MainLayout.class)
+@Route(value = "checkout-form-not", layout = MainLayout.class)
 @RolesAllowed("USER")
 public class CheckoutFormView extends Div {
 

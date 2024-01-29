@@ -1,16 +1,35 @@
+/*
+ * Copyright 2024 Stefan Kehayov
+ *
+ * All rights reserved. Unauthorized use, reproduction, or distribution
+ * of this software, or any portion of it, is strictly prohibited.
+ *
+ * The software is provided "as is", without warranty of any kind,
+ * express or implied, including but not limited to the warranties
+ * of merchantability, fitness for a particular purpose, and noninfringement.
+ * In no event shall the authors or copyright holders be liable for any claim,
+ * damages, or other liability, whether in an action of contract, tort, or otherwise,
+ * arising from, out of, or in connection with the software or the use or other dealings
+ * in the software.
+ *
+ * Usage of this software by corporations, for machine learning, or AI purposes
+ * is expressly prohibited.
+ */
 package com.nullchefo.restaurantbookings.service;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.webjars.NotFoundException;
+
 
 import com.nullchefo.restaurantbookings.dto.UserPasswordChangeDTO;
 import com.nullchefo.restaurantbookings.dto.UserRegistrationDTO;
@@ -18,15 +37,18 @@ import com.nullchefo.restaurantbookings.entity.EmailVerificationToken;
 import com.nullchefo.restaurantbookings.entity.MailList;
 import com.nullchefo.restaurantbookings.entity.PasswordResetToken;
 import com.nullchefo.restaurantbookings.entity.User;
+import com.nullchefo.restaurantbookings.entity.UserIPAddress;
 import com.nullchefo.restaurantbookings.exceptionControl.exceptions.EntityAlreadyExistsException;
 import com.nullchefo.restaurantbookings.exceptionControl.exceptions.EntityNotFoundException;
 import com.nullchefo.restaurantbookings.exceptionControl.exceptions.EntityNotValidException;
 import com.nullchefo.restaurantbookings.repository.EmailVerificationTokenRepository;
 import com.nullchefo.restaurantbookings.repository.MailListRepository;
 import com.nullchefo.restaurantbookings.repository.PasswordResetTokenRepository;
+
 import com.nullchefo.restaurantbookings.repository.UserRepository;
 import com.nullchefo.restaurantbookings.utils.MapperUtility;
 
+import jdk.jshell.spi.ExecutionControl;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -48,6 +70,7 @@ public class UserService extends BaseService<User> {
 	private final MailListRepository mailListRepository;
 
 	private final boolean isDevelopmentEnvironment;
+	private final UserIPAddressService userIPAddressService;
 
 	@Autowired
 	public UserService(
@@ -56,7 +79,8 @@ public class UserService extends BaseService<User> {
 			final EmailVerificationTokenRepository emailVerificationTokenRepository,
 			PasswordResetTokenRepository passwordResetTokenRepository,
 			MailProduceService mailProduceService, MapperUtility mapperUtility, MailListRepository mailListRepository,
-			@Value("${properties.is_development_environment}") boolean isDevelopmentEnvironment) {
+			@Value("${properties.is_development_environment}") boolean isDevelopmentEnvironment,
+			final UserIPAddressService userIPAddressService) {
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.emailVerificationTokenRepository = emailVerificationTokenRepository;
@@ -65,6 +89,7 @@ public class UserService extends BaseService<User> {
 		this.mapperUtility = mapperUtility;
 		this.mailListRepository = mailListRepository;
 		this.isDevelopmentEnvironment = isDevelopmentEnvironment;
+		this.userIPAddressService = userIPAddressService;
 	}
 
 	@Override
@@ -285,9 +310,22 @@ public class UserService extends BaseService<User> {
 			createPasswordResetTokenForUser(user, token);
 			passwordResetTokenMail(user, token);
 		} else {
-			throw new NotFoundException("User with this email does not exist!");
+			throw new EntityNotFoundException("User with this email does not exist!");
 		}
 
 	}
 
+	public Optional<User> findByUsername(final String username) {
+		return this.userRepository.findByUsername(username);
+	}
+
+
+	// TODO implement
+	public void sendMailIfLoggedInFromAnotherIpAddress(final User user) {
+
+		List<UserIPAddress> ipAddressList = this.userIPAddressService.findAllForUser(user);
+
+
+		throw new NotImplementedException("Not Implemented");
+	}
 }

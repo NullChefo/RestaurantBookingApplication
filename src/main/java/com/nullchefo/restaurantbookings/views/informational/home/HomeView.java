@@ -1,6 +1,24 @@
+/*
+ * Copyright 2024 Stefan Kehayov
+ *
+ * All rights reserved. Unauthorized use, reproduction, or distribution
+ * of this software, or any portion of it, is strictly prohibited.
+ *
+ * The software is provided "as is", without warranty of any kind,
+ * express or implied, including but not limited to the warranties
+ * of merchantability, fitness for a particular purpose, and noninfringement.
+ * In no event shall the authors or copyright holders be liable for any claim,
+ * damages, or other liability, whether in an action of contract, tort, or otherwise,
+ * arising from, out of, or in connection with the software or the use or other dealings
+ * in the software.
+ *
+ * Usage of this software by corporations, for machine learning, or AI purposes
+ * is expressly prohibited.
+ */
 package com.nullchefo.restaurantbookings.views.informational.home;
 
 import com.nullchefo.restaurantbookings.views.MainLayout;
+import com.nullchefo.restaurantbookings.views.restaurant.list.RestaurantListView;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -38,7 +56,7 @@ public class HomeView extends VerticalLayout {
 		reservationButton.getStyle().set("background-color", "#4CAF50").set("color", "white");
 		reservationButton.addClickListener(e -> {
 			// Navigate to the reservation page
-			getUI().ifPresent(ui -> ui.navigate("reservation"));
+			getUI().ifPresent(ui -> ui.navigate(RestaurantListView.class));
 		});
 
 		// Order Button with inline CSS
@@ -46,7 +64,7 @@ public class HomeView extends VerticalLayout {
 		orderButton.getStyle().set("background-color", "#f44336").set("color", "white");
 		orderButton.addClickListener(e -> {
 			// Navigate to the order page
-			getUI().ifPresent(ui -> ui.navigate("order"));
+			getUI().ifPresent(ui -> ui.navigate(RestaurantListView.class));
 		});
 
 		// buttons

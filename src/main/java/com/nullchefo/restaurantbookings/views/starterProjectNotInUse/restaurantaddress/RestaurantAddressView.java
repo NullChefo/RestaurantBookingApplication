@@ -22,7 +22,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import jakarta.annotation.security.RolesAllowed;
 
 @PageTitle("Restaurant Address")
-@Route(value = "restaurant-address", layout = MainLayout.class)
+@Route(value = "restaurant-address-not", layout = MainLayout.class)
 @RolesAllowed("ADMIN")
 public class RestaurantAddressView extends Composite<VerticalLayout> {
 

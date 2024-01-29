@@ -40,7 +40,7 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
 @PageTitle("Restaurants")
-@Route(value = "restaurants", layout = MainLayout.class)
+@Route(value = "restaurants-not", layout = MainLayout.class)
 @PermitAll
 @Uses(Icon.class)
 public class RestaurantsView extends Div {

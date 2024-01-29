@@ -1,3 +1,20 @@
+/*
+ * Copyright 2024 Stefan Kehayov
+ *
+ * All rights reserved. Unauthorized use, reproduction, or distribution
+ * of this software, or any portion of it, is strictly prohibited.
+ *
+ * The software is provided "as is", without warranty of any kind,
+ * express or implied, including but not limited to the warranties
+ * of merchantability, fitness for a particular purpose, and noninfringement.
+ * In no event shall the authors or copyright holders be liable for any claim,
+ * damages, or other liability, whether in an action of contract, tort, or otherwise,
+ * arising from, out of, or in connection with the software or the use or other dealings
+ * in the software.
+ *
+ * Usage of this software by corporations, for machine learning, or AI purposes
+ * is expressly prohibited.
+ */
 package com.nullchefo.restaurantbookings.views;
 
 import java.io.ByteArrayInputStream;
@@ -20,6 +37,7 @@ import com.nullchefo.restaurantbookings.views.informational.jobs.JobsView;
 import com.nullchefo.restaurantbookings.views.informational.legalInformation.LegalInformationView;
 import com.nullchefo.restaurantbookings.views.informational.privacyPolicy.PrivacyPolicyView;
 import com.nullchefo.restaurantbookings.views.informational.termsOfService.TermsOfServiceView;
+import com.nullchefo.restaurantbookings.views.restaurant.list.RestaurantListView;
 import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.admindashboard.AdminDashboardView;
 import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.restaurantdashboard.RestaurantDashboardView;
 import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.restaurantview.RestaurantViewView;
@@ -92,13 +110,6 @@ public class MainLayout extends AppLayout {
 	private SideNav createNavigation() {
 		SideNav nav = new SideNav();
 
-		//		// TODO add home, restorants, user, orders, addresses
-		//		if (accessChecker.hasAccess(HelloWorldView.class)) {
-		//			nav.addItem(new SideNavItem("Hello World", HelloWorldView.class, LineAwesomeIcon.GLOBE_SOLID.create()));
-		//
-		//		}
-
-
 
 		if (accessChecker.hasAccess(HomeView.class)) {
 			nav.addItem(new SideNavItem("Home", HomeView.class, LineAwesomeIcon.HOME_SOLID.create()));
@@ -106,59 +117,22 @@ public class MainLayout extends AppLayout {
 		}
 
 
-//		if (accessChecker.hasAccess(RestaurantsView.class)) {
-//			nav.addItem(new SideNavItem("Restaurants", RestaurantsView.class, LineAwesomeIcon.FILTER_SOLID.create()));
-//
-//		}
-//		if (accessChecker.hasAccess(RestaurantAddressView.class)) {
-//			nav.addItem(new SideNavItem("Restaurant Address", RestaurantAddressView.class,
-//										LineAwesomeIcon.MAP_MARKER_SOLID.create()));
-//
-//		}
-//		if (accessChecker.hasAccess(CheckoutFormView.class)) {
-//			nav.addItem(new SideNavItem("Checkout Form", CheckoutFormView.class, LineAwesomeIcon.CREDIT_CARD.create()));
-//
-//		}
-//		if (accessChecker.hasAccess(CreditCardFormView.class)) {
-//			nav.addItem(new SideNavItem("Credit Card Form", CreditCardFormView.class,
-//										LineAwesomeIcon.CREDIT_CARD.create()));
-//
-//		}
-//		if (accessChecker.hasAccess(RestaurantViewView.class)) {
-//			nav.addItem(new SideNavItem("Restaurant View", RestaurantViewView.class,
-//										LineAwesomeIcon.TH_LIST_SOLID.create()));
-//
-//		}
+		if (accessChecker.hasAccess(RestaurantListView.class)) {
+			nav.addItem(new SideNavItem("Restaurants", RestaurantListView.class, LineAwesomeIcon.STORE_ALT_SOLID.create()));
+
+		}
+
 		if (accessChecker.hasAccess(AdminDashboardView.class)) {
 			nav.addItem(new SideNavItem("Admin Dashboard", AdminDashboardView.class,
 										LineAwesomeIcon.CHART_AREA_SOLID.create()));
 
 		}
-//		if (accessChecker.hasAccess(RestaurantDashboardView.class)) {
-//			nav.addItem(new SideNavItem("Restaurant Dashboard", RestaurantDashboardView.class,
-//										LineAwesomeIcon.CHART_AREA_SOLID.create()));
-//
-//		}
-//		if (accessChecker.hasAccess(OrdersDetailView.class)) {
-//			nav.addItem(
-//					new SideNavItem("Orders Detail", OrdersDetailView.class, LineAwesomeIcon.COLUMNS_SOLID.create()));
-//
-//		}
+
 		if (accessChecker.hasAccess(SupportChatView.class)) {
 			nav.addItem(new SideNavItem("Support Chat", SupportChatView.class, LineAwesomeIcon.COMMENTS.create()));
 
 		}
-//		if (accessChecker.hasAccess(MyCustomViewView.class)) {
-//			nav.addItem(new SideNavItem("My Custom View", MyCustomViewView.class,
-//										LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
-//
-//		}
 
-//		if (accessChecker.hasAccess(AboutView.class)) {
-//			nav.addItem(new SideNavItem("About", AboutView.class,
-//										LineAwesomeIcon.INFO_SOLID.create()));
-//
-//		}
 
 		if (accessChecker.hasAccess(ContactView.class)) {
 			nav.addItem(new SideNavItem("Contacts", ContactView.class,
@@ -241,10 +215,9 @@ public class MainLayout extends AppLayout {
 			String userNames = user.getFirstName() + " " + user.getLastName();
 
 			Avatar avatar = new Avatar(userNames);
-			StreamResource resource = new StreamResource(
-					"profile-pic",
-					() -> new ByteArrayInputStream(user.getProfilePicture()));
-			avatar.setImageResource(resource);
+
+			avatar.setImage(user.getPictureURL());
+
 			avatar.setThemeName("xsmall");
 			avatar.getElement().setAttribute("tabindex", "-1");
 

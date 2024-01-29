@@ -1,8 +1,25 @@
+/*
+ * Copyright 2024 Stefan Kehayov
+ *
+ * All rights reserved. Unauthorized use, reproduction, or distribution
+ * of this software, or any portion of it, is strictly prohibited.
+ *
+ * The software is provided "as is", without warranty of any kind,
+ * express or implied, including but not limited to the warranties
+ * of merchantability, fitness for a particular purpose, and noninfringement.
+ * In no event shall the authors or copyright holders be liable for any claim,
+ * damages, or other liability, whether in an action of contract, tort, or otherwise,
+ * arising from, out of, or in connection with the software or the use or other dealings
+ * in the software.
+ *
+ * Usage of this software by corporations, for machine learning, or AI purposes
+ * is expressly prohibited.
+ */
 package com.nullchefo.restaurantbookings.utils;
 
-import java.util.ArrayList;
+import java.beans.PropertyDescriptor;
+import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
@@ -10,68 +27,66 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.stereotype.Component;
 
-/**
- * Not in used
- */
+
 @Component
 public class MapperUtility {
-	public void copyProps(Object src, Object target) {
-		copyProps(src, target, new ArrayList<>());
+
+	/**
+	 * Copies properties from source to target, excluding null properties.
+	 *
+	 * @param src      The source object.
+	 * @param target   The target object.
+	 * @param nonEmpty List of properties that won't be copied if they are empty.
+	 */
+	public void copyProps(Object src, Object target, String... nonEmpty) {
+		if (src == null) {
+			target = null;
+			return;
+		}
+		BeanUtils.copyProperties(src, target, getNullPropertyNames(src, nonEmpty));
 	}
 
-	public String[] getNullPropertyNames(Object source, List<String> nonEmpty, List<String> skip) {
-		final BeanWrapper src = new BeanWrapperImpl(source);
-		java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
+	/**
+	 * Gets the names of null properties in the source object.
+	 *
+	 * @param source   The source object.
+	 * @param nonEmpty List of properties that won't be considered if they are empty.
+	 * @return Array of null property names.
+	 */
+	public String[] getNullPropertyNames(Object source, String... nonEmpty) {
+		if (source == null) {
+			return new String[0];
+		}
+
+		BeanWrapper src = new BeanWrapperImpl(source);
+		PropertyDescriptor[] propertyDescriptors = src.getPropertyDescriptors();
 
 		Set<String> emptyNames = new HashSet<>();
-		for (java.beans.PropertyDescriptor pd : pds) {
-			Object srcValue = null;
+		for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+			Object srcValue;
 			try {
-				srcValue = src.getPropertyValue(pd.getName());
+				srcValue = src.getPropertyValue(propertyDescriptor.getName());
 			} catch (Exception e) {
 				continue; // annotation added properties
 			}
-			if (srcValue == null ||
-					(skip != null &&
-							skip.contains(pd.getName())) ||
-					(nonEmpty != null &&
-							nonEmpty.contains(pd.getName()) &&
-							!pd.getName().equals("") &&
-							srcValue instanceof String &&
-							srcValue.toString().equals("")
-					)) {
-				emptyNames.add(pd.getName());
+
+			if (srcValue == null || (nonEmpty != null && Arrays.asList(nonEmpty).contains(propertyDescriptor.getName()) &&
+					!propertyDescriptor.getName().isEmpty() &&
+					srcValue instanceof String &&
+					srcValue.toString().isEmpty())) {
+				emptyNames.add(propertyDescriptor.getName());
 			}
 		}
-		String[] result = new String[emptyNames.size()];
-		return emptyNames.toArray(result);
+		return emptyNames.toArray(new String[0]);
 	}
 
 	/**
-	 * Copies props from src to target. Cant copy null props
-	 * List<String> nonEmpty list of props that won't be copied if they are empty ( for example you cant delete company
-	 * name or email of a subscription, so even if SubscriptionDTO has no mail it will be skipped
-	 **/
-	public void copyProps(Object src, Object target, List<String> nonEmpty) {
-		if (src == null) {
-			target = null;
-			return;
-		}
-		BeanUtils.copyProperties(src, target, getNullPropertyNames(src, nonEmpty, new ArrayList<>()));
-	}
-
-	/**
-	 * Copies props from src to target. Cant copy null props
+	 * Copies non-null properties from source to target.
 	 *
-	 * @param src
-	 * @param target
+	 * @param src    The source object.
+	 * @param target The target object.
 	 */
 	public void copyNonNullProps(Object src, Object target) {
-		if (src == null) {
-			target = null;
-			return;
-		}
-		copyProps(src, target, new ArrayList<>());
+		copyProps(src, target);
 	}
-
 }
