@@ -27,9 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import org.springframework.stereotype.Service;
-
 
 import com.nullchefo.restaurantbookings.dto.UserPasswordChangeDTO;
 import com.nullchefo.restaurantbookings.dto.UserRegistrationDTO;
@@ -44,11 +42,9 @@ import com.nullchefo.restaurantbookings.exceptionControl.exceptions.EntityNotVal
 import com.nullchefo.restaurantbookings.repository.EmailVerificationTokenRepository;
 import com.nullchefo.restaurantbookings.repository.MailListRepository;
 import com.nullchefo.restaurantbookings.repository.PasswordResetTokenRepository;
-
 import com.nullchefo.restaurantbookings.repository.UserRepository;
 import com.nullchefo.restaurantbookings.utils.MapperUtility;
 
-import jdk.jshell.spi.ExecutionControl;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -290,7 +286,7 @@ public class UserService extends BaseService<User> {
 		EmailVerificationToken emailVerificationToken
 				= generateNewVerificationToken(token);
 		if (emailVerificationToken == null) {
-		//	throw new EntityNotValidException("Invalid token!");
+			//	throw new EntityNotValidException("Invalid token!");
 			log.trace("Invalid token!");
 		}
 
@@ -319,12 +315,10 @@ public class UserService extends BaseService<User> {
 		return this.userRepository.findByUsername(username);
 	}
 
-
 	// TODO implement
 	public void sendMailIfLoggedInFromAnotherIpAddress(final User user) {
 
 		List<UserIPAddress> ipAddressList = this.userIPAddressService.findAllForUser(user);
-
 
 		throw new NotImplementedException("Not Implemented");
 	}

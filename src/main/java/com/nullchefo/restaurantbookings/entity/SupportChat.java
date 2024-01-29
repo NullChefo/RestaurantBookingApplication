@@ -33,7 +33,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
-public class SupportChat extends BaseEntity{
+public class SupportChat extends BaseEntity {
 
 	@ManyToOne
 	private User sender;

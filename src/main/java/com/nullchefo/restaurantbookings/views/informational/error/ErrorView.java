@@ -27,7 +27,7 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @PageTitle("Error")
 @Route(value = "error", layout = MainLayout.class)
 @AnonymousAllowed
-public class ErrorView  extends VerticalLayout {
+public class ErrorView extends VerticalLayout {
 	public ErrorView() {
 		add(new H1("Error"));
 	}

@@ -29,11 +29,11 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 //@Route("/auth/registration")
 @PageTitle("Registration")
 @Route(value = "register")
-public class RegistrationView  extends VerticalLayout implements BeforeEnterObserver {
+public class RegistrationView extends VerticalLayout implements BeforeEnterObserver {
 	private final UserService userService;
 
-
 	RegistrationForm registrationForm = new RegistrationForm();
+
 	public RegistrationView(UserService userService) {
 		this.userService = userService;
 		addClassName("login-view");
@@ -53,10 +53,10 @@ public class RegistrationView  extends VerticalLayout implements BeforeEnterObse
 	@Override
 	public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
 		// inform the user about an authentication error
-		if(beforeEnterEvent.getLocation()
-						   .getQueryParameters()
-						   .getParameters()
-						   .containsKey("error")) {
+		if (beforeEnterEvent.getLocation()
+							.getQueryParameters()
+							.getParameters()
+							.containsKey("error")) {
 			// TODO something
 		}
 	}

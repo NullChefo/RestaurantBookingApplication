@@ -30,14 +30,11 @@ import com.vaadin.flow.data.binder.ValueContext;
 public class RegistrationFormBinder {
 
 	private final RegistrationForm registrationForm;
-
+	private final UserService userService;
 	/**
 	 * Flag for disabling first run for password validation
 	 */
 	private boolean enablePasswordValidation;
-
-	private final UserService userService;
-
 
 	public RegistrationFormBinder(RegistrationForm registrationForm, UserService userService) {
 		this.registrationForm = registrationForm;
@@ -52,9 +49,11 @@ public class RegistrationFormBinder {
 		BeanValidationBinder<UserRegistrationDTO> binder = new BeanValidationBinder<>(UserRegistrationDTO.class);
 		binder.bindInstanceFields(registrationForm);
 
-
 		// GOOD
-		binder.bind(registrationForm.getPasswordField(), UserRegistrationDTO::getPassword, UserRegistrationDTO::setPassword);
+		binder.bind(
+				registrationForm.getPasswordField(),
+				UserRegistrationDTO::getPassword,
+				UserRegistrationDTO::setPassword);
 		// Additional validation if needed
 		binder.forField(registrationForm.getPasswordField())
 			  .withValidator(this::passwordValidator)
@@ -87,13 +86,9 @@ public class RegistrationFormBinder {
 				try {
 					userService.registerUser(userBean);
 					showSuccess(userBean);
-				}
-				catch (Exception e) {
+				} catch (Exception e) {
 					showError(e.getMessage());
 				}
-
-
-
 
 			} catch (ValidationException exception) {
 			}
@@ -147,9 +142,10 @@ public class RegistrationFormBinder {
 
 	private void showError(String error) {
 		Notification notification =
-				Notification.show("There was a error with your request! \n Please contact support! \n Error:" + error );
+				Notification.show("There was a error with your request! \n Please contact support! \n Error:" + error);
 		notification.setDuration(5000);
 
-		notification.addThemeVariants(NotificationVariant.LUMO_ERROR);}
+		notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+	}
 
 }

@@ -18,7 +18,6 @@
 package com.nullchefo.restaurantbookings.views.auth.login;
 
 import com.nullchefo.restaurantbookings.configuration.security.AuthenticatedUser;
-
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.router.BeforeEnterEvent;
@@ -43,7 +42,10 @@ public class LoginView extends LoginOverlay implements BeforeEnterObserver {
 		LoginI18n i18n = LoginI18n.createDefault();
 		i18n.setHeader(new LoginI18n.Header());
 		i18n.getHeader().setTitle("Restaurant bookings");
-		i18n.getHeader().setDescription("Login using user/user or admin/admin or restaurant/restaurant or driver/driver or support/support");
+		i18n
+				.getHeader()
+				.setDescription(
+						"Login using user/user or admin/admin or restaurant/restaurant or driver/driver or support/support");
 		i18n.setAdditionalInformation(null);
 		setI18n(i18n);
 

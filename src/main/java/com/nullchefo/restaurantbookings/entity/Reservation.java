@@ -18,11 +18,8 @@
 package com.nullchefo.restaurantbookings.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,13 +33,13 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
-public class Reservation extends BaseEntity{
+public class Reservation extends BaseEntity {
 	@ManyToOne
 	private User user;
 	private String customerInformation;
 	@ManyToOne
 	private RestaurantTable table;
-	private LocalDateTime  reservationTime;
+	private LocalDateTime reservationTime;
 	private byte reservedSeats;
 
 	@ManyToOne(optional = true)

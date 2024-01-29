@@ -54,8 +54,8 @@ public class Restaurant extends BaseEntity {
 	@OneToMany(mappedBy = "restaurant")
 	private List<Schedule> schedules;
 
-//	@OneToMany(mappedBy = "restaurant")
-//	private List<Booking> bookings;
+	//	@OneToMany(mappedBy = "restaurant")
+	//	private List<Booking> bookings;
 
 	@OneToMany(mappedBy = "restaurant")
 	private List<Donation> donations;

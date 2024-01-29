@@ -27,7 +27,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
-import com.vaadin.flow.component.html.*;
+
 @PageTitle("Legal information")
 @Route(value = "legal-information", layout = MainLayout.class)
 @AnonymousAllowed
@@ -42,8 +42,6 @@ public class LegalInformationView extends VerticalLayout {
 		header.getStyle().set("margin-bottom", "2.5vh");
 
 		add(header);
-
-
 
 		// Privacy Policy
 		Div privacyPolicySection = createSection("Privacy Policy");

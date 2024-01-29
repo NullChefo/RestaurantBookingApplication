@@ -17,13 +17,10 @@
  */
 package com.nullchefo.restaurantbookings.views.restaurant.add;
 
-import static com.nullchefo.restaurantbookings.entity.enums.RoleEnum.ADMIN;
-
 import com.nullchefo.restaurantbookings.entity.Restaurant;
 import com.nullchefo.restaurantbookings.views.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
@@ -31,11 +28,10 @@ import com.vaadin.flow.router.Route;
 
 import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
-import com.nullchefo.restaurantbookings.entity.enums.RoleEnum;
 
 @PageTitle("Restaurants")
 @Route(value = "restaurant-add", layout = MainLayout.class)
-@RolesAllowed({"ADMIN", "ORGANISATION"})
+@RolesAllowed({ "ADMIN", "ORGANISATION" })
 @PermitAll
 public class RestaurantAddView extends FormLayout {
 

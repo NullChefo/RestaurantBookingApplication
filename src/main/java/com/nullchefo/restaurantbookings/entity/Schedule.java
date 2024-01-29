@@ -34,10 +34,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -63,7 +60,6 @@ public class Schedule extends BaseEntity {
 	})
 	private HoursOfOperation hoursOfOperation;
 
-
 	public Schedule() {
 		this.hoursOfOperation = new HoursOfOperation();
 	}
@@ -79,7 +75,6 @@ public class Schedule extends BaseEntity {
 	public Set<DayOfWeek> getDaysOpen() {
 		return Collections.unmodifiableSet(daysOpen);
 	}
-
 
 }
 

@@ -29,7 +29,7 @@ import jakarta.annotation.security.PermitAll;
 @PermitAll
 public class ListReservationsView extends VerticalLayout {
 
-	public ListReservationsView(){
+	public ListReservationsView() {
 
 	}
 }

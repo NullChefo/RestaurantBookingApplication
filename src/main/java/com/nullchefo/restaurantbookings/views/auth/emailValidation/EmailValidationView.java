@@ -18,21 +18,17 @@
 package com.nullchefo.restaurantbookings.views.auth.emailValidation;
 
 import com.nullchefo.restaurantbookings.service.UserService;
-import com.nullchefo.restaurantbookings.views.informational.error.ErrorView;
 import com.nullchefo.restaurantbookings.views.auth.login.LoginView;
+import com.nullchefo.restaurantbookings.views.informational.error.ErrorView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.*;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
+import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
-
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @Route("auth/verifyRegistration")
 @AnonymousAllowed
@@ -71,7 +67,7 @@ public class EmailValidationView extends VerticalLayout implements BeforeEnterOb
 	public void beforeEnter(BeforeEnterEvent event) {
 		String token = event.getRouteParameters().get("id").orElse(null);
 
-		if(token == null) {
+		if (token == null) {
 			this.isValidToken = false;
 			Notification.show("Empty path").setDuration(5000);
 			UI.getCurrent().navigate(ErrorView.class);
@@ -93,14 +89,12 @@ public class EmailValidationView extends VerticalLayout implements BeforeEnterOb
 
 	private void sendNewRegisterToken() {
 		boolean isGenerated = this.userService.resendVerificationToken(token);
-		if(isGenerated) {
+		if (isGenerated) {
 			Notification.show("New activation link sent!");
-		}else {
+		} else {
 			Notification.show("Error sending activation link! Please contact support");
 		}
 
 	}
-
-
 
 }

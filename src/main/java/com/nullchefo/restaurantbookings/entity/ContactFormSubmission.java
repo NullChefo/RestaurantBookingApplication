@@ -19,7 +19,6 @@ package com.nullchefo.restaurantbookings.entity;
 
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,7 +28,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class ContactFormSubmission extends BaseEntity{
+public class ContactFormSubmission extends BaseEntity {
 	private String name;
 	private String email;
 	private String message;

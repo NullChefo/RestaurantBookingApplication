@@ -23,11 +23,9 @@ import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -41,7 +39,6 @@ public class MenuItem extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "menu_id")
 	private Menu menu;
-
 
 	private String name;
 

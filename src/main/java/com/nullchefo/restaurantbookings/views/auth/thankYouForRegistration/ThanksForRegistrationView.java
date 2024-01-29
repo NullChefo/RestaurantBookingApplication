@@ -17,7 +17,6 @@
  */
 package com.nullchefo.restaurantbookings.views.auth.thankYouForRegistration;
 
-
 import com.nullchefo.restaurantbookings.views.auth.login.LoginView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -46,11 +45,12 @@ public class ThanksForRegistrationView extends VerticalLayout {
 		H1 title = new H1("Thanks for Your Registration");
 		title.getStyle().set("color", "#2196F3");
 
-//		Icon icon = new Icon(VaadinIcon.ENVELOPE);
-//		icon.getElement().getThemeList().add("primary");
+		//		Icon icon = new Icon(VaadinIcon.ENVELOPE);
+		//		icon.getElement().getThemeList().add("primary");
 
 		Paragraph message = new Paragraph("Your account has been created, and a verification email has been sent " +
-												  "to your registered email address. Please click on the verification link " +
+												  "to your registered email address. Please click on the verification link "
+												  +
 												  "included in the email to activate your account.");
 
 		Button backButton = new Button("Back to Login", e -> logIn());

@@ -23,13 +23,17 @@ import static com.nullchefo.restaurantbookings.utils.StaticContent.PROJECT_NAME;
 import static com.nullchefo.restaurantbookings.utils.StaticContent.SUPPORT_EMAIL;
 
 import com.nullchefo.restaurantbookings.views.MainLayout;
-import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.ListItem;
+import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
-@Route(value = "privacy-policy", layout= MainLayout.class)
+@Route(value = "privacy-policy", layout = MainLayout.class)
 @PageTitle("Privacy Policy")
 @AnonymousAllowed
 public class PrivacyPolicyView extends VerticalLayout {
@@ -43,15 +47,18 @@ public class PrivacyPolicyView extends VerticalLayout {
 		setMargin(true);
 		setPadding(true);
 
-		H1 header = new H1(projectName +  ": Our Privacy Policy");
+		H1 header = new H1(projectName + ": Our Privacy Policy");
 		header.getStyle().set("margin-bottom", "2.5vh");
 
 		add(header);
 
-		add(new Paragraph("Our " + companyName + " is part of the Our Company Group which includes Our Company International and " +
-								  "Our Company Direct. " +
-								  "This privacy policy will explain how our organization uses the personal data we collect from you when you use " +
-								  "our website."));
+		add(new Paragraph(
+				"Our " + companyName + " is part of the Our Company Group which includes Our Company International and "
+						+
+						"Our Company Direct. " +
+						"This privacy policy will explain how our organization uses the personal data we collect from you when you use "
+						+
+						"our website."));
 
 		add(new Paragraph("Topics:"));
 
@@ -98,8 +105,10 @@ public class PrivacyPolicyView extends VerticalLayout {
 		// Continue adding the rest of the content...
 
 		add(new H2("How to contact the appropriate authority"));
-		add(new Paragraph("Should you wish to report a complaint or if you feel that Our Company has not addressed your concern in a " +
-								  "satisfactory manner, you may contact the Information Commissioner’s Office."));
+		add(new Paragraph(
+				"Should you wish to report a complaint or if you feel that Our Company has not addressed your concern in a "
+						+
+						"satisfactory manner, you may contact the Information Commissioner’s Office."));
 
 		add(new Paragraph("Email: " + supportAddress));
 		add(new Paragraph("Address: " + companyAddress));

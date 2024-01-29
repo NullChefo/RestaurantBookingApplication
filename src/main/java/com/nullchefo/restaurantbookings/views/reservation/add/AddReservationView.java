@@ -23,13 +23,12 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 import jakarta.annotation.security.PermitAll;
-import jakarta.annotation.security.RolesAllowed;
 
 @PageTitle("Add Reservation")
 @Route(value = "reservation/add", layout = MainLayout.class)
 @PermitAll
 public class AddReservationView extends VerticalLayout {
-	public AddReservationView(){
+	public AddReservationView() {
 
 	}
 }

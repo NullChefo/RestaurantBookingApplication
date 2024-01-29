@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import com.nullchefo.restaurantbookings.entity.ContactFormSubmission;
+
 @Repository
 public interface ContactFormSubmissionRepository extends JpaRepository<ContactFormSubmission, UUID>,
 		JpaSpecificationExecutor<ContactFormSubmission> {

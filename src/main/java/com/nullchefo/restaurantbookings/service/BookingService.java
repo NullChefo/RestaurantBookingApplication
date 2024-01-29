@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 
 import com.nullchefo.restaurantbookings.entity.Booking;
 import com.nullchefo.restaurantbookings.repository.BookingRepository;
+
 @Deprecated
 @Service
 public class BookingService extends BaseService<Booking> {

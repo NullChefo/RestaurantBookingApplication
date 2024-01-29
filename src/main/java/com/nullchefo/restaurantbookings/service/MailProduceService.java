@@ -17,7 +17,12 @@
  */
 package com.nullchefo.restaurantbookings.service;
 
-import static com.nullchefo.restaurantbookings.utils.StaticContent.*;
+import static com.nullchefo.restaurantbookings.utils.StaticContent.ORGANISATIONAL_EXTRA_INFO;
+import static com.nullchefo.restaurantbookings.utils.StaticContent.ORGANISATION_ADDRESS;
+import static com.nullchefo.restaurantbookings.utils.StaticContent.ORGANISATION_NAME;
+import static com.nullchefo.restaurantbookings.utils.StaticContent.PROJECT_NAME;
+import static com.nullchefo.restaurantbookings.utils.StaticContent.PROJECT_URL;
+import static com.nullchefo.restaurantbookings.utils.StaticContent.THANKS_FROM_NAME;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -37,7 +42,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class MailProduceService {
-
 
 	private final static String EMAIL_VERIFICATION_TEMPLATE_NAME = "email_verification";
 	private final static String EMAIL_VERIFICATION_TEMPLATE_SUBJECT = "Email verification for " + PROJECT_NAME;
@@ -66,7 +70,6 @@ public class MailProduceService {
 
 	public void sendEmailVerification(User user, String token) {
 
-
 		String url =
 				validateRegistrationURL
 						+ "/"
@@ -88,8 +91,9 @@ public class MailProduceService {
 				"Click the link to email verify: {}",
 				url);
 
-		log.trace("Click the link to email verify: {}",
-				  url);
+		log.trace(
+				"Click the link to email verify: {}",
+				url);
 
 		saveToMailListStatisticsEntity(user);
 
@@ -114,7 +118,6 @@ public class MailProduceService {
 
 	public void passwordResetTokenMail(User user, String token) {
 
-
 		String url =
 				passwordResetURL
 						+ "/"
@@ -133,6 +136,7 @@ public class MailProduceService {
 		saveToMailListStatisticsEntity(user);
 
 	}
+
 	public void sendLoginMail(User user, String ipAddress) {
 		Context context = setDefaultContext();
 		context.setVariable("user_ip", ipAddress);
@@ -167,8 +171,8 @@ public class MailProduceService {
 
 		Context context = setDefaultContext();
 		context.setVariable("user_name", submission.getName());
-		context.setVariable("user_massage",submission.getMessage());
-		context.setVariable("user_reason",submission.getReasonForSubmission());
+		context.setVariable("user_massage", submission.getMessage());
+		context.setVariable("user_reason", submission.getReasonForSubmission());
 
 		// TODO fix this more elegant
 		User user = new User();

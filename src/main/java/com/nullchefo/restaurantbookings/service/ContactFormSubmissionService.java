@@ -26,7 +26,7 @@ import com.nullchefo.restaurantbookings.entity.ContactFormSubmission;
 import com.nullchefo.restaurantbookings.repository.ContactFormSubmissionRepository;
 
 @Service
-public class ContactFormSubmissionService extends BaseService<ContactFormSubmission>{
+public class ContactFormSubmissionService extends BaseService<ContactFormSubmission> {
 
 	private final ContactFormSubmissionRepository contactFormSubmissionRepository;
 

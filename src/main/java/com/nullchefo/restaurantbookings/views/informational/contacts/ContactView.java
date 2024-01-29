@@ -21,33 +21,23 @@ import static com.nullchefo.restaurantbookings.utils.StaticContent.ORGANISATION_
 import static com.nullchefo.restaurantbookings.utils.StaticContent.PROJECT_NAME;
 import static com.nullchefo.restaurantbookings.utils.StaticContent.SUPPORT_EMAIL;
 
-import com.nullchefo.restaurantbookings.dto.UserRegistrationDTO;
 import com.nullchefo.restaurantbookings.entity.ContactFormSubmission;
-import com.nullchefo.restaurantbookings.repository.ContactFormSubmissionRepository;
 import com.nullchefo.restaurantbookings.service.ContactFormSubmissionService;
 import com.nullchefo.restaurantbookings.service.MailProduceService;
 import com.nullchefo.restaurantbookings.views.MainLayout;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.binder.ValidationException;
-import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 @PageTitle("Contacts")
 @Route(value = "contact", layout = MainLayout.class)
@@ -59,8 +49,9 @@ public class ContactView extends VerticalLayout {
 
 	private final MailProduceService mailProduceService;
 
-
-	public ContactView(ContactFormSubmissionService contactFormSubmissionService, MailProduceService mailProduceService) {
+	public ContactView(
+			ContactFormSubmissionService contactFormSubmissionService,
+			MailProduceService mailProduceService) {
 		this.contactFormSubmissionService = contactFormSubmissionService;
 		this.mailProduceService = mailProduceService;
 		addClassName("contact-page");
@@ -68,7 +59,6 @@ public class ContactView extends VerticalLayout {
 		// Header
 		H1 title = new H1("Contact Us");
 		title.addClassName("contact-title");
-
 
 		// Contact Information with dynamic values
 		Paragraph nameInfo = new Paragraph("Name: ");
@@ -95,20 +85,34 @@ public class ContactView extends VerticalLayout {
 		TextField reasonField = new TextField("Reason for Contact");
 		reasonField.setWidth("100%");
 
-		contactFormLayout.add(name,email,messageField,reasonField);
+		contactFormLayout.add(name, email, messageField, reasonField);
 
 		// Bind form fields to ContactFormSubmission object
 		binder.bind(name, ContactFormSubmission::getName, ContactFormSubmission::setName);
 		binder.bind(email, ContactFormSubmission::getEmail, ContactFormSubmission::setEmail);
 		binder.bind(messageField, ContactFormSubmission::getMessage, ContactFormSubmission::setMessage);
-		binder.bind(reasonField, ContactFormSubmission::getReasonForSubmission, ContactFormSubmission::setReasonForSubmission);
+		binder.bind(
+				reasonField,
+				ContactFormSubmission::getReasonForSubmission,
+				ContactFormSubmission::setReasonForSubmission);
 
 		// Add validators if needed
-		binder.forField(name).asRequired("Name cannot be empty").bind(ContactFormSubmission::getName, ContactFormSubmission::setName);
-		binder.forField(email).asRequired("Email cannot be empty").bind(ContactFormSubmission::getEmail, ContactFormSubmission::setEmail);
-		binder.forField(messageField).asRequired("Message cannot be empty").bind(ContactFormSubmission::getMessage, ContactFormSubmission::setMessage);
-		binder.forField(reasonField).asRequired("Reason cannot be empty").bind(ContactFormSubmission::getReasonForSubmission, ContactFormSubmission::setReasonForSubmission);
-
+		binder
+				.forField(name)
+				.asRequired("Name cannot be empty")
+				.bind(ContactFormSubmission::getName, ContactFormSubmission::setName);
+		binder
+				.forField(email)
+				.asRequired("Email cannot be empty")
+				.bind(ContactFormSubmission::getEmail, ContactFormSubmission::setEmail);
+		binder
+				.forField(messageField)
+				.asRequired("Message cannot be empty")
+				.bind(ContactFormSubmission::getMessage, ContactFormSubmission::setMessage);
+		binder
+				.forField(reasonField)
+				.asRequired("Reason cannot be empty")
+				.bind(ContactFormSubmission::getReasonForSubmission, ContactFormSubmission::setReasonForSubmission);
 
 		// Submit Button
 		Button submitButton = new Button("Submit");
@@ -131,7 +135,6 @@ public class ContactView extends VerticalLayout {
 		// Add components to the layout
 		add(title, nameInfo, addressInfo, supportEmail, contactFormLayout, submitButton);
 	}
-
 
 	private void handleFormSubmission(ContactFormSubmission submission) {
 

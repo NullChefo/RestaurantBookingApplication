@@ -17,6 +17,8 @@
  */
 package com.nullchefo.restaurantbookings.views.auth.registration;
 
+import java.util.stream.Stream;
+
 import com.nullchefo.restaurantbookings.views.informational.privacyPolicy.PrivacyPolicyView;
 import com.nullchefo.restaurantbookings.views.informational.termsOfService.TermsOfServiceView;
 import com.vaadin.flow.component.Component;
@@ -27,21 +29,16 @@ import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Anchor;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.map.configuration.View;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-import java.util.stream.Stream;
 
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 public class RegistrationForm extends FormLayout {
@@ -120,7 +117,6 @@ public class RegistrationForm extends FormLayout {
 
 		privacyPolicyContainer.add(privacyPolicyMessage, privacyPolicyLink, termsOfServiceMessage, termsOfServiceLink);
 
-
 		HorizontalLayout alreadyHaveAccount = new HorizontalLayout();
 		Paragraph alreadyHaveAccountPar = new Paragraph("Already have account. ");
 		Anchor alreadyHaveAccountLink = new Anchor("/login", "Sign in");
@@ -132,10 +128,20 @@ public class RegistrationForm extends FormLayout {
 
 		verticalLayout.add(privacyPolicyContainer, alreadyHaveAccount);
 
-
-		add(title, firstName, lastName, email , username, password,
-			passwordConfirm, subscribeForMarketing, isOrganization, subscribeForNotifications, subscribeForAnnouncements, errorMessageField,
-			submitButton,verticalLayout);
+		add(title,
+			firstName,
+			lastName,
+			email,
+			username,
+			password,
+			passwordConfirm,
+			subscribeForMarketing,
+			isOrganization,
+			subscribeForNotifications,
+			subscribeForAnnouncements,
+			errorMessageField,
+			submitButton,
+			verticalLayout);
 
 		// Max width of the Form
 		setMaxWidth("70vh");
@@ -154,14 +160,17 @@ public class RegistrationForm extends FormLayout {
 		setColspan(submitButton, 2);
 	}
 
-	public PasswordField getPasswordField() { return password; }
+	public PasswordField getPasswordField() {
+		return password;
+	}
 
-	public PasswordField getPasswordConfirmField() { return passwordConfirm; }
+	public PasswordField getPasswordConfirmField() {
+		return passwordConfirm;
+	}
 
 	private void setRequiredIndicatorVisible(HasValueAndElement<?, ?>... components) {
 		Stream.of(components).forEach(comp -> comp.setRequiredIndicatorVisible(true));
 	}
-
 
 	private void showDialog(Component view) {
 		Dialog dialog = new Dialog();

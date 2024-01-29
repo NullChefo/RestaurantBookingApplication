@@ -240,11 +240,12 @@ public class RestaurantsView extends Div {
 				Expression<String> inExpression) {
 			Expression<String> expression = inExpression;
 			for (int i = 0; i < characters.length(); i++) {
-				expression = criteriaBuilder.function("replace",
-													  String.class,
-													  expression,
-													  criteriaBuilder.literal(characters.charAt(i)),
-													  criteriaBuilder.literal(""));
+				expression = criteriaBuilder.function(
+						"replace",
+						String.class,
+						expression,
+						criteriaBuilder.literal(characters.charAt(i)),
+						criteriaBuilder.literal(""));
 			}
 			return expression;
 		}

@@ -25,8 +25,9 @@ import org.springframework.stereotype.Service;
 
 import com.nullchefo.restaurantbookings.entity.RestaurantTable;
 import com.nullchefo.restaurantbookings.repository.RestaurantTableRepository;
+
 @Service
-public class RestaurantTableService extends BaseService<RestaurantTable>{
+public class RestaurantTableService extends BaseService<RestaurantTable> {
 
 	private final RestaurantTableRepository restaurantTableRepository;
 

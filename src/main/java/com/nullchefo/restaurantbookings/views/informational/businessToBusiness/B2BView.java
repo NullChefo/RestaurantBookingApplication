@@ -16,7 +16,6 @@
  * is expressly prohibited.
  */
 package com.nullchefo.restaurantbookings.views.informational.businessToBusiness;
-import java.util.Collections;
 
 import com.nullchefo.restaurantbookings.views.MainLayout;
 import com.nullchefo.restaurantbookings.views.informational.contacts.ContactView;
@@ -42,15 +41,19 @@ public class B2BView extends VerticalLayout {
 		title.addClassName("b2b-title");
 
 		// Description
-		Paragraph description = new Paragraph("Connect with other businesses, streamline processes, and boost collaboration with our B2B platform.");
+		Paragraph description = new Paragraph(
+				"Connect with other businesses, streamline processes, and boost collaboration with our B2B platform.");
 
 		// Features
 		Paragraph featuresTitle = new Paragraph("Key Features:");
 		featuresTitle.addClassName("b2b-section-title");
 
-		Paragraph feature1 = new Paragraph("1. Seamless Collaboration: Collaborate effortlessly with other businesses to achieve mutual success.");
-		Paragraph feature2 = new Paragraph("2. Streamlined Processes: Simplify and optimize your business processes for increased efficiency.");
-		Paragraph feature3 = new Paragraph("3. Secure Transactions: Ensure the security of your transactions with our robust security measures.");
+		Paragraph feature1 = new Paragraph(
+				"1. Seamless Collaboration: Collaborate effortlessly with other businesses to achieve mutual success.");
+		Paragraph feature2 = new Paragraph(
+				"2. Streamlined Processes: Simplify and optimize your business processes for increased efficiency.");
+		Paragraph feature3 = new Paragraph(
+				"3. Secure Transactions: Ensure the security of your transactions with our robust security measures.");
 
 		// Call-to-Action Button with Navigation
 		RouterLink contactLink = new RouterLink("Contact Us", ContactView.class);

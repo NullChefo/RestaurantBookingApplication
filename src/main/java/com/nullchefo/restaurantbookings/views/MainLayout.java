@@ -17,14 +17,12 @@
  */
 package com.nullchefo.restaurantbookings.views;
 
-import java.io.ByteArrayInputStream;
 import java.util.Optional;
 
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import com.nullchefo.restaurantbookings.configuration.security.AuthenticatedUser;
 import com.nullchefo.restaurantbookings.entity.User;
-
 import com.nullchefo.restaurantbookings.views.informational.about.AboutViewV2;
 import com.nullchefo.restaurantbookings.views.informational.businessToBusiness.B2BView;
 import com.nullchefo.restaurantbookings.views.informational.contacts.ContactView;
@@ -37,10 +35,10 @@ import com.nullchefo.restaurantbookings.views.informational.jobs.JobsView;
 import com.nullchefo.restaurantbookings.views.informational.legalInformation.LegalInformationView;
 import com.nullchefo.restaurantbookings.views.informational.privacyPolicy.PrivacyPolicyView;
 import com.nullchefo.restaurantbookings.views.informational.termsOfService.TermsOfServiceView;
+import com.nullchefo.restaurantbookings.views.order.list.ListOrderView;
+import com.nullchefo.restaurantbookings.views.reservation.list.ListReservationsView;
 import com.nullchefo.restaurantbookings.views.restaurant.list.RestaurantListView;
 import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.admindashboard.AdminDashboardView;
-import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.restaurantdashboard.RestaurantDashboardView;
-import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.restaurantview.RestaurantViewView;
 import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.supportchat.SupportChatView;
 import com.nullchefo.restaurantbookings.views.user.editUser.EditUserView;
 import com.vaadin.flow.component.UI;
@@ -62,7 +60,6 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.server.auth.AccessAnnotationChecker;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
@@ -110,15 +107,26 @@ public class MainLayout extends AppLayout {
 	private SideNav createNavigation() {
 		SideNav nav = new SideNav();
 
-
 		if (accessChecker.hasAccess(HomeView.class)) {
 			nav.addItem(new SideNavItem("Home", HomeView.class, LineAwesomeIcon.HOME_SOLID.create()));
 
 		}
 
-
 		if (accessChecker.hasAccess(RestaurantListView.class)) {
-			nav.addItem(new SideNavItem("Restaurants", RestaurantListView.class, LineAwesomeIcon.STORE_ALT_SOLID.create()));
+			nav.addItem(new SideNavItem(
+					"Restaurants",
+					RestaurantListView.class,
+					LineAwesomeIcon.STORE_ALT_SOLID.create()));
+
+		}
+
+		if (accessChecker.hasAccess(ListReservationsView.class)) {
+			nav.addItem(new SideNavItem("Reservations", ListReservationsView.class, LineAwesomeIcon.CALENDAR.create()));
+
+		}
+
+		if (accessChecker.hasAccess(ListOrderView.class)) {
+			nav.addItem(new SideNavItem("Orders", ListOrderView.class, LineAwesomeIcon.SHOPPING_BASKET_SOLID.create()));
 
 		}
 
@@ -132,7 +140,6 @@ public class MainLayout extends AppLayout {
 			nav.addItem(new SideNavItem("Support Chat", SupportChatView.class, LineAwesomeIcon.COMMENTS.create()));
 
 		}
-
 
 		if (accessChecker.hasAccess(ContactView.class)) {
 			nav.addItem(new SideNavItem("Contacts", ContactView.class,
@@ -189,11 +196,10 @@ public class MainLayout extends AppLayout {
 
 		}
 
-
 		return nav;
 	}
 
-	private Footer createFooterForMainLayout(){
+	private Footer createFooterForMainLayout() {
 		Footer footer = new Footer();
 		footer.addClassNames(LumoUtility.Padding.Horizontal.LARGE, LumoUtility.Padding.Vertical.XSMALL);
 
@@ -203,8 +209,6 @@ public class MainLayout extends AppLayout {
 		footer.add(span);
 		return footer;
 	}
-
-
 
 	private Footer createFooter() {
 		Footer layout = new Footer();
@@ -239,7 +243,6 @@ public class MainLayout extends AppLayout {
 				// See if works
 				UI.getCurrent().navigate(EditUserView.class);
 			});
-
 
 			userName.getSubMenu().addItem("Sign out", e -> {
 				authenticatedUser.logout();

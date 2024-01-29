@@ -32,7 +32,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
-public class RestaurantTable extends BaseEntity{
+public class RestaurantTable extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;

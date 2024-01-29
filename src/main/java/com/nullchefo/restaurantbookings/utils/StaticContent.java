@@ -18,7 +18,6 @@
 package com.nullchefo.restaurantbookings.utils;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import lombok.experimental.UtilityClass;
 
@@ -34,9 +33,9 @@ public class StaticContent {
 
 	public final static String ORGANISATION_PHONE_NUMBER = "+359 888 888 888";
 
-	public final static String PROJECT_ACTIVITIES="Interacting with customers to make for them deliveries and  reservations for restaurants";
+	public final static String PROJECT_ACTIVITIES = "Interacting with customers to make for them deliveries and  reservations for restaurants";
 
-	public final static String PROJECT_DESCRIPTION="Interacting with customers to make for them deliveries and  reservations for restaurants";
+	public final static String PROJECT_DESCRIPTION = "Interacting with customers to make for them deliveries and  reservations for restaurants";
 
 	public final static LocalDate PROJECT_LAUNCH_DATE = LocalDate.of(2030, 9, 1);
 

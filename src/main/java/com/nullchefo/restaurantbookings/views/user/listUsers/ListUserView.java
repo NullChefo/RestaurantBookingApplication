@@ -21,14 +21,13 @@ import com.nullchefo.restaurantbookings.views.MainLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 
 @PageTitle("List users")
 @Route(value = "user", layout = MainLayout.class)
 @RolesAllowed("ADMIN")
 public class ListUserView {
-	public ListUserView(){
+	public ListUserView() {
 
 	}
 }

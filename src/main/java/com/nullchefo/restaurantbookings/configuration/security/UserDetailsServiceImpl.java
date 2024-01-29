@@ -29,7 +29,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.nullchefo.restaurantbookings.entity.User;
-import com.nullchefo.restaurantbookings.repository.UserRepository;
 import com.nullchefo.restaurantbookings.service.UserService;
 
 @Service
@@ -55,7 +54,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			throw new UsernameNotFoundException("No user present with username: " + username);
 		} else {
 			// TODO implement this feature
-//			this.userService.sendMailIfLoggedInFromAnotherIpAddress(user);
+			//			this.userService.sendMailIfLoggedInFromAnotherIpAddress(user);
 			return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getHashedPassword(),
 																		  getAuthorities(user));
 		}

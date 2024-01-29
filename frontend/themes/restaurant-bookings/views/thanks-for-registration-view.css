@@ -33,7 +33,7 @@
 }
 
 .md.w-30rem {
-/* Add your custom styles for md:w-[30rem] breakpoint */
+    /* Add your custom styles for md:w-[30rem] breakpoint */
     @media (min-width: 768px) {
         width: 30rem;
     }

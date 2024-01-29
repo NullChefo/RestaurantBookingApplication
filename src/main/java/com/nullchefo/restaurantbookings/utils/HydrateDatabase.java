@@ -20,8 +20,6 @@ package com.nullchefo.restaurantbookings.utils;
 import java.time.LocalDate;
 import java.util.Set;
 
-import javax.management.relation.RoleStatus;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -62,26 +60,27 @@ public class HydrateDatabase {
 								 .important(true)
 								 .roles(Set.of(RoleEnum.ADMIN))
 								 .phone("0898888888")
-								 .pictureURL("https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_3x4.jpg")
+								 .pictureURL(
+										 "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_3x4.jpg")
 								 .build();
 			userRepository.save(adminUser);
 
-
 			// user/user
 			User user = User.builder()
-								 .email("user@example.com")
-								 .hashedPassword(passwordEncoder.encode("user"))
-								 .firstName("User")
-								 .lastName("Userov")
-								 .username("user")
-								 .role(RoleEnum.CUSTOMER.name())
-								 .enabled(true)
-								 .dateOfBirth(LocalDate.of(1900, 1, 1))
-								 .important(false)
-								 .roles(Set.of(RoleEnum.CUSTOMER))
-								 .phone("0898888858")
-					.pictureURL("https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*")
-								 .build();
+							.email("user@example.com")
+							.hashedPassword(passwordEncoder.encode("user"))
+							.firstName("User")
+							.lastName("Userov")
+							.username("user")
+							.role(RoleEnum.CUSTOMER.name())
+							.enabled(true)
+							.dateOfBirth(LocalDate.of(1900, 1, 1))
+							.important(false)
+							.roles(Set.of(RoleEnum.CUSTOMER))
+							.phone("0898888858")
+							.pictureURL(
+									"https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*")
+							.build();
 			userRepository.save(user);
 
 			//restaurant/restaurant
@@ -97,7 +96,8 @@ public class HydrateDatabase {
 									  .important(true)
 									  .roles(Set.of(RoleEnum.RESTAURANT))
 									  .phone("0898888889")
-					                   .pictureURL("https://kfcvarna.bg/upload/iblock/87c/87cc8fae35a2aebc270d1f910d6e940a.png")
+									  .pictureURL(
+											  "https://kfcvarna.bg/upload/iblock/87c/87cc8fae35a2aebc270d1f910d6e940a.png")
 									  .build();
 
 			userRepository.save(restaurantUser);
@@ -108,14 +108,15 @@ public class HydrateDatabase {
 								  .hashedPassword(passwordEncoder.encode("driver"))
 								  .firstName("Driver")
 								  .lastName("Driverov")
-									.username("driver")
+								  .username("driver")
 								  .role(RoleEnum.DRIVER.name())
 								  .enabled(true)
 								  .dateOfBirth(LocalDate.of(1900, 1, 1))
 								  .important(true)
 								  .roles(Set.of(RoleEnum.DRIVER))
 								  .phone("driver")
-					.pictureURL("https://play-lh.googleusercontent.com/kDzXydb6ZT4LUj0RiU-GyptnVgCzzk9snN1FVxj2YfqFb4PpRdQRBKzdz4jzUOxAS9-d")
+								  .pictureURL(
+										  "https://play-lh.googleusercontent.com/kDzXydb6ZT4LUj0RiU-GyptnVgCzzk9snN1FVxj2YfqFb4PpRdQRBKzdz4jzUOxAS9-d")
 								  .build();
 			userRepository.save(driverUser);
 

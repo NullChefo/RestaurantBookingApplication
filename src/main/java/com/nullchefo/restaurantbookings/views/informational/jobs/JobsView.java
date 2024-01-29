@@ -22,9 +22,7 @@ import java.util.List;
 
 import com.nullchefo.restaurantbookings.views.MainLayout;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.router.PageTitle;

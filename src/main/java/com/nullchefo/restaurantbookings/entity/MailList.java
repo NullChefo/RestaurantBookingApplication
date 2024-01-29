@@ -53,5 +53,4 @@ public class MailList {
 	@Builder.Default
 	private Integer sentMailsForUser = 0;
 
-
 }

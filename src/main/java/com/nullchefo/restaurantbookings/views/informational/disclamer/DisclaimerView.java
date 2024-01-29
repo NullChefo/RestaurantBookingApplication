@@ -33,7 +33,6 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
-
 @PageTitle("Disclaimer")
 @Route(value = "disclaimer", layout = MainLayout.class)
 @AnonymousAllowed
@@ -50,11 +49,9 @@ public class DisclaimerView extends VerticalLayout {
 		setMargin(true);
 		setPadding(true);
 
-
 		H1 header = new H1("DISCLAIMERS");
 		header.getStyle().set("margin-bottom", "2.5vh");
 		add(header);
-
 
 		// Commented out as it seems like it's optional based on the provided HTML
 		// add(new H2("THIS IS NOT " + projectActivities + " ADVICE"));
@@ -65,21 +62,28 @@ public class DisclaimerView extends VerticalLayout {
 		add(new H2("DATA SOURCE"));
 		add(new Paragraph("The insider trade data presented on " + projectName + " all comes from the " + companyName +
 								  " itself. Data is retrieved from the " + dataSources +
-								  " API or RSS feed, then parsed and saved to our servers. We do not guarantee the quality or accuracy of any data presented. " +
-								  "The data is susceptible to filing errors from SEC and while we have checks in place to ensure that many incorrect forms are filtered out, " +
+								  " API or RSS feed, then parsed and saved to our servers. We do not guarantee the quality or accuracy of any data presented. "
+								  +
+								  "The data is susceptible to filing errors from SEC and while we have checks in place to ensure that many incorrect forms are filtered out, "
+								  +
 								  "we cannot get all of them. We will be adding a report feature at a later date."));
 
 		add(new H2("WARRANTY"));
-		add(new Paragraph("The data provided by " + projectName + " is without warranty. As stated above we do not guarantee the quality or accuracy " +
+		add(new Paragraph("The data provided by " + projectName
+								  + " is without warranty. As stated above we do not guarantee the quality or accuracy "
+								  +
 								  "and you use the data at your own risk. We do, however, provide the link to the filing for all forms so you can check the data."));
 
 		add(new H2("INTELLECTUAL PROPERTY"));
-		add(new Paragraph(projectName + " is owned and operated by " + companyName + ". All code, graphics, logos, and domains are the property of " +
-								  companyName + ". The data on this site may not be scrapped, copied, or collected for commercial use."));
+		add(new Paragraph(projectName + " is owned and operated by " + companyName
+								  + ". All code, graphics, logos, and domains are the property of " +
+								  companyName
+								  + ". The data on this site may not be scrapped, copied, or collected for commercial use."));
 
 		add(new H2("BETA SOFTWARE"));
-		add(new Paragraph(projectName + " is a brand new product " + launchedDate + " and is still in very active development. " +
-								  "New features are constantly being added and bugs are constantly being addressed."));
+		add(new Paragraph(
+				projectName + " is a brand new product " + launchedDate + " and is still in very active development. " +
+						"New features are constantly being added and bugs are constantly being addressed."));
 
 		add(new H2("DATA COLLECTION"));
 		add(new Paragraph("The only data collected on " + projectName + " is collected by " + analytics +

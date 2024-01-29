@@ -38,7 +38,16 @@ public class RestaurantListView extends VerticalLayout {
 	public RestaurantListView(List<Restaurant> restaurants) {
 		// TODO change
 		grid.setItems(restaurants);
-		grid.setColumns("name", "owner", "location", "menus", "schedules", "donations", "cuisines", "reviews", "tables");
+		grid.setColumns(
+				"name",
+				"owner",
+				"location",
+				"menus",
+				"schedules",
+				"donations",
+				"cuisines",
+				"reviews",
+				"tables");
 
 		add(grid);
 	}

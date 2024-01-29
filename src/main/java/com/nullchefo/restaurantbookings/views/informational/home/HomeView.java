@@ -23,7 +23,6 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -69,8 +68,12 @@ public class HomeView extends VerticalLayout {
 
 		// buttons
 		Div buttonsContainer = new Div(reservationButton, orderButton);
-		buttonsContainer.getStyle().set("margin-top", "2vh").set("display", "grid").set("grid-auto-flow", "column").set("grid-column-gap", "2vw");
-
+		buttonsContainer
+				.getStyle()
+				.set("margin-top", "2vh")
+				.set("display", "grid")
+				.set("grid-auto-flow", "column")
+				.set("grid-column-gap", "2vw");
 
 		// Lorem Ipsum paragraphs
 		Paragraph loremIpsum1 = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit. "

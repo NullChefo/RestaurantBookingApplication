@@ -28,8 +28,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.nullchefo.restaurantbookings.entity.BaseEntity;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * Abstract his means that the class cannot be instantiated on its own. It's meant to be subclassed, and concrete (non-abstract) subclasses are expected to provide implementations for abstract methods.
  * Generic Type (U extends BaseEntity): The class is parameterized with a generic type U, which extends or is a subtype of BaseEntity. This allows the class to work with different types of entities while ensuring that those entities are related to or derived from BaseEntity.

@@ -14,9 +14,9 @@ spring:
     livereload:
       enabled: true
 
-#  thymeleaf:
-#    prefix: classpath:/templates
-#    suffix: .html
+  #  thymeleaf:
+  #    prefix: classpath:/templates
+  #    suffix: .html
 
   mustache:
     check-template-location: false

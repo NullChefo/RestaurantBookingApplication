@@ -27,7 +27,6 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class MapperUtility {
 
@@ -70,7 +69,8 @@ public class MapperUtility {
 				continue; // annotation added properties
 			}
 
-			if (srcValue == null || (nonEmpty != null && Arrays.asList(nonEmpty).contains(propertyDescriptor.getName()) &&
+			if (srcValue == null || (nonEmpty != null && Arrays.asList(nonEmpty).contains(propertyDescriptor.getName())
+					&&
 					!propertyDescriptor.getName().isEmpty() &&
 					srcValue instanceof String &&
 					srcValue.toString().isEmpty())) {

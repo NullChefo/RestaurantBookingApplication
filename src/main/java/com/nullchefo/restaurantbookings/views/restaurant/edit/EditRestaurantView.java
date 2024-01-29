@@ -26,7 +26,8 @@ import jakarta.annotation.security.RolesAllowed;
 
 @PageTitle("Restaurants")
 @Route(value = "restaurant/menage", layout = MainLayout.class)
-@RolesAllowed({"ADMIN", "ORGANISATION"})
+@RolesAllowed({ "ADMIN", "ORGANISATION" })
 public class EditRestaurantView extends VerticalLayout {
-	public EditRestaurantView(){}
+	public EditRestaurantView() {
+	}
 }

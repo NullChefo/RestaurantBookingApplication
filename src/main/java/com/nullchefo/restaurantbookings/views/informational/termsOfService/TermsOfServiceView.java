@@ -22,23 +22,14 @@ import static com.nullchefo.restaurantbookings.utils.StaticContent.PROJECT_NAME;
 import static com.nullchefo.restaurantbookings.utils.StaticContent.SUPPORT_EMAIL;
 
 import com.nullchefo.restaurantbookings.views.MainLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.html.Anchor;
-import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.component.html.ListItem;
+import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.UnorderedList;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.Route;
-
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.html.Anchor;
-import com.vaadin.flow.component.html.UnorderedList;
-import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
@@ -59,12 +50,10 @@ public class TermsOfServiceView extends VerticalLayout {
 		H1 termsOfServiceHeader = new H1(projectName + " Terms of Service");
 		termsOfServiceHeader.getStyle().set("margin-bottom", "2.5vh");
 		// Set margin and padding for the H1 component
-//		termsOfServiceHeader.getStyle().set("margin", "10vh");
-//		termsOfServiceHeader.getStyle().set("padding", "5px");
+		//		termsOfServiceHeader.getStyle().set("margin", "10vh");
+		//		termsOfServiceHeader.getStyle().set("padding", "5px");
 
-//		termsOfServiceHeader.getStyle().set("margin-top", "2.5vh");
-
-
+		//		termsOfServiceHeader.getStyle().set("margin-top", "2.5vh");
 
 		add(termsOfServiceHeader);
 
@@ -74,19 +63,22 @@ public class TermsOfServiceView extends VerticalLayout {
 								  "By accessing or using our platform, you agree to be bound by these terms and our privacy policy."));
 
 		add(new H2("Privacy"));
-		add(new Paragraph("We take your privacy seriously and comply with the General Data Protection Regulation (GDPR). " +
-								  "Please refer to our " +
-								  "<a href=\"/privacy-policy\" style=\"color: var(--lumo-primary-color);\">privacy policy</a> " +
-								  "for more information on how we collect, use, and protect your personal data."));
+		add(new Paragraph(
+				"We take your privacy seriously and comply with the General Data Protection Regulation (GDPR). " +
+						"Please refer to our " +
+						"<a href=\"/privacy-policy\" style=\"color: var(--lumo-primary-color);\">privacy policy</a> " +
+						"for more information on how we collect, use, and protect your personal data."));
 
 		add(new H2("Use of Our Platform"));
 		UnorderedList platformList = new UnorderedList(
 				new ListItem("Violate any applicable law or regulation"),
 				new ListItem("Impersonate any person or entity"),
 				new ListItem("Engage in any activity that interferes with or disrupts our platform or services"),
-				new ListItem("Upload or transmit any content that is infringing, defamatory, obscene, or otherwise objectionable"),
+				new ListItem(
+						"Upload or transmit any content that is infringing, defamatory, obscene, or otherwise objectionable"),
 				new ListItem("Attempt to gain unauthorized access to our platform, user accounts, or computer systems"),
-				new ListItem("Use our platform to advertise or promote any products or services without our prior written consent")
+				new ListItem(
+						"Use our platform to advertise or promote any products or services without our prior written consent")
 		);
 		add(platformList);
 
@@ -96,9 +88,11 @@ public class TermsOfServiceView extends VerticalLayout {
 								  "You may not use, copy, or reproduce any of our content or materials without our prior written consent."));
 
 		add(new H2("Limitation of Liability"));
-		add(new Paragraph("We are not liable for any damages or losses that may arise from your use of our platform or services. " +
-								  "We are not responsible for any content uploaded or transmitted by users of our platform. " +
-								  "We reserve the right to remove any content that violates these terms or our policies."));
+		add(new Paragraph(
+				"We are not liable for any damages or losses that may arise from your use of our platform or services. "
+						+
+						"We are not responsible for any content uploaded or transmitted by users of our platform. " +
+						"We reserve the right to remove any content that violates these terms or our policies."));
 
 		add(new H2("Changes to These Terms"));
 		add(new Paragraph("We may revise these terms of service at any time without notice. " +
@@ -109,6 +103,7 @@ public class TermsOfServiceView extends VerticalLayout {
 								  "please contact us at " +
 								  createSupportEmailLink(supportEmailAddress) + ".")); // Using the extracted method
 	}
+
 	private Anchor createSupportEmailLink(String email) {
 		Anchor anchor = new Anchor("mailto:" + email, email);
 		anchor.getStyle().set("color", "var(--lumo-primary-color)");
