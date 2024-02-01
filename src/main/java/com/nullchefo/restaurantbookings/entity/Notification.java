@@ -36,6 +36,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
+// not in the project scope
 public class Notification extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "user_id")

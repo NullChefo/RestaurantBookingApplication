@@ -32,6 +32,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+// not in the project scope
 public class Donation extends BaseEntity {
 
 	private LocalDateTime donationTime;

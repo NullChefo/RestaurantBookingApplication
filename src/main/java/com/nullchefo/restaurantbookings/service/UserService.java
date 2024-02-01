@@ -17,14 +17,21 @@
  */
 package com.nullchefo.restaurantbookings.service;
 
+import static com.nullchefo.restaurantbookings.entity.enums.RoleEnum.CUSTOMER;
+import static com.nullchefo.restaurantbookings.entity.enums.RoleEnum.ORGANISATION;
+
 import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -103,13 +110,15 @@ public class UserService extends BaseService<User> {
 		}
 
 		User user = new User();
-		mapperUtility.copyProps(userDto, user);
+		mapperUtility.copyNonNullProps(userDto, user);
 		user.setHashedPassword(passwordEncoder.encode(userDto.getPassword()));
 
 		if (userDto.isOrganization()) {
-			user.setRole("COMPANY");
+			user.setRole(ORGANISATION.name());
+			user.setRoles(Set.of(ORGANISATION));
 		} else {
-			user.setRole("USER");
+			user.setRole(CUSTOMER.toString());
+			user.setRoles(Set.of(CUSTOMER));
 		}
 
 		final String validationToken = UUID.randomUUID().toString();
@@ -321,5 +330,20 @@ public class UserService extends BaseService<User> {
 		List<UserIPAddress> ipAddressList = this.userIPAddressService.findAllForUser(user);
 
 		throw new NotImplementedException("Not Implemented");
+	}
+
+	public List<User> getUsers(int pageNumber, int itemsPerPage) {
+		int offset = (pageNumber - 1) * itemsPerPage;
+		Pageable pageable = PageRequest.of(offset, itemsPerPage);
+		Page<User> userPage = userRepository.findAll(pageable);
+		return userPage.getContent();
+	}
+
+	public Long getUserCount() {
+		return userRepository.count();
+	}
+
+	public List<User> searchUsersByUsername(final String username) {
+		return userRepository.searchUsersByUsernameIgnoreCase(username);
 	}
 }

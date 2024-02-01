@@ -37,10 +37,11 @@ import com.nullchefo.restaurantbookings.views.informational.privacyPolicy.Privac
 import com.nullchefo.restaurantbookings.views.informational.termsOfService.TermsOfServiceView;
 import com.nullchefo.restaurantbookings.views.order.list.ListOrderView;
 import com.nullchefo.restaurantbookings.views.reservation.list.ListReservationsView;
-import com.nullchefo.restaurantbookings.views.restaurant.list.RestaurantListView;
+import com.nullchefo.restaurantbookings.views.restaurant.list.RestaurantView;
 import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.admindashboard.AdminDashboardView;
 import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.supportchat.SupportChatView;
 import com.nullchefo.restaurantbookings.views.user.editUser.EditUserView;
+import com.nullchefo.restaurantbookings.views.user.listUsers.ListUserView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -112,16 +113,21 @@ public class MainLayout extends AppLayout {
 
 		}
 
-		if (accessChecker.hasAccess(RestaurantListView.class)) {
+		if (accessChecker.hasAccess(RestaurantView.class)) {
 			nav.addItem(new SideNavItem(
 					"Restaurants",
-					RestaurantListView.class,
+					RestaurantView.class,
 					LineAwesomeIcon.STORE_ALT_SOLID.create()));
 
 		}
 
 		if (accessChecker.hasAccess(ListReservationsView.class)) {
 			nav.addItem(new SideNavItem("Reservations", ListReservationsView.class, LineAwesomeIcon.CALENDAR.create()));
+
+		}
+
+		if (accessChecker.hasAccess(ListUserView.class)) {
+			nav.addItem(new SideNavItem("Users", ListUserView.class, LineAwesomeIcon.USER.create()));
 
 		}
 

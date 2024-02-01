@@ -17,15 +17,20 @@
  */
 package com.nullchefo.restaurantbookings.service;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import com.nullchefo.restaurantbookings.entity.Location;
+import com.nullchefo.restaurantbookings.entity.Restaurant;
+import com.nullchefo.restaurantbookings.entity.User;
 import com.nullchefo.restaurantbookings.repository.LocationRepository;
 
 @Service
@@ -46,4 +51,20 @@ public class LocationService extends BaseService<Location> {
 		return locationRepository.findAll(filter, pageable);
 	}
 
+	public Stream<Location> list(PageRequest of) {
+		return locationRepository.findAll(of).stream();
+	}
+
+	public Stream<Location> listForUser(PageRequest of, User user) {
+		return locationRepository.findAllByUser(user, of).stream();
+	}
+
+	public List<Location> findAllByUser(final User user) {
+		return locationRepository.findAllByUser(user);
+	}
+
+	public List<Location> findAllByRestaurant(final Restaurant restaurant) {
+		return locationRepository.findAllByRestaurant(restaurant);
+	}
 }
+

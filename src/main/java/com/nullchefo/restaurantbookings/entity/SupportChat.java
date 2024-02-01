@@ -33,6 +33,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
+// not in the project scope
 public class SupportChat extends BaseEntity {
 
 	@ManyToOne

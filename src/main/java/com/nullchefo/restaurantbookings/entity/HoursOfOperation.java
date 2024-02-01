@@ -20,10 +20,18 @@ package com.nullchefo.restaurantbookings.entity;
 import java.time.LocalTime;
 
 import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Builder
 @Embeddable
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+// not in the project scope
+
 public class HoursOfOperation {
 
 	private LocalTime openingTime;

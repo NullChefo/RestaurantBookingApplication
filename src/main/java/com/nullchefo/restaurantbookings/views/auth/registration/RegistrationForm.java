@@ -128,20 +128,21 @@ public class RegistrationForm extends FormLayout {
 
 		verticalLayout.add(privacyPolicyContainer, alreadyHaveAccount);
 
-		add(title,
-			firstName,
-			lastName,
-			email,
-			username,
-			password,
-			passwordConfirm,
-			subscribeForMarketing,
-			isOrganization,
-			subscribeForNotifications,
-			subscribeForAnnouncements,
-			errorMessageField,
-			submitButton,
-			verticalLayout);
+		add(
+				title,
+				firstName,
+				lastName,
+				email,
+				username,
+				password,
+				passwordConfirm,
+				subscribeForMarketing,
+				isOrganization,
+				subscribeForNotifications,
+				subscribeForAnnouncements,
+				errorMessageField,
+				submitButton,
+				verticalLayout);
 
 		// Max width of the Form
 		setMaxWidth("70vh");

@@ -18,14 +18,22 @@
 package com.nullchefo.restaurantbookings.utils;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import com.nullchefo.restaurantbookings.entity.Location;
+import com.nullchefo.restaurantbookings.entity.Restaurant;
+import com.nullchefo.restaurantbookings.entity.RestaurantTable;
+import com.nullchefo.restaurantbookings.entity.Review;
 import com.nullchefo.restaurantbookings.entity.User;
 import com.nullchefo.restaurantbookings.entity.enums.RoleEnum;
+import com.nullchefo.restaurantbookings.repository.ReservationRepository;
+import com.nullchefo.restaurantbookings.repository.RestaurantRepository;
 import com.nullchefo.restaurantbookings.repository.UserRepository;
 
 import jakarta.annotation.PostConstruct;
@@ -35,16 +43,27 @@ public class HydrateDatabase {
 
 	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
+	private final ReservationRepository reservationRepository;
+
+	private final RestaurantRepository restaurantRepository;
 
 	@Autowired
-	public HydrateDatabase(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+	public HydrateDatabase(
+			UserRepository userRepository, PasswordEncoder passwordEncoder,
+			final ReservationRepository reservationRepository, RestaurantRepository restaurantRepository) {
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
+		this.reservationRepository = reservationRepository;
+		this.restaurantRepository = restaurantRepository;
 	}
 
 	@PostConstruct
 	private void populateDatabase() {
+		initUsers();
+		initRestaurants();
+	}
 
+	private void initUsers() {
 		if (userRepository.count() == 0L) {
 
 			// admin/admin
@@ -85,16 +104,16 @@ public class HydrateDatabase {
 
 			//restaurant/restaurant
 			User restaurantUser = User.builder()
-									  .email("restaurant@example.com")
-									  .hashedPassword(passwordEncoder.encode("restaurant"))
-									  .firstName("Restaurant")
-									  .lastName("Restaurantov")
-									  .username("restaurant")
-									  .role(RoleEnum.RESTAURANT.name())
+									  .email("org@example.com")
+									  .hashedPassword(passwordEncoder.encode("org"))
+									  .firstName("Org")
+									  .lastName("Organizationov")
+									  .username("org")
+									  .role(RoleEnum.ORGANISATION.name())
 									  .enabled(true)
 									  .dateOfBirth(LocalDate.of(1900, 1, 1))
 									  .important(true)
-									  .roles(Set.of(RoleEnum.RESTAURANT))
+									  .roles(Set.of(RoleEnum.ORGANISATION))
 									  .phone("0898888889")
 									  .pictureURL(
 											  "https://kfcvarna.bg/upload/iblock/87c/87cc8fae35a2aebc270d1f910d6e940a.png")
@@ -136,9 +155,86 @@ public class HydrateDatabase {
 								   .pictureURL("https://www.svgrepo.com/show/192522/customer-service-support.svg")
 								   .build();
 			userRepository.save(supportUser);
+		}
+	}
+
+	private void initRestaurants() {
+		if (restaurantRepository.count() == 0L) {
+
+			Restaurant restaurant = Restaurant.builder()
+											  .owner(userRepository.findByUsername("admin").get())
+											  .name("Test Restaurant")
+											  .pictureURL(
+													  "https://podtepeto.com/wp-content/uploads/2022/11/img_6176-scaled.jpg")
+											  .build();
+			restaurantRepository.save(restaurant);
+
+			Location location = Location.builder()
+										.address("Location")
+										.latitude("27")
+										.longitude("49")
+										.restaurant(restaurant)
+										.build();
+
+			//			Cuisine cuisine = Cuisine.builder()
+			//									 .name("Cuisine")
+			//									 .description("Description")
+			//									 .restaurant(restaurant)
+			//									 .build();
+
+			Review review = Review.builder()
+								  .rating((byte) 5)
+								  .date(LocalDateTime.now())
+								  .user(userRepository.findByUsername("admin").get())
+								  .restaurant(restaurant)
+								  .build();
+
+			RestaurantTable restaurantTable = RestaurantTable.builder()
+															 .name("1L")
+															 .capacity(5)
+															 .floorPosition(1)
+															 .xPosition(3.5F)
+															 .yPosition(1.6F)
+															 .restaurant(restaurant)
+															 .build();
+
+			//
+			//			HoursOfOperation hoursOfOperation = HoursOfOperation.builder()
+			//																.openingTime(LocalTime.of(8,0))
+			//																.closingTime(LocalTime.of(20,0))
+			//																.build();
+			//
+			//
+			//			Set<DayOfWeek> dayOfWeeks = new LinkedHashSet<>();
+			//			dayOfWeeks.add(DayOfWeek.MONDAY);
+			//			dayOfWeeks.add(DayOfWeek.TUESDAY);
+			//			dayOfWeeks.add(DayOfWeek.WEDNESDAY);
+			//			dayOfWeeks.add(DayOfWeek.THURSDAY);
+			//			dayOfWeeks.add(DayOfWeek.FRIDAY);
+			//			dayOfWeeks.add(DayOfWeek.SATURDAY);
+			//			//			dayOfWeeks.add(DayOfWeek.SUNDAY);
+
+			//			Schedule schedule = Schedule.builder()
+			//										.hoursOfOperation(hoursOfOperation)
+			//										.daysOpen(dayOfWeeks)
+			//										.restaurant(restaurant)
+			//										.build();
+
+			//											  .location(location)
+			//											  .cuisines(List.of(cuisine))
+			//											  .reviews(List.of(review))
+			//											  .tables(List.of(restaurantTable))
+			//											  .schedules(List.of(schedule))
+			restaurant.setLocation(location);
+			//			restaurant.setCuisines(List.of(cuisine));
+			restaurant.setReviews(List.of(review));
+			restaurant.setTables(List.of(restaurantTable));
+			//			restaurant.setSchedules(List.of(schedule));
+
+			// update
+			restaurantRepository.save(restaurant);
 
 		}
-
 	}
 
 }

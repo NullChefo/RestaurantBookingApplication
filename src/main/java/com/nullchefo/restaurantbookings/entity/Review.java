@@ -34,6 +34,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
+// not in the project scope
 public class Review extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")

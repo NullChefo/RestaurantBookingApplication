@@ -19,8 +19,10 @@ package com.nullchefo.restaurantbookings.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -39,34 +41,36 @@ import lombok.Setter;
 public class Restaurant extends BaseEntity {
 	private String name;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private User owner;
 
 	@Column(length = 999)
 	private String pictureURL;
 
-	@OneToOne
+	// allows to save location without calling location repo
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Location location;
 
-	@OneToMany(mappedBy = "restaurant")
+	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Menu> menus;
-
-	@OneToMany(mappedBy = "restaurant")
-	private List<Schedule> schedules;
+	// TODO make this happen
+	//	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	//	private List<Schedule> schedules;
 
 	//	@OneToMany(mappedBy = "restaurant")
 	//	private List<Booking> bookings;
 
-	@OneToMany(mappedBy = "restaurant")
-	private List<Donation> donations;
+	// TODO make this happen
+	//	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	//	private List<Donation> donations;
+	// TODO make this happen
+	//	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	//	private List<Cuisine> cuisines;
 
-	@OneToMany(mappedBy = "restaurant")
-	private List<Cuisine> cuisines;
-
-	@OneToMany(mappedBy = "restaurant")
+	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Review> reviews;
 
-	@OneToMany(mappedBy = "restaurant")
+	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<RestaurantTable> tables;
 
 }

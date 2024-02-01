@@ -66,9 +66,8 @@ public class MapperUtility {
 			try {
 				srcValue = src.getPropertyValue(propertyDescriptor.getName());
 			} catch (Exception e) {
-				continue; // annotation added properties
+				continue;
 			}
-
 			if (srcValue == null || (nonEmpty != null && Arrays.asList(nonEmpty).contains(propertyDescriptor.getName())
 					&&
 					!propertyDescriptor.getName().isEmpty() &&

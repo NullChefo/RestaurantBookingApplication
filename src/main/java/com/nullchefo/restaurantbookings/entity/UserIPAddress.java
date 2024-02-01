@@ -32,6 +32,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
+// not in the project scope
 public class UserIPAddress extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "user_id")

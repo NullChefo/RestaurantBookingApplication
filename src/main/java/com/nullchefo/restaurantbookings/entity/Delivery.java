@@ -32,6 +32,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+// not in the project scope
 public class Delivery extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "order_id")

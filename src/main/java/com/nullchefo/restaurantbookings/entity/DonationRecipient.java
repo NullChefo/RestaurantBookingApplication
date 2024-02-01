@@ -32,6 +32,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+// not in the project scope
 public class DonationRecipient extends BaseEntity {
 	private String name;
 

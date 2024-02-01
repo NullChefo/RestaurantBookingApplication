@@ -31,6 +31,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+// not in the project scope
 public class Driver extends BaseEntity {
 
 	@OneToMany(mappedBy = "driver")
