@@ -21,7 +21,6 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -36,12 +35,9 @@ public class RestaurantDialog extends Dialog {
 	private final RestaurantService restaurantService;
 	private final LocationService locationService;
 	private final User user;
-	private Button saveButton;
-
-	private RestaurantTableGrid restaurantTableGrid;
-
 	private final RestaurantTableService restaurantTableService;
-
+	private Button saveButton;
+	private RestaurantTableGrid restaurantTableGrid;
 	private Button addLocationButton;
 	private Button addTablesButton;
 	private Button removeTablesButton;
@@ -49,8 +45,6 @@ public class RestaurantDialog extends Dialog {
 	private Button editTablesButton;
 	private Binder<Restaurant> binder;
 	private ComboBox<Location> locationComboBox;
-
-
 
 	public RestaurantDialog(
 			Restaurant restaurant, RestaurantService restaurantService,
@@ -98,11 +92,13 @@ public class RestaurantDialog extends Dialog {
 			dialog.open();
 		});
 
-
 		// always active
 		this.addTablesButton = new Button("Add Table");
 		this.addTablesButton.addClickListener(e -> {
-			RestaurantTableDialog dialog = new RestaurantTableDialog(new RestaurantTable(), this.restaurantTableService, this.restaurant);
+			RestaurantTableDialog dialog = new RestaurantTableDialog(
+					new RestaurantTable(),
+					this.restaurantTableService,
+					this.restaurant);
 			dialog.addSaveClickListener(buttonClickEvent -> {
 				loadRestaurantTableGrid();
 				dialog.close();
@@ -113,18 +109,18 @@ public class RestaurantDialog extends Dialog {
 		this.editTablesButton = new Button("Edit Table");
 		this.editTablesButton.setEnabled(false);
 		this.editTablesButton.addClickListener(e -> {
-			RestaurantTableDialog dialog = new RestaurantTableDialog(this.restaurantTableGrid.asSingleSelect().getValue(), this.restaurantTableService, this.restaurant);
+			RestaurantTableDialog dialog = new RestaurantTableDialog(
+					this.restaurantTableGrid
+							.asSingleSelect()
+							.getValue(),
+					this.restaurantTableService,
+					this.restaurant);
 			dialog.addSaveClickListener(buttonClickEvent -> {
 				loadRestaurantTableGrid();
 				dialog.close();
 			});
 			dialog.open();
 		});
-
-
-
-
-
 
 		binder = new Binder<>(Restaurant.class);
 		binder.forField(name).asRequired("Name is required").bind(Restaurant::getName, Restaurant::setName)
@@ -143,19 +139,21 @@ public class RestaurantDialog extends Dialog {
 
 		HorizontalLayout locationLayout = new HorizontalLayout();
 		locationLayout.setAlignItems(FlexComponent.Alignment.BASELINE);
-		locationLayout.add(this.locationComboBox, this.addLocationButton );
+		locationLayout.add(this.locationComboBox, this.addLocationButton);
 
 		FormLayout formLayout = new FormLayout(name, pictureURL, locationLayout);
 		add(formLayout);
 
 		HorizontalLayout restaurantActionButtonsLayout = new HorizontalLayout();
 		restaurantActionButtonsLayout.setAlignItems(FlexComponent.Alignment.BASELINE);
-		restaurantActionButtonsLayout.add(this.addTablesButton, this.editTablesButton, createRemoveRestaurantTableButton());
+		restaurantActionButtonsLayout.add(
+				this.addTablesButton,
+				this.editTablesButton,
+				createRemoveRestaurantTableButton());
 		add(restaurantActionButtonsLayout);
 		add(createRestaurantTableGrid());
 
 		loadRestaurantTableGrid();
-
 
 	}
 
@@ -187,7 +185,6 @@ public class RestaurantDialog extends Dialog {
 				}
 				restaurantService.create(restaurant);
 
-
 				close();
 				//reloadGrid();
 			} catch (ValidationException e) {
@@ -199,7 +196,6 @@ public class RestaurantDialog extends Dialog {
 	public void addSaveClickListener(ComponentEventListener<ClickEvent<Button>> listener) {
 		saveButton.addClickListener(listener);
 	}
-
 
 	private Button createRemoveRestaurantTableButton() {
 		removeTablesButton = new Button("Remove");
@@ -226,7 +222,7 @@ public class RestaurantDialog extends Dialog {
 		restaurantTableGrid = new RestaurantTableGrid();
 		restaurantTableGrid.setMinHeight("300px");
 
-		restaurantTableGrid.addItemDoubleClickListener(l -> openRestaurantTableDialog(l.getItem(),this.restaurant));
+		restaurantTableGrid.addItemDoubleClickListener(l -> openRestaurantTableDialog(l.getItem(), this.restaurant));
 
 		SingleSelect<Grid<RestaurantTable>, RestaurantTable> singleSelect = restaurantTableGrid.asSingleSelect();
 		singleSelect.addValueChangeListener(l -> {

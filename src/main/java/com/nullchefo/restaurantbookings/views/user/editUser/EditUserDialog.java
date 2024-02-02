@@ -17,8 +17,6 @@
  */
 package com.nullchefo.restaurantbookings.views.user.editUser;
 
-
-import com.nullchefo.restaurantbookings.entity.Location;
 import com.nullchefo.restaurantbookings.entity.User;
 import com.nullchefo.restaurantbookings.service.UserService;
 import com.vaadin.flow.component.ClickEvent;
@@ -58,27 +56,22 @@ public class EditUserDialog extends Dialog {
 
 	private void configureContent() {
 
-//		@ManyToOne
-//		private Location currentLocation;
-//
-//		@Column(length = 999)
-//		private String pictureURL;
-//
-//		private LocalDate dateOfBirth;
-//		private String occupation;
-//
-//		@Column(nullable = false, length = 256, unique = true)
-//		private String username;
-//
-//		@Column(nullable = false, length = 50)
-//		private String firstName;
-//		@Column(length = 100)
-//		private String lastName;
-
-
-
-
-
+		//		@ManyToOne
+		//		private Location currentLocation;
+		//
+		//		@Column(length = 999)
+		//		private String pictureURL;
+		//
+		//		private LocalDate dateOfBirth;
+		//		private String occupation;
+		//
+		//		@Column(nullable = false, length = 256, unique = true)
+		//		private String username;
+		//
+		//		@Column(nullable = false, length = 50)
+		//		private String firstName;
+		//		@Column(length = 100)
+		//		private String lastName;
 
 		TextField firstName = new TextField("First name");
 		firstName.setRequired(true);
@@ -86,14 +79,11 @@ public class EditUserDialog extends Dialog {
 		TextField lastName = new TextField("Last name");
 		lastName.setRequired(true);
 
-
 		TextField username = new TextField("Username");
 		username.setRequired(true);
 
 		TextField pictureURL = new TextField("Picture url");
 		pictureURL.setRequired(false);
-
-
 
 		binder = new Binder<>(User.class);
 		binder.forField(firstName).asRequired("First name is required")
@@ -109,8 +99,6 @@ public class EditUserDialog extends Dialog {
 			  .setAsRequiredEnabled(true);
 
 		binder.forField(pictureURL).bind(User::getPictureURL, User::setPictureURL);
-
-
 
 		binder.readBean(user);
 		FormLayout formLayout = new FormLayout(firstName, lastName, username, pictureURL);
@@ -141,8 +129,5 @@ public class EditUserDialog extends Dialog {
 	public void addSaveClickListener(ComponentEventListener<ClickEvent<Button>> listener) {
 		saveButton.addClickListener(listener);
 	}
-
-
-
 
 }

@@ -15,8 +15,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 
-
-
 public class RestaurantTableDialog extends Dialog {
 
 	private final RestaurantTable restaurantTable;
@@ -25,7 +23,10 @@ public class RestaurantTableDialog extends Dialog {
 	private Button saveButton;
 	private Binder<RestaurantTable> binder;
 
-	public RestaurantTableDialog(RestaurantTable restaurantTable, RestaurantTableService restaurantTableService, Restaurant restaurant) {
+	public RestaurantTableDialog(
+			RestaurantTable restaurantTable,
+			RestaurantTableService restaurantTableService,
+			Restaurant restaurant) {
 		this.restaurantTable = restaurantTable;
 		this.restaurantTableService = restaurantTableService;
 		this.restaurant = restaurant;
@@ -49,7 +50,6 @@ public class RestaurantTableDialog extends Dialog {
 		IntegerField capacity = new IntegerField("capacity");
 		capacity.setRequired(true);
 
-
 		NumberField xPosition = new NumberField("x position");
 		xPosition.setRequired(false);
 
@@ -59,13 +59,14 @@ public class RestaurantTableDialog extends Dialog {
 		NumberField floorPosition = new NumberField("floor position");
 		floorPosition.setRequired(false);
 
-
-
 		binder = new Binder<>(RestaurantTable.class);
 		binder.forField(name).asRequired("Name is required").bind(RestaurantTable::getName, RestaurantTable::setName)
 			  .setAsRequiredEnabled(true);
-		binder.forField(capacity).asRequired("Capacity is required").bind(RestaurantTable::getCapacity, RestaurantTable::setCapacity)
-			  .setAsRequiredEnabled(true);
+		binder
+				.forField(capacity)
+				.asRequired("Capacity is required")
+				.bind(RestaurantTable::getCapacity, RestaurantTable::setCapacity)
+				.setAsRequiredEnabled(true);
 		binder.forField(xPosition).bind(RestaurantTable::getXPosition, RestaurantTable::setXPosition);
 		binder.forField(yPosition).bind(RestaurantTable::getYPosition, RestaurantTable::setYPosition);
 		binder.forField(floorPosition).bind(RestaurantTable::getFloorPosition, RestaurantTable::setFloorPosition);

@@ -27,7 +27,6 @@ import org.springframework.stereotype.Service;
 import com.nullchefo.restaurantbookings.entity.Restaurant;
 import com.nullchefo.restaurantbookings.entity.RestaurantTable;
 import com.nullchefo.restaurantbookings.repository.RestaurantTableRepository;
-import com.vaadin.flow.data.provider.DataProvider;
 
 @Service
 public class RestaurantTableService extends BaseService<RestaurantTable> {

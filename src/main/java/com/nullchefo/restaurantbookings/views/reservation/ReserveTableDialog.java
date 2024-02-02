@@ -1,6 +1,5 @@
 package com.nullchefo.restaurantbookings.views.reservation;
 
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,9 +23,7 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.data.selection.SingleSelect;
 
-
 public class ReserveTableDialog extends Dialog {
-
 
 	private final User user;
 	private final Restaurant restaurant;
@@ -35,8 +32,7 @@ public class ReserveTableDialog extends Dialog {
 
 	private final RestaurantService restaurantService;
 
-	private final ReservationService  reservationService;
-
+	private final ReservationService reservationService;
 
 	private Button reserveTableButton;
 
@@ -44,8 +40,6 @@ public class ReserveTableDialog extends Dialog {
 	private ReservationGrid reservationGrid;
 
 	private DatePicker datePicker;
-
-
 
 	public ReserveTableDialog(
 			User user,
@@ -70,11 +64,10 @@ public class ReserveTableDialog extends Dialog {
 		setMaxHeight("90vh");
 		setMaxWidth("90vw");
 
-
 	}
 
 	private void configureContent() {
-		HorizontalLayout  buttonsLayout = new HorizontalLayout();
+		HorizontalLayout buttonsLayout = new HorizontalLayout();
 		buttonsLayout.setAlignItems(FlexComponent.Alignment.BASELINE);
 		buttonsLayout.add(createDatePicker());
 		buttonsLayout.add(createReserveTableButton());
@@ -86,27 +79,26 @@ public class ReserveTableDialog extends Dialog {
 		refreshGridElements();
 	}
 
-// add filter reserve teble for DATE
+	// add filter reserve teble for DATE
 	private Grid<RestaurantTable> createRestaurantTableGrid() {
 		this.availableTablesGrid = new RestaurantTableGrid();
 		this.availableTablesGrid.setMinHeight("400px");
 		this.availableTablesGrid.setMinWidth("500px");
-//		this.restaurantGrid.addItemDoubleClickListener(l -> openRestaurantDialog(l.getItem(), this.authenticatedUser.get()
-//																											   .orElse(null)));
+		//		this.restaurantGrid.addItemDoubleClickListener(l -> openRestaurantDialog(l.getItem(), this.authenticatedUser.get()
+		//																											   .orElse(null)));
 		SingleSelect<Grid<RestaurantTable>, RestaurantTable> singleSelect = availableTablesGrid.asSingleSelect();
 		singleSelect.addValueChangeListener(l -> {
 			RestaurantTable value = l.getValue();
 			boolean enabled = value != null;
-				reserveTableButton.setEnabled(enabled);
+			reserveTableButton.setEnabled(enabled);
 		});
 		return availableTablesGrid;
 	}
 
 	private Grid<Reservation> createReservationGrid() {
 		this.reservationGrid = new ReservationGrid();
-			this.reservationGrid.setMinHeight("400p");
-			this.reservationGrid.setMinWidth("500px");
-
+		this.reservationGrid.setMinHeight("400p");
+		this.reservationGrid.setMinWidth("500px");
 
 		SingleSelect<Grid<Reservation>, Reservation> singleSelect = reservationGrid.asSingleSelect();
 		singleSelect.addValueChangeListener(l -> {
@@ -118,14 +110,13 @@ public class ReserveTableDialog extends Dialog {
 		return reservationGrid;
 	}
 
-
-
 	private HorizontalLayout createDatePicker() {
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		datePicker = new DatePicker("Reservation date");
 		datePicker.setRequired(true);
 		Button searchButton = new Button(new Icon("lumo", "search"));
-		searchButton.addClickListener(l -> { refreshGridElements();
+		searchButton.addClickListener(l -> {
+			refreshGridElements();
 		});
 		horizontalLayout.add(datePicker, searchButton);
 		return horizontalLayout;
@@ -136,7 +127,7 @@ public class ReserveTableDialog extends Dialog {
 		this.reserveTableButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		this.reserveTableButton.setTooltipText("Reserve table");
 		this.reserveTableButton.setEnabled(false);
-		 this.reserveTableButton.addClickListener(l -> {
+		this.reserveTableButton.addClickListener(l -> {
 			Dialog dialog = new Dialog();
 			RestaurantTable value = availableTablesGrid.asSingleSelect().getValue();
 			dialog.setHeaderTitle("Are you sure you want to reserve this table for:" + datePicker.getValue());
@@ -161,7 +152,7 @@ public class ReserveTableDialog extends Dialog {
 		if (datePicker.getValue() == null) {
 			datePicker.setValue(LocalDate.now());
 		}
-		List<Reservation>  reservations = reservationService.finAllByReservationDate(datePicker.getValue());
+		List<Reservation> reservations = reservationService.finAllByReservationDate(datePicker.getValue());
 
 		List<RestaurantTable> availableTables = this.restaurantTableService.findAllByRestaurant(this.restaurant);
 
@@ -181,7 +172,5 @@ public class ReserveTableDialog extends Dialog {
 	public void addSaveClickListener(ComponentEventListener<ClickEvent<Button>> listener) {
 		reserveTableButton.addClickListener(listener);
 	}
-
-
 
 }

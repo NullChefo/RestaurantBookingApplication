@@ -16,9 +16,9 @@ import com.vaadin.flow.data.binder.ValidationException;
 
 public class LocationDialog extends Dialog {
 
-	private Location location;
 	private final LocationService locationService;
 	private final User user;
+	private Location location;
 	private Button saveButton;
 	private Binder<Location> binder;
 
@@ -66,8 +66,6 @@ public class LocationDialog extends Dialog {
 
 		Button cancelButton = new Button("Cancel", e -> close());
 
-
-
 		getFooter().add(cancelButton);
 
 		if (location != null) {
@@ -75,15 +73,17 @@ public class LocationDialog extends Dialog {
 			removeLocationButton.addClickListener(e -> {
 				try {
 					locationService.delete(this.location.getId());
-				}catch (Exception err) {
-					Notification.show("Cannot delete location because it is in use!", 3000, Notification.Position.BOTTOM_START);
+				} catch (Exception err) {
+					Notification.show(
+							"Cannot delete location because it is in use!",
+							3000,
+							Notification.Position.BOTTOM_START);
 				}
 			});
 			getFooter().add(removeLocationButton);
 		}
 
 		getFooter().add(saveButton);
-
 
 	}
 
@@ -108,11 +108,9 @@ public class LocationDialog extends Dialog {
 
 	public void addSaveClickListener(ComponentEventListener<ClickEvent<Button>> listener) {
 		saveButton.addClickListener(listener);
-		if(this.removeLocationButton != null) {
+		if (this.removeLocationButton != null) {
 			removeLocationButton.addClickListener(listener);
 		}
 	}
-
-
 
 }

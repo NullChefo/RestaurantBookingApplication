@@ -18,7 +18,6 @@
 package com.nullchefo.restaurantbookings.entity;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

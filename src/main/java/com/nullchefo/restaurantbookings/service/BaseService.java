@@ -60,7 +60,7 @@ public abstract class BaseService<U extends BaseEntity> {
 
 		if (entity.getEntityStatus() != null) {
 			entity.setEntityStatus(entity.getEntityStatus());
-		}else {
+		} else {
 			entity.setEntityStatus(EntityStatus.ACTIVE);
 		}
 		return getRepo().save(entity);

@@ -56,7 +56,6 @@ public class Restaurant extends BaseEntity {
 	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Menu> menus;
 
-
 	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Review> reviews;
 

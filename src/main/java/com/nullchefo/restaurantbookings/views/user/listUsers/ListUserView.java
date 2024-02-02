@@ -18,9 +18,7 @@
 package com.nullchefo.restaurantbookings.views.user.listUsers;
 
 import java.util.List;
-import java.util.Set;
 
-import com.nullchefo.restaurantbookings.entity.Restaurant;
 import com.nullchefo.restaurantbookings.entity.User;
 import com.nullchefo.restaurantbookings.service.UserService;
 import com.nullchefo.restaurantbookings.views.MainLayout;
@@ -54,10 +52,6 @@ public class ListUserView extends VerticalLayout {
 	public ListUserView(UserService userService) {
 		this.userService = userService;
 
-
-
-
-
 		this.grid = new Grid<>(User.class);
 		totalAmountOfPages = calculateTotalPages(this.userService.getUserCount(), itemsPerPage);
 		List<User> initialItems = this.userService.getUsers(currentPageNumber, itemsPerPage);
@@ -78,18 +72,17 @@ public class ListUserView extends VerticalLayout {
 			User value = l.getValue();
 			boolean enabled = value != null;
 
-				editUserButton.setEnabled(enabled);
-				removeUserButton.setEnabled(enabled);
+			editUserButton.setEnabled(enabled);
+			removeUserButton.setEnabled(enabled);
 
 		});
 
 		HorizontalLayout searchLayout = getHorizontalLayout(initialItems);
-		searchLayout.add(addEditUserButton(),createRemoveButton() );
+		searchLayout.add(addEditUserButton(), createRemoveButton());
 
 		HorizontalLayout buttonLayout = getHorizontalLayout(grid);
 		add(searchLayout, grid, buttonLayout);
 	}
-
 
 	private Button createRemoveButton() {
 		this.removeUserButton = new Button("Remove");
@@ -112,7 +105,7 @@ public class ListUserView extends VerticalLayout {
 		return this.removeUserButton;
 	}
 
-	private Button addEditUserButton(){
+	private Button addEditUserButton() {
 		this.editUserButton = new Button("Edit");
 		this.editUserButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		this.editUserButton.setTooltipText("Edit user");

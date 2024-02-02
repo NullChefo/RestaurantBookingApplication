@@ -1,9 +1,7 @@
 package com.nullchefo.restaurantbookings.views.restaurantTable;
 
-import com.nullchefo.restaurantbookings.entity.Restaurant;
 import com.nullchefo.restaurantbookings.entity.RestaurantTable;
 import com.vaadin.flow.component.grid.Grid;
-
 
 public class RestaurantTableGrid extends Grid<RestaurantTable> {
 	public RestaurantTableGrid() {

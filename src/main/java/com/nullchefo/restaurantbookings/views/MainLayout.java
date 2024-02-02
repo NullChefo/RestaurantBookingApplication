@@ -38,19 +38,14 @@ import com.nullchefo.restaurantbookings.views.informational.privacyPolicy.Privac
 import com.nullchefo.restaurantbookings.views.informational.termsOfService.TermsOfServiceView;
 import com.nullchefo.restaurantbookings.views.order.list.ListOrderView;
 import com.nullchefo.restaurantbookings.views.reservation.list.ListReservationsView;
-
 import com.nullchefo.restaurantbookings.views.restaurant.RestaurantView;
 import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.admindashboard.AdminDashboardView;
 import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.supportchat.SupportChatView;
-
 import com.nullchefo.restaurantbookings.views.user.editUser.EditUserDialog;
-import com.nullchefo.restaurantbookings.views.user.editUser.EditUserView;
 import com.nullchefo.restaurantbookings.views.user.listUsers.ListUserView;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
-import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Div;
@@ -74,15 +69,14 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
  */
 public class MainLayout extends AppLayout {
 
+	private final UserService userService;
 	private H2 viewTitle;
-
 	private AuthenticatedUser authenticatedUser;
 	private AccessAnnotationChecker accessChecker;
 
-	private final UserService userService;
-
-	public MainLayout(AuthenticatedUser authenticatedUser, AccessAnnotationChecker accessChecker,
-					  UserService userService) {
+	public MainLayout(
+			AuthenticatedUser authenticatedUser, AccessAnnotationChecker accessChecker,
+			UserService userService) {
 		this.authenticatedUser = authenticatedUser;
 		this.accessChecker = accessChecker;
 		this.userService = userService;
@@ -256,13 +250,11 @@ public class MainLayout extends AppLayout {
 
 			userName.getSubMenu().addItem("Edit user", e -> {
 
-
-
-					EditUserDialog editUserDialog = new EditUserDialog(userService, user);
-					editUserDialog.addSaveClickListener(ll -> {
-						editUserDialog.close();
-					});
-					editUserDialog.open();
+				EditUserDialog editUserDialog = new EditUserDialog(userService, user);
+				editUserDialog.addSaveClickListener(ll -> {
+					editUserDialog.close();
+				});
+				editUserDialog.open();
 
 			});
 

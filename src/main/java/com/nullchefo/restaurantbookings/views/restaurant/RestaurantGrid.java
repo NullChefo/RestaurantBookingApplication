@@ -1,10 +1,10 @@
 package com.nullchefo.restaurantbookings.views.restaurant;
 
+import java.util.Optional;
+
 import com.nullchefo.restaurantbookings.entity.Location;
 import com.nullchefo.restaurantbookings.entity.Restaurant;
 import com.vaadin.flow.component.grid.Grid;
-
-import java.util.Optional;
 
 public class RestaurantGrid extends Grid<Restaurant> {
 	public RestaurantGrid() {
@@ -18,8 +18,8 @@ public class RestaurantGrid extends Grid<Restaurant> {
 		addColumn(restaurant -> Optional.ofNullable(restaurant.getOwner())
 										.map(owner -> owner.getFirstName() + " " + owner.getLastName())
 										.orElse(""))
-										.setHeader("owner")
-										.setSortable(true);
+				.setHeader("owner")
+				.setSortable(true);
 
 		addColumn(restaurant -> Optional.ofNullable(restaurant.getLocation())
 										.map(Location::getAddress)

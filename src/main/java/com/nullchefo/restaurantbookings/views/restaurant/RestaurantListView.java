@@ -17,12 +17,7 @@
  */
 package com.nullchefo.restaurantbookings.views.restaurant;
 
-import com.nullchefo.restaurantbookings.views.MainLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.Route;
-
-import jakarta.annotation.security.PermitAll;
 
 //@PageTitle("Restaurants")
 //@Route(value = "restaurant", layout = MainLayout.class)

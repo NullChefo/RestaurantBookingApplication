@@ -24,14 +24,14 @@ public class ReservationGrid extends Grid<Reservation> {
 		addColumn(reservation -> Optional.ofNullable(reservation.getTable())
 										 .map(RestaurantTable::getName)
 										 .orElse(""))
-										.setHeader("Table name")
-										.setSortable(true);
+				.setHeader("Table name")
+				.setSortable(true);
 
 		addColumn(reservation -> Optional.ofNullable(reservation.getTable())
 										 .map(RestaurantTable::getCapacity)
 										 .orElse(null))
-										.setHeader("Table capacity")
-										.setSortable(true);
+				.setHeader("Table capacity")
+				.setSortable(true);
 
 		addColumn(reservation -> reservation.getTable().getName()).setHeader("Table");
 		addColumn(Reservation::getNotes).setHeader("Notes");
