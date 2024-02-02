@@ -47,7 +47,7 @@ public class RestaurantsView extends Div {
 
 	private final RestaurantService restaurantService;
 	private Grid<Restaurant> grid;
-	private Filters filters;
+	private final Filters filters;
 
 	public RestaurantsView(RestaurantService RestaurantService) {
 		this.restaurantService = RestaurantService;

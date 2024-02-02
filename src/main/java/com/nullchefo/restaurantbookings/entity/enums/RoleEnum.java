@@ -18,5 +18,5 @@
 package com.nullchefo.restaurantbookings.entity.enums;
 
 public enum RoleEnum {
-	CUSTOMER, DRIVER, ADMIN, CUSTOMER_SUPPORT, ORGANISATION;
+	CUSTOMER, DRIVER, ADMIN, CUSTOMER_SUPPORT, ORGANISATION
 }

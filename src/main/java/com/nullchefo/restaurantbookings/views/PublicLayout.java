@@ -26,8 +26,8 @@ public class PublicLayout extends AppLayout {
 
 	private H2 viewTitle;
 
-	private AuthenticatedUser authenticatedUser;
-	private AccessAnnotationChecker accessChecker;
+	private final AuthenticatedUser authenticatedUser;
+	private final AccessAnnotationChecker accessChecker;
 
 	public PublicLayout(AuthenticatedUser authenticatedUser, AccessAnnotationChecker accessChecker) {
 		this.authenticatedUser = authenticatedUser;

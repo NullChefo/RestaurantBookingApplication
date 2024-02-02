@@ -78,7 +78,7 @@ public class AdminDashboardView extends Main {
 		Icon i = icon.create();
 		i.addClassNames(BoxSizing.BORDER, Padding.XSMALL);
 
-		Span badge = new Span(i, new Span(prefix + percentage.toString()));
+		Span badge = new Span(i, new Span(prefix + percentage));
 		badge.getElement().getThemeList().add(theme);
 
 		VerticalLayout layout = new VerticalLayout(h2, span, badge);

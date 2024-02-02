@@ -44,7 +44,7 @@ public class ListUserView extends VerticalLayout {
 	private final int itemsPerPage = 10;
 	//	private ListDataProvider<User> dataProvider;
 	private final Grid<User> grid;
-	private long totalAmountOfPages;
+	private final long totalAmountOfPages;
 	private int currentPageNumber = 1;
 	private Button editUserButton;
 	private Button removeUserButton;

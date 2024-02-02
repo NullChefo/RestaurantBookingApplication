@@ -29,7 +29,7 @@ public enum OrderStatusEnum {
 
 	private final String status;
 
-	private OrderStatusEnum(String status) {
+	OrderStatusEnum(String status) {
 		this.status = status;
 	}
 

@@ -56,14 +56,21 @@ public abstract class BaseService<U extends BaseEntity> {
 	}
 
 	public U create(U entity) {
-		entity.setCreatedAt(LocalDateTime.now());
 
 		if (entity.getEntityStatus() != null) {
 			entity.setEntityStatus(entity.getEntityStatus());
 		} else {
 			entity.setEntityStatus(EntityStatus.ACTIVE);
 		}
-		return getRepo().save(entity);
+
+		// updates if existing
+		if (entity.getId() == null) {
+			entity.setCreatedAt(LocalDateTime.now());
+			return getRepo().save(entity);
+		} else {
+			// create historical entity
+			return this.update(entity);
+		}
 	}
 
 	public U update(U entity) {

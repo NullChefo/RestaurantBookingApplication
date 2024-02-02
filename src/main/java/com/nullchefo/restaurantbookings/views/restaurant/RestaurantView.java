@@ -38,11 +38,11 @@ public class RestaurantView extends VerticalLayout {
 
 	private final RestaurantTableService restaurantTableService;
 	private final ReservationService reservationService;
-	private RestaurantService restaurantService;
+	private final RestaurantService restaurantService;
 	private Grid<Restaurant> restaurantGrid;
 	private Button editRestaurantButton;
 	private Button removeRestaurantButton;
-	private User user;
+	private final User user;
 	//	private Button orderFoodButton;
 	private Button reserveTableButton;
 

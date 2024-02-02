@@ -133,7 +133,6 @@ public class RestaurantDialog extends Dialog {
 				.asRequired("Location is required")
 				.bind(Restaurant::getLocation, Restaurant::setLocation)
 				.setAsRequiredEnabled(true);
-		;
 
 		binder.readBean(restaurant);
 

@@ -59,7 +59,7 @@ public class ServiceHealth {
 	}
 
 	enum Status {
-		EXCELLENT, OK, FAILING;
+		EXCELLENT, OK, FAILING
 	}
 
 }

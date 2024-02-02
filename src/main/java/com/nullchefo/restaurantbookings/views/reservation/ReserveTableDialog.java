@@ -2,11 +2,13 @@ package com.nullchefo.restaurantbookings.views.reservation;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.nullchefo.restaurantbookings.entity.Reservation;
 import com.nullchefo.restaurantbookings.entity.Restaurant;
 import com.nullchefo.restaurantbookings.entity.RestaurantTable;
 import com.nullchefo.restaurantbookings.entity.User;
+import com.nullchefo.restaurantbookings.entity.enums.RoleEnum;
 import com.nullchefo.restaurantbookings.service.ReservationService;
 import com.nullchefo.restaurantbookings.service.RestaurantService;
 import com.nullchefo.restaurantbookings.service.RestaurantTableService;
@@ -36,6 +38,10 @@ public class ReserveTableDialog extends Dialog {
 
 	private Button reserveTableButton;
 
+	private Button cancelReservationButton;
+
+	private Button editReservationButton;
+
 	private RestaurantTableGrid availableTablesGrid;
 	private ReservationGrid reservationGrid;
 
@@ -58,11 +64,11 @@ public class ReserveTableDialog extends Dialog {
 
 		configureContent();
 
-		setCloseOnOutsideClick(false);
+		setCloseOnOutsideClick(true);
 		setCloseOnEsc(true);
 
-		setMaxHeight("90vh");
-		setMaxWidth("90vw");
+		setMinHeight("90vh");
+		setMinWidth("90vw");
 
 	}
 
@@ -72,18 +78,93 @@ public class ReserveTableDialog extends Dialog {
 		buttonsLayout.add(createDatePicker());
 		buttonsLayout.add(createReserveTableButton());
 
-		add(buttonsLayout, createRestaurantTableGrid());
+		add(buttonsLayout, createAvailableRestaurantTableGrid());
 
-		add(createReservationGrid());
+		HorizontalLayout reservedRestaurantTableActionButtonsHorizontalLayout = new HorizontalLayout();
+		reservedRestaurantTableActionButtonsHorizontalLayout.setAlignItems(FlexComponent.Alignment.BASELINE);
 
-		refreshGridElements();
+		if (userIsTheUserOfReservationOrUserIsWithElevatedRights()) {
+			reservedRestaurantTableActionButtonsHorizontalLayout.add(createCancelReservationButton());
+			reservedRestaurantTableActionButtonsHorizontalLayout.add(createEditReservationButton());
+		}
+
+		add(reservedRestaurantTableActionButtonsHorizontalLayout);
+		add(createReservedRestaurantTableGrid());
+
+		reloadGridElements();
+	}
+
+	private Button createEditReservationButton() {
+		this.editReservationButton = new Button("Edit Reservation");
+		this.editReservationButton.setEnabled(false);
+		editReservationButton.addClickListener(l -> openReservationDialog(reservationGrid.asSingleSelect().getValue()));
+		return editReservationButton;
+	}
+
+	private void openReservationDialog(final Reservation reservation) {
+		ReservationDialog dialog = new ReservationDialog(reservation, this.reservationService);
+
+		dialog.addSaveClickListener(ll -> {
+			reloadGridElements();
+			dialog.close();
+		});
+		dialog.open();
+	}
+
+	private Button createCancelReservationButton() {
+		this.cancelReservationButton = new Button("Cancel Reservation");
+		this.cancelReservationButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		this.cancelReservationButton.setTooltipText("Cancel Reservation");
+		this.cancelReservationButton.setEnabled(false);
+		this.cancelReservationButton.addClickListener(l -> {
+			Dialog dialog = new Dialog();
+			Reservation value = reservationGrid.asSingleSelect().getValue();
+			dialog.setHeaderTitle("Are you sure you want to cancel the reservation for: " + value.getReservationTime());
+			Button ok = new Button("Yes", ll -> {
+				reservationService.delete(value.getId());
+				reloadGridElements();
+				dialog.close();
+			});
+			Button no = new Button("No", ll -> dialog.close());
+			dialog.getFooter().add(ok, no);
+			dialog.open();
+		});
+
+		return this.cancelReservationButton;
+
+	}
+
+	private boolean userIsTheUserOfReservationOrUserIsWithElevatedRights() {
+		if (this.reservationGrid == null) {
+			return true;
+		}
+
+		if (this.reservationGrid.asSingleSelect().getValue() != null) {
+			// the reservation is made by the user
+			Reservation reservation = this.reservationGrid.asSingleSelect().getValue();
+			if (reservation.getUser().getId().equals(this.user.getId())) {
+				return true;
+			}
+			// restaurant controls the reservation
+			if (this.restaurant.getOwner() == this.user) {
+				return true;
+			}
+
+			// if the user is the admin
+			return this.user.getRoles().contains(RoleEnum.ADMIN);
+
+		}
+		return false;
 	}
 
 	// add filter reserve teble for DATE
-	private Grid<RestaurantTable> createRestaurantTableGrid() {
+	private Grid<RestaurantTable> createAvailableRestaurantTableGrid() {
 		this.availableTablesGrid = new RestaurantTableGrid();
 		this.availableTablesGrid.setMinHeight("400px");
 		this.availableTablesGrid.setMinWidth("500px");
+
+		this.availableTablesGrid.setMaxHeight("40vh");
+
 		//		this.restaurantGrid.addItemDoubleClickListener(l -> openRestaurantDialog(l.getItem(), this.authenticatedUser.get()
 		//																											   .orElse(null)));
 		SingleSelect<Grid<RestaurantTable>, RestaurantTable> singleSelect = availableTablesGrid.asSingleSelect();
@@ -91,20 +172,22 @@ public class ReserveTableDialog extends Dialog {
 			RestaurantTable value = l.getValue();
 			boolean enabled = value != null;
 			reserveTableButton.setEnabled(enabled);
+			//			reservationGrid.setItems(reservationService.findAllByTableAndReservationTime(value, datePicker.getValue()));
 		});
 		return availableTablesGrid;
 	}
 
-	private Grid<Reservation> createReservationGrid() {
+	private Grid<Reservation> createReservedRestaurantTableGrid() {
 		this.reservationGrid = new ReservationGrid();
 		this.reservationGrid.setMinHeight("400p");
 		this.reservationGrid.setMinWidth("500px");
-
+		this.reservationGrid.setMaxHeight("40vh");
 		SingleSelect<Grid<Reservation>, Reservation> singleSelect = reservationGrid.asSingleSelect();
 		singleSelect.addValueChangeListener(l -> {
 			Reservation value = l.getValue();
 			boolean enabled = value != null;
-			reserveTableButton.setEnabled(enabled);
+			editReservationButton.setEnabled(enabled);
+			cancelReservationButton.setEnabled(enabled);
 		});
 
 		return reservationGrid;
@@ -112,11 +195,12 @@ public class ReserveTableDialog extends Dialog {
 
 	private HorizontalLayout createDatePicker() {
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
+		horizontalLayout.setAlignItems(FlexComponent.Alignment.BASELINE);
 		datePicker = new DatePicker("Reservation date");
 		datePicker.setRequired(true);
 		Button searchButton = new Button(new Icon("lumo", "search"));
 		searchButton.addClickListener(l -> {
-			refreshGridElements();
+			reloadGridElements();
 		});
 		horizontalLayout.add(datePicker, searchButton);
 		return horizontalLayout;
@@ -147,23 +231,33 @@ public class ReserveTableDialog extends Dialog {
 		return this.reserveTableButton;
 	}
 
-	private void refreshGridElements() {
+	private void reloadGridElements() {
 
 		if (datePicker.getValue() == null) {
 			datePicker.setValue(LocalDate.now());
 		}
-		List<Reservation> reservations = reservationService.finAllByReservationDate(datePicker.getValue());
 
-		List<RestaurantTable> availableTables = this.restaurantTableService.findAllByRestaurant(this.restaurant);
+		List<RestaurantTable> restaurantTables = this.restaurantTableService.findAllByRestaurant(this.restaurant);
 
-		List<RestaurantTable> reservedTables = reservations.stream().map(Reservation::getTable).toList();
+		List<Reservation> reservations = reservationService.findAllByReservationTimeAndTableIn(
+				datePicker.getValue(),
+				restaurantTables);
 
-		availableTables.removeAll(reservedTables);
+		List<RestaurantTable> reservedTables = reservations.stream()
+														   .map(Reservation::getTable)
+														   .collect(Collectors.toList());
+
+		// problem with equals and hashCode
+		List<RestaurantTable> availableTables = restaurantTables.stream()
+																.filter(table -> reservedTables
+																		.stream()
+																		.noneMatch(reservedTable -> reservedTable
+																				.getId()
+																				.equals(table.getId())))
+																.collect(Collectors.toList());
 
 		this.reservationGrid.setItems(reservations);
-
 		availableTablesGrid.deselectAll();
-
 		this.availableTablesGrid.setItems(availableTables);
 
 	}

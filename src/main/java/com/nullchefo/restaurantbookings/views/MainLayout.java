@@ -36,7 +36,6 @@ import com.nullchefo.restaurantbookings.views.informational.jobs.JobsView;
 import com.nullchefo.restaurantbookings.views.informational.legalInformation.LegalInformationView;
 import com.nullchefo.restaurantbookings.views.informational.privacyPolicy.PrivacyPolicyView;
 import com.nullchefo.restaurantbookings.views.informational.termsOfService.TermsOfServiceView;
-import com.nullchefo.restaurantbookings.views.order.list.ListOrderView;
 import com.nullchefo.restaurantbookings.views.reservation.list.ListReservationsView;
 import com.nullchefo.restaurantbookings.views.restaurant.RestaurantView;
 import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.admindashboard.AdminDashboardView;
@@ -71,8 +70,8 @@ public class MainLayout extends AppLayout {
 
 	private final UserService userService;
 	private H2 viewTitle;
-	private AuthenticatedUser authenticatedUser;
-	private AccessAnnotationChecker accessChecker;
+	private final AuthenticatedUser authenticatedUser;
+	private final AccessAnnotationChecker accessChecker;
 
 	public MainLayout(
 			AuthenticatedUser authenticatedUser, AccessAnnotationChecker accessChecker,
@@ -134,10 +133,10 @@ public class MainLayout extends AppLayout {
 
 		}
 
-		if (accessChecker.hasAccess(ListOrderView.class)) {
-			nav.addItem(new SideNavItem("Orders", ListOrderView.class, LineAwesomeIcon.SHOPPING_BASKET_SOLID.create()));
-
-		}
+		//		if (accessChecker.hasAccess(ListOrderView.class)) {
+		//			nav.addItem(new SideNavItem("Orders", ListOrderView.class, LineAwesomeIcon.SHOPPING_BASKET_SOLID.create()));
+		//
+		//		}
 
 		if (accessChecker.hasAccess(AdminDashboardView.class)) {
 			nav.addItem(new SideNavItem("Admin Dashboard", AdminDashboardView.class,

@@ -42,22 +42,22 @@ import com.vaadin.flow.component.textfield.TextField;
 import lombok.Getter;
 
 public class RegistrationForm extends FormLayout {
-	private H3 title;
-	private TextField firstName;
-	private TextField lastName;
-	private EmailField email;
-	private TextField username;
-	private PasswordField password;
-	private PasswordField passwordConfirm;
-	private Checkbox subscribeForMarketing;
-	private Checkbox subscribeForNotifications;
-	private Checkbox subscribeForAnnouncements;
-	private Checkbox isOrganization;
+	private final H3 title;
+	private final TextField firstName;
+	private final TextField lastName;
+	private final EmailField email;
+	private final TextField username;
+	private final PasswordField password;
+	private final PasswordField passwordConfirm;
+	private final Checkbox subscribeForMarketing;
+	private final Checkbox subscribeForNotifications;
+	private final Checkbox subscribeForAnnouncements;
+	private final Checkbox isOrganization;
 
 	@Getter
-	private Span errorMessageField;
+	private final Span errorMessageField;
 	@Getter
-	private Button submitButton;
+	private final Button submitButton;
 
 	public RegistrationForm() {
 

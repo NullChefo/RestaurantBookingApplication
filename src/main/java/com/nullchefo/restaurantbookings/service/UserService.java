@@ -123,11 +123,7 @@ public class UserService extends BaseService<User> {
 
 		final String validationToken = UUID.randomUUID().toString();
 
-		if (isDevelopmentEnvironment) {
-			user.setEnabled(true);
-		} else {
-			user.setEnabled(false);
-		}
+		user.setEnabled(isDevelopmentEnvironment);
 
 		try {
 			userRepository.save(user);

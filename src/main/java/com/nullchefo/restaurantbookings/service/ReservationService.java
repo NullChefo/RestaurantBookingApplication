@@ -26,6 +26,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import com.nullchefo.restaurantbookings.entity.Reservation;
+import com.nullchefo.restaurantbookings.entity.RestaurantTable;
 import com.nullchefo.restaurantbookings.repository.ReservationRepository;
 
 @Service
@@ -45,4 +46,11 @@ public class ReservationService extends BaseService<Reservation> {
 	public List<Reservation> finAllByReservationDate(final LocalDate date) {
 		return this.reservationRepository.findAllByReservationTime(date);
 	}
+
+	public List<Reservation> findAllByReservationTimeAndTableIn(
+			final LocalDate date,
+			final List<RestaurantTable> tables) {
+		return this.reservationRepository.findAllByReservationTimeAndTableIn(date, tables);
+	}
+
 }
