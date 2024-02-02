@@ -15,7 +15,7 @@
  * Usage of this software by corporations, for machine learning, or AI purposes
  * is expressly prohibited.
  */
-package com.nullchefo.restaurantbookings.views.restaurant.list;
+package com.nullchefo.restaurantbookings.views.restaurant;
 
 import com.nullchefo.restaurantbookings.views.MainLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -24,9 +24,9 @@ import com.vaadin.flow.router.Route;
 
 import jakarta.annotation.security.PermitAll;
 
-@PageTitle("Restaurants")
-@Route(value = "restaurant", layout = MainLayout.class)
-@PermitAll
+//@PageTitle("Restaurants")
+//@Route(value = "restaurant", layout = MainLayout.class)
+//@PermitAll
 public class RestaurantListView extends VerticalLayout {
 
 	//	private final Grid<Restaurant> grid = new Grid<>(Restaurant.class);

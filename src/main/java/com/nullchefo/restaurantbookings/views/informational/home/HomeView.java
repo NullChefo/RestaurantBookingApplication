@@ -18,7 +18,7 @@
 package com.nullchefo.restaurantbookings.views.informational.home;
 
 import com.nullchefo.restaurantbookings.views.MainLayout;
-import com.nullchefo.restaurantbookings.views.restaurant.list.RestaurantListView;
+import com.nullchefo.restaurantbookings.views.restaurant.RestaurantView;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -55,7 +55,7 @@ public class HomeView extends VerticalLayout {
 		reservationButton.getStyle().set("background-color", "#4CAF50").set("color", "white");
 		reservationButton.addClickListener(e -> {
 			// Navigate to the reservation page
-			getUI().ifPresent(ui -> ui.navigate(RestaurantListView.class));
+			getUI().ifPresent(ui -> ui.navigate(RestaurantView.class));
 		});
 
 		// Order Button with inline CSS
@@ -63,7 +63,7 @@ public class HomeView extends VerticalLayout {
 		orderButton.getStyle().set("background-color", "#f44336").set("color", "white");
 		orderButton.addClickListener(e -> {
 			// Navigate to the order page
-			getUI().ifPresent(ui -> ui.navigate(RestaurantListView.class));
+			getUI().ifPresent(ui -> ui.navigate(RestaurantView.class));
 		});
 
 		// buttons

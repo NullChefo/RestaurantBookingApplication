@@ -23,6 +23,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -49,10 +50,19 @@ public class Restaurant extends BaseEntity {
 
 	// allows to save location without calling location repo
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(unique = false)
 	private Location location;
 
 	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Menu> menus;
+
+
+	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Review> reviews;
+
+	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<RestaurantTable> tables;
+
 	// TODO make this happen
 	//	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	//	private List<Schedule> schedules;
@@ -66,11 +76,5 @@ public class Restaurant extends BaseEntity {
 	// TODO make this happen
 	//	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	//	private List<Cuisine> cuisines;
-
-	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Review> reviews;
-
-	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<RestaurantTable> tables;
 
 }

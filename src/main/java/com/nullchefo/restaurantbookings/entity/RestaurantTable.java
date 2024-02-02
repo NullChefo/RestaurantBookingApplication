@@ -37,9 +37,9 @@ public class RestaurantTable extends BaseEntity {
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
 
-	private float xPosition;
-	private float yPosition;
-	private float floorPosition;
+	private double xPosition;
+	private double yPosition;
+	private double floorPosition;
 	private String name;
 	private int capacity;
 

@@ -17,6 +17,8 @@
  */
 package com.nullchefo.restaurantbookings.service;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +40,9 @@ public class ReservationService extends BaseService<Reservation> {
 	@Override
 	protected JpaRepository<Reservation, UUID> getRepo() {
 		return this.reservationRepository;
+	}
+
+	public List<Reservation> finAllByReservationDate(final LocalDate date) {
+		return this.reservationRepository.findAllByReservationTime(date);
 	}
 }

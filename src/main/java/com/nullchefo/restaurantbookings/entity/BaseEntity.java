@@ -21,6 +21,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
+import com.nullchefo.restaurantbookings.entity.enums.EntityStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -50,4 +52,6 @@ public class BaseEntity {
 
 	@Version
 	private int version;
+
+	private EntityStatus entityStatus;
 }

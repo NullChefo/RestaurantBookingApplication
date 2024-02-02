@@ -27,6 +27,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.nullchefo.restaurantbookings.entity.BaseEntity;
+import com.nullchefo.restaurantbookings.entity.enums.EntityStatus;
 
 /**
  * Abstract his means that the class cannot be instantiated on its own. It's meant to be subclassed, and concrete (non-abstract) subclasses are expected to provide implementations for abstract methods.
@@ -56,6 +57,12 @@ public abstract class BaseService<U extends BaseEntity> {
 
 	public U create(U entity) {
 		entity.setCreatedAt(LocalDateTime.now());
+
+		if (entity.getEntityStatus() != null) {
+			entity.setEntityStatus(entity.getEntityStatus());
+		}else {
+			entity.setEntityStatus(EntityStatus.ACTIVE);
+		}
 		return getRepo().save(entity);
 	}
 

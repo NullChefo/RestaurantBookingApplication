@@ -17,14 +17,17 @@
  */
 package com.nullchefo.restaurantbookings.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import com.nullchefo.restaurantbookings.entity.Restaurant;
 import com.nullchefo.restaurantbookings.entity.RestaurantTable;
 import com.nullchefo.restaurantbookings.repository.RestaurantTableRepository;
+import com.vaadin.flow.data.provider.DataProvider;
 
 @Service
 public class RestaurantTableService extends BaseService<RestaurantTable> {
@@ -40,4 +43,9 @@ public class RestaurantTableService extends BaseService<RestaurantTable> {
 	protected JpaRepository<RestaurantTable, UUID> getRepo() {
 		return this.restaurantTableRepository;
 	}
+
+	public List<RestaurantTable> findAllByRestaurant(final Restaurant restaurant) {
+		return this.restaurantTableRepository.findAllByRestaurant(restaurant);
+	}
+
 }
