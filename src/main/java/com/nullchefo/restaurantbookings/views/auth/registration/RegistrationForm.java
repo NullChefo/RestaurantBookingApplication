@@ -41,6 +41,7 @@ import com.vaadin.flow.component.textfield.TextField;
 
 import lombok.Getter;
 
+@Getter
 public class RegistrationForm extends FormLayout {
 	private final H3 title;
 	private final TextField firstName;

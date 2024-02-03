@@ -56,13 +56,9 @@ public class ListReservationsView extends VerticalLayout {
 	private final RestaurantService restaurantService;
 
 	private final RestaurantTableService restaurantTableService;
-
-	private Button cancelReservationButton;
-
-	private Button editReservationButton;
-
 	private final User user;
-
+	private Button cancelReservationButton;
+	private Button editReservationButton;
 	private ReservationGrid reservationGrid;
 
 	public ListReservationsView(

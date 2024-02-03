@@ -20,6 +20,7 @@ package com.nullchefo.restaurantbookings.entity;
 import java.util.Calendar;
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
@@ -46,7 +47,7 @@ public class EmailVerificationToken extends BaseEntity {
 
 	private Date expirationTime;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "users_id",
 				nullable = false
 			, foreignKey = @ForeignKey(name = "FK_USER_VERIFY_TOKEN")

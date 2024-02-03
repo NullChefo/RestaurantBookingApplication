@@ -82,7 +82,6 @@ public class HydrateDatabase {
 								 .pictureURL(
 										 "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_3x4.jpg")
 								 .build();
-			userRepository.save(adminUser);
 
 			// user/user
 			User user = User.builder()
@@ -100,7 +99,23 @@ public class HydrateDatabase {
 							.pictureURL(
 									"https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*")
 							.build();
-			userRepository.save(user);
+
+			// user/user
+			User user1 = User.builder()
+							 .email("user1@example.com")
+							 .hashedPassword(passwordEncoder.encode("user1"))
+							 .firstName("Other")
+							 .lastName("Userov")
+							 .username("user1")
+							 .role(RoleEnum.CUSTOMER.name())
+							 .enabled(true)
+							 .dateOfBirth(LocalDate.of(1900, 1, 1))
+							 .important(false)
+							 .roles(Set.of(RoleEnum.CUSTOMER))
+							 .phone("0898888848")
+							 .pictureURL(
+									 "https://i.pinimg.com/736x/21/74/01/217401dd349c077cdd3e71f61fba3a59.jpg")
+							 .build();
 
 			//restaurant/restaurant
 			User restaurantUser = User.builder()
@@ -118,8 +133,6 @@ public class HydrateDatabase {
 									  .pictureURL(
 											  "https://kfcvarna.bg/upload/iblock/87c/87cc8fae35a2aebc270d1f910d6e940a.png")
 									  .build();
-
-			userRepository.save(restaurantUser);
 
 			//			driver/driver
 			User driverUser = User.builder()
@@ -154,7 +167,8 @@ public class HydrateDatabase {
 								   .phone("support")
 								   .pictureURL("https://www.svgrepo.com/show/192522/customer-service-support.svg")
 								   .build();
-			userRepository.save(supportUser);
+
+			userRepository.saveAll(List.of(adminUser, user, user1, restaurantUser, driverUser, supportUser));
 		}
 	}
 
@@ -176,12 +190,6 @@ public class HydrateDatabase {
 										.restaurant(restaurant)
 										.build();
 
-			//			Cuisine cuisine = Cuisine.builder()
-			//									 .name("Cuisine")
-			//									 .description("Description")
-			//									 .restaurant(restaurant)
-			//									 .build();
-
 			Review review = Review.builder()
 								  .rating((byte) 5)
 								  .date(LocalDateTime.now())
@@ -198,40 +206,9 @@ public class HydrateDatabase {
 															 .restaurant(restaurant)
 															 .build();
 
-			//
-			//			HoursOfOperation hoursOfOperation = HoursOfOperation.builder()
-			//																.openingTime(LocalTime.of(8,0))
-			//																.closingTime(LocalTime.of(20,0))
-			//																.build();
-			//
-			//
-			//			Set<DayOfWeek> dayOfWeeks = new LinkedHashSet<>();
-			//			dayOfWeeks.add(DayOfWeek.MONDAY);
-			//			dayOfWeeks.add(DayOfWeek.TUESDAY);
-			//			dayOfWeeks.add(DayOfWeek.WEDNESDAY);
-			//			dayOfWeeks.add(DayOfWeek.THURSDAY);
-			//			dayOfWeeks.add(DayOfWeek.FRIDAY);
-			//			dayOfWeeks.add(DayOfWeek.SATURDAY);
-			//			//			dayOfWeeks.add(DayOfWeek.SUNDAY);
-
-			//			Schedule schedule = Schedule.builder()
-			//										.hoursOfOperation(hoursOfOperation)
-			//										.daysOpen(dayOfWeeks)
-			//										.restaurant(restaurant)
-			//										.build();
-
-			//											  .location(location)
-			//											  .cuisines(List.of(cuisine))
-			//											  .reviews(List.of(review))
-			//											  .tables(List.of(restaurantTable))
-			//											  .schedules(List.of(schedule))
 			restaurant.setLocation(location);
-			//			restaurant.setCuisines(List.of(cuisine));
 			restaurant.setReviews(List.of(review));
 			restaurant.setTables(List.of(restaurantTable));
-			//			restaurant.setSchedules(List.of(schedule));
-
-			// update
 			restaurantRepository.save(restaurant);
 
 		}

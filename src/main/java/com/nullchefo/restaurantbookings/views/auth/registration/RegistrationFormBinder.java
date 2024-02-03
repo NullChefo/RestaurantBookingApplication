@@ -54,6 +54,12 @@ public class RegistrationFormBinder {
 				registrationForm.getPasswordField(),
 				UserRegistrationDTO::getPassword,
 				UserRegistrationDTO::setPassword);
+
+		binder.bind(
+				registrationForm.getIsOrganization(),
+				UserRegistrationDTO::isOrganization,
+				UserRegistrationDTO::setOrganization);
+
 		// Additional validation if needed
 		binder.forField(registrationForm.getPasswordField())
 			  .withValidator(this::passwordValidator)

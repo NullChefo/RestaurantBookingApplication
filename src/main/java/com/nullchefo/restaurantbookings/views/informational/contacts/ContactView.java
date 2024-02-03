@@ -142,9 +142,10 @@ public class ContactView extends VerticalLayout {
 
 		this.contactFormSubmissionService.create(submission);
 		this.mailProduceService.sendContactFormEmail(submission);
-		Notification.show("Thank you for your message. We will get back to you shortly.",
-						  10000,
-						  Notification.Position.BOTTOM_START);
+		Notification.show(
+				"Thank you for your message. We will get back to you shortly.",
+				10000,
+				Notification.Position.BOTTOM_START);
 		UI.getCurrent().navigate(ContactView.class);
 	}
 
