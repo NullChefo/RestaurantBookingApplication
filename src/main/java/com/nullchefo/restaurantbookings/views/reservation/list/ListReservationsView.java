@@ -17,19 +17,83 @@
  */
 package com.nullchefo.restaurantbookings.views.reservation.list;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.nullchefo.restaurantbookings.configuration.security.AuthenticatedUser;
+import com.nullchefo.restaurantbookings.entity.Reservation;
+import com.nullchefo.restaurantbookings.entity.Restaurant;
+import com.nullchefo.restaurantbookings.entity.RestaurantTable;
+import com.nullchefo.restaurantbookings.entity.User;
+import com.nullchefo.restaurantbookings.entity.enums.RoleEnum;
+import com.nullchefo.restaurantbookings.service.ReservationService;
+import com.nullchefo.restaurantbookings.service.RestaurantService;
+import com.nullchefo.restaurantbookings.service.RestaurantTableService;
 import com.nullchefo.restaurantbookings.views.MainLayout;
+import com.nullchefo.restaurantbookings.views.reservation.ReservationGrid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 import jakarta.annotation.security.PermitAll;
 
-@PageTitle("Add Reservation")
+@PageTitle("Reservation")
 @Route(value = "reservation", layout = MainLayout.class)
 @PermitAll
 public class ListReservationsView extends VerticalLayout {
 
-	public ListReservationsView() {
+	private final ReservationService reservationService;
+	private final AuthenticatedUser authenticatedUser;
+
+	private final RestaurantService restaurantService;
+
+	private final RestaurantTableService restaurantTableService;
+
+	private User user;
+
+	private ReservationGrid reservationGrid;
+
+
+
+	public ListReservationsView(ReservationService reservationService, AuthenticatedUser authenticatedUser,
+								RestaurantService restaurantService, RestaurantTableService restaurantTableService) {
+		this.reservationService = reservationService;
+		this.authenticatedUser = authenticatedUser;
+		this.restaurantService = restaurantService;
+		this.restaurantTableService = restaurantTableService;
+
+		this.user = this.authenticatedUser.get().orElse(null);
+
+		setSizeFull();
+		add(createReservationsGrid());
 
 	}
+
+	private ReservationGrid createReservationsGrid() {
+		this.reservationGrid = new ReservationGrid();
+
+		List<Reservation> reservations = new ArrayList<>();
+
+		if (this.user != null) {
+			if(user.getRoles().contains(RoleEnum.ADMIN)) {
+				reservations = reservationService.findAllSortedByReservationTime();
+			}
+
+			if (user.getRoles().contains(RoleEnum.ORGANISATION)) {
+				List<Restaurant> restaurants = this.restaurantService.findAllByOwner(user);
+				List<RestaurantTable> tables = this.restaurantTableService.findAllByRestaurants(restaurants);
+				reservations = this.reservationService.findAllByRestaurantTablesAndSortedByReservationTime(tables);
+			}
+
+			if (user.getRoles().contains(RoleEnum.CUSTOMER)) {
+				reservations = this.reservationService.findAllForUserAndSortedByTime(this.user);
+			}
+
+		}
+
+		this.reservationGrid.setItems(reservations);
+
+		return this.reservationGrid;
+	}
+
 }

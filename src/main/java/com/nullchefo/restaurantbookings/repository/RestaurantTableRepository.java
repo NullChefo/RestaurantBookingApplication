@@ -16,4 +16,6 @@ public interface RestaurantTableRepository
 		extends JpaRepository<RestaurantTable, UUID>, JpaSpecificationExecutor<RestaurantTable> {
 	@Transactional
 	List<RestaurantTable> findAllByRestaurant(final Restaurant restaurant);
+
+	List<RestaurantTable> findAllByRestaurantIn(List<Restaurant> restaurants);
 }

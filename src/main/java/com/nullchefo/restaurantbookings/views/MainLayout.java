@@ -24,6 +24,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 import com.nullchefo.restaurantbookings.configuration.security.AuthenticatedUser;
 import com.nullchefo.restaurantbookings.entity.User;
 import com.nullchefo.restaurantbookings.service.UserService;
+import com.nullchefo.restaurantbookings.views.contact.ContactFormSubmissionsView;
 import com.nullchefo.restaurantbookings.views.informational.about.AboutViewV2;
 import com.nullchefo.restaurantbookings.views.informational.businessToBusiness.B2BView;
 import com.nullchefo.restaurantbookings.views.informational.contacts.ContactView;
@@ -130,6 +131,12 @@ public class MainLayout extends AppLayout {
 
 		if (accessChecker.hasAccess(ListUserView.class)) {
 			nav.addItem(new SideNavItem("Users", ListUserView.class, LineAwesomeIcon.USER.create()));
+
+		}
+
+
+		if (accessChecker.hasAccess(ContactFormSubmissionsView.class)) {
+			nav.addItem(new SideNavItem("Secret admin panel", ContactFormSubmissionsView.class, LineAwesomeIcon.QUESTION_SOLID.create()));
 
 		}
 

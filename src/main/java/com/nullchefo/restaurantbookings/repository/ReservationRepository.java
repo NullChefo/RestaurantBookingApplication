@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nullchefo.restaurantbookings.entity.Reservation;
 import com.nullchefo.restaurantbookings.entity.RestaurantTable;
+import com.nullchefo.restaurantbookings.entity.User;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, UUID>,
@@ -20,4 +21,10 @@ public interface ReservationRepository extends JpaRepository<Reservation, UUID>,
 	//	List<Reservation> findAllByReservationTimeAndContainingTable(@Param("date") LocalDate date, @Param("tables") List<RestaurantTable> tables);
 
 	List<Reservation> findAllByReservationTimeAndTableIn(LocalDate date, List<RestaurantTable> tables);
+
+	List<Reservation> findAllByOrderByReservationTimeDesc();
+
+	List<Reservation> findAllByUserOrderByReservationTimeDesc(User user);
+
+	List<Reservation> findAllByTableInOrderByReservationTimeDesc(List<RestaurantTable> tables);
 }

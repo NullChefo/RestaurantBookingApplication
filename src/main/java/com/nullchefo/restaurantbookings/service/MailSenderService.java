@@ -66,7 +66,6 @@ public class MailSenderService {
 		email.setUser(to);
 		email.setSubject(subject);
 		email.setTemplateName(templateName);
-		// TODO can i add the context
 		email.setContext(String.valueOf(context));
 
 		try {
@@ -86,13 +85,17 @@ public class MailSenderService {
 			email.setSent(true);
 
 		}
-
 		// Catch block to handle MessagingException
 		catch (MessagingException e) {
 			log.error(e.getMessage());
 			email.setSent(false);
 		} finally {
-			log.info(sentEmailService.create(email).toString());
+
+			if (to.getId() == null) {
+				log.info("Email was sent to: " + to.getEmail());
+			}else{
+				log.info(sentEmailService.create(email).toString());
+			}
 		}
 
 	}

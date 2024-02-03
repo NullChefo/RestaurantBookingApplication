@@ -27,6 +27,7 @@ import org.springframework.stereotype.Service;
 
 import com.nullchefo.restaurantbookings.entity.Reservation;
 import com.nullchefo.restaurantbookings.entity.RestaurantTable;
+import com.nullchefo.restaurantbookings.entity.User;
 import com.nullchefo.restaurantbookings.repository.ReservationRepository;
 
 @Service
@@ -53,4 +54,15 @@ public class ReservationService extends BaseService<Reservation> {
 		return this.reservationRepository.findAllByReservationTimeAndTableIn(date, tables);
 	}
 
+	public List<Reservation> findAllSortedByReservationTime() {
+		return this.reservationRepository.findAllByOrderByReservationTimeDesc();
+	}
+
+	public List<Reservation> findAllForUserAndSortedByTime(final User user) {
+		return this.reservationRepository.findAllByUserOrderByReservationTimeDesc(user);
+	}
+
+	public List<Reservation> findAllByRestaurantTablesAndSortedByReservationTime(final List<RestaurantTable> tables) {
+		return this.reservationRepository.findAllByTableInOrderByReservationTimeDesc(tables);
+	}
 }

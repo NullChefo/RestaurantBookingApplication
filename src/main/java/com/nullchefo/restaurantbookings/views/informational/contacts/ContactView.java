@@ -25,6 +25,7 @@ import com.nullchefo.restaurantbookings.entity.ContactFormSubmission;
 import com.nullchefo.restaurantbookings.service.ContactFormSubmissionService;
 import com.nullchefo.restaurantbookings.service.MailProduceService;
 import com.nullchefo.restaurantbookings.views.MainLayout;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H1;
@@ -44,7 +45,7 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @AnonymousAllowed
 public class ContactView extends VerticalLayout {
 
-	private final Binder<ContactFormSubmission> binder = new Binder<>(ContactFormSubmission.class);
+	private Binder<ContactFormSubmission> binder;
 	private final ContactFormSubmissionService contactFormSubmissionService;
 
 	private final MailProduceService mailProduceService;
@@ -86,6 +87,8 @@ public class ContactView extends VerticalLayout {
 		reasonField.setWidth("100%");
 
 		contactFormLayout.add(name, email, messageField, reasonField);
+
+		this.binder = new Binder<>(ContactFormSubmission.class);
 
 		// Bind form fields to ContactFormSubmission object
 		binder.bind(name, ContactFormSubmission::getName, ContactFormSubmission::setName);
@@ -140,6 +143,8 @@ public class ContactView extends VerticalLayout {
 
 		this.contactFormSubmissionService.create(submission);
 		this.mailProduceService.sendContactFormEmail(submission);
+		Notification.show("Thank you for your message. We will get back to you shortly." , 10000 , Notification.Position.BOTTOM_START);
+		UI.getCurrent().navigate(ContactView.class);
 	}
 
 }

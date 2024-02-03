@@ -47,4 +47,7 @@ public class RestaurantTableService extends BaseService<RestaurantTable> {
 		return this.restaurantTableRepository.findAllByRestaurant(restaurant);
 	}
 
+	public List<RestaurantTable> findAllByRestaurants(final List<Restaurant> restaurants) {
+		return this.restaurantTableRepository.findAllByRestaurantIn(restaurants);
+	}
 }
