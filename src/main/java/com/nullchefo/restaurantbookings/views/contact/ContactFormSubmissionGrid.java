@@ -1,7 +1,5 @@
 package com.nullchefo.restaurantbookings.views.contact;
 
-import java.util.Optional;
-
 import com.nullchefo.restaurantbookings.entity.ContactFormSubmission;
 import com.vaadin.flow.component.grid.Grid;
 
@@ -12,7 +10,6 @@ public class ContactFormSubmissionGrid extends Grid<ContactFormSubmission> {
 	}
 
 	private void configureView() {
-
 
 		addColumn(ContactFormSubmission::getName).setHeader("Name");
 		addColumn(ContactFormSubmission::getEmail).setHeader("Email");

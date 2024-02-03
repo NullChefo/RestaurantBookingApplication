@@ -22,6 +22,11 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @AnonymousAllowed
 public class CreditCardFormView extends Div {
 
+	/**
+	 * Matches Visa, MasterCard, American Express, Diners Club, Discover, and JCB
+	 * cards. See https://stackoverflow.com/a/9315696
+	 */
+	private final String CARD_REGEX = "^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$";
 	private TextField cardNumber;
 	private TextField cardholderName;
 	private Select<Integer> month;
@@ -30,12 +35,6 @@ public class CreditCardFormView extends Div {
 	private PasswordField csc;
 	private Button cancel;
 	private Button submit;
-
-	/**
-	 * Matches Visa, MasterCard, American Express, Diners Club, Discover, and JCB
-	 * cards. See https://stackoverflow.com/a/9315696
-	 */
-	private final String CARD_REGEX = "^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$";
 
 	public CreditCardFormView() {
 		addClassName("credit-card-form-view");

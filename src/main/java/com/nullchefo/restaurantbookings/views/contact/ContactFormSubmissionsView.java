@@ -1,9 +1,7 @@
 package com.nullchefo.restaurantbookings.views.contact;
 
-import com.nullchefo.restaurantbookings.entity.ContactFormSubmission;
 import com.nullchefo.restaurantbookings.service.ContactFormSubmissionService;
 import com.nullchefo.restaurantbookings.views.MainLayout;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -24,11 +22,10 @@ public class ContactFormSubmissionsView extends VerticalLayout {
 		add(createContactFormSubmissionGrid());
 	}
 
-	private ContactFormSubmissionGrid createContactFormSubmissionGrid(){
+	private ContactFormSubmissionGrid createContactFormSubmissionGrid() {
 		ContactFormSubmissionGrid grid = new ContactFormSubmissionGrid();
 		grid.setItems(contactFormSubmissionService.findAll());
 		return grid;
 	}
-
 
 }

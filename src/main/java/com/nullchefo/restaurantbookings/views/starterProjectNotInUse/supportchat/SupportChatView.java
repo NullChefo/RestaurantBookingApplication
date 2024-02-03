@@ -42,8 +42,8 @@ public class SupportChatView extends HorizontalLayout {
 
 	private final ChatInfo[] chats = new ChatInfo[] { new ChatInfo("general", 0), new ChatInfo("support", 0),
 			new ChatInfo("casual", 0) };
-	private ChatInfo currentChat = chats[0];
 	private final Tabs tabs;
+	private ChatInfo currentChat = chats[0];
 
 	public SupportChatView() {
 		addClassNames("support-chat-view", Width.FULL, Display.FLEX, Flex.AUTO);

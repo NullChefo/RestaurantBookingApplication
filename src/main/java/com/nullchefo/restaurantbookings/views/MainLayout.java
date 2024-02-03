@@ -70,9 +70,9 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 public class MainLayout extends AppLayout {
 
 	private final UserService userService;
-	private H2 viewTitle;
 	private final AuthenticatedUser authenticatedUser;
 	private final AccessAnnotationChecker accessChecker;
+	private H2 viewTitle;
 
 	public MainLayout(
 			AuthenticatedUser authenticatedUser, AccessAnnotationChecker accessChecker,
@@ -134,9 +134,11 @@ public class MainLayout extends AppLayout {
 
 		}
 
-
 		if (accessChecker.hasAccess(ContactFormSubmissionsView.class)) {
-			nav.addItem(new SideNavItem("Secret admin panel", ContactFormSubmissionsView.class, LineAwesomeIcon.QUESTION_SOLID.create()));
+			nav.addItem(new SideNavItem(
+					"Secret admin panel",
+					ContactFormSubmissionsView.class,
+					LineAwesomeIcon.QUESTION_SOLID.create()));
 
 		}
 

@@ -93,7 +93,7 @@ public class MailSenderService {
 
 			if (to.getId() == null) {
 				log.info("Email was sent to: " + to.getEmail());
-			}else{
+			} else {
 				log.info(sentEmailService.create(email).toString());
 			}
 		}

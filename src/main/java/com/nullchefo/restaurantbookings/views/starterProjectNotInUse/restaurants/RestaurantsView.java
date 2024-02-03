@@ -46,8 +46,8 @@ import jakarta.persistence.criteria.Root;
 public class RestaurantsView extends Div {
 
 	private final RestaurantService restaurantService;
-	private Grid<Restaurant> grid;
 	private final Filters filters;
+	private Grid<Restaurant> grid;
 
 	public RestaurantsView(RestaurantService RestaurantService) {
 		this.restaurantService = RestaurantService;
