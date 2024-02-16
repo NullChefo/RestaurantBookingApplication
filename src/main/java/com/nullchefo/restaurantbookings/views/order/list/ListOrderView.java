@@ -14,6 +14,6 @@ import jakarta.annotation.security.PermitAll;
 public class ListOrderView extends VerticalLayout {
 
 	public ListOrderView() {
-		add(new H1("To ne implemented"));
+		add(new H1("To be implemented"));
 	}
 }
