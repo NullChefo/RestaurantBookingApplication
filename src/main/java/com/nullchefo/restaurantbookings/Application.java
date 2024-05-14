@@ -20,9 +20,21 @@ package com.nullchefo.restaurantbookings;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.nullchefo.restaurantbookings.agents.CookAgent;
+import com.nullchefo.restaurantbookings.agents.CustomerAgent;
+import com.nullchefo.restaurantbookings.agents.HostessAgent;
+import com.nullchefo.restaurantbookings.agents.TestAgent;
+import com.nullchefo.restaurantbookings.agents.WaiterAgent;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.theme.Theme;
+
+import jade.core.ProfileImpl;
+import jade.core.Runtime;
+import jade.wrapper.AgentContainer;
+import jade.wrapper.AgentController;
+import jade.wrapper.StaleProxyException;
+import jade.core.Profile;
 
 /**
  * The entry point of the Spring Boot application.
@@ -37,7 +49,54 @@ import com.vaadin.flow.theme.Theme;
 public class Application implements AppShellConfigurator {
 
 	public static void main(String[] args) {
+		// TODO if it is in server env to set to true
+		System.setProperty("java.awt.headless", "false"); //ADD THIS
+		createJadeBean();
 		SpringApplication.run(Application.class, args);
+
+	}
+
+	private static void createJadeBean() {
+		Runtime runtime = Runtime.instance();
+
+		Profile profile = new ProfileImpl();
+
+		profile.setParameter(Profile.MAIN_HOST,"localhost");
+		profile.setParameter(Profile.MAIN_PORT, "1098");// the default port 1099
+
+		// TODO if it is in server env to set to false
+		profile.setParameter(Profile.GUI, "true");// the GUI of the platform
+
+		AgentContainer mainContainer = runtime.createMainContainer(profile);
+
+
+
+
+
+		try {
+			AgentController cookAgent = mainContainer.createNewAgent("Cook", CookAgent.class.getName(), null);
+			AgentController  customerAgent = mainContainer.createNewAgent("Customer", CustomerAgent.class.getName(), null);
+			AgentController  hostessAgent = mainContainer.createNewAgent("Hostess", HostessAgent.class.getName(), null);
+			AgentController  waiterAgent = mainContainer.createNewAgent("Waiter", WaiterAgent.class.getName(), null);
+
+
+			cookAgent.start();
+			customerAgent.start();
+			hostessAgent.start();
+			waiterAgent.start();
+
+
+			AgentController testAgent = mainContainer.createNewAgent("Test", TestAgent.class.getName(), null);
+			testAgent.start();
+
+
+
+		} catch (StaleProxyException e) {
+			System.out.println("Could not instantiete agents");
+			throw new RuntimeException(e);
+		}
+
+
 	}
 
 	//	@Bean
@@ -60,4 +119,8 @@ public class Application implements AppShellConfigurator {
 	//	            }
 	//	        };
 	//	    }
+
+
+
+
 }

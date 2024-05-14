@@ -33,6 +33,14 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+
+		<!--		JAVA Agent Development Framework-->
+
+			<repository>
+				<id>jitpack.io</id>
+				<url>https://jitpack.io</url>
+			</repository>
+
 	</repositories>
 
 	<dependencyManagement>
@@ -199,6 +207,12 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
+<!--		JAVA Agent Development Framework-->
+		<dependency>
+			<groupId>com.gitlab.jade-project</groupId>
+			<artifactId>jade</artifactId>
+			<version>master-SNAPSHOT</version>
+		</dependency>
 
 	</dependencies>
 
