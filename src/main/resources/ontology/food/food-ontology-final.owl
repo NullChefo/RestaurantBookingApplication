@@ -1,0 +1,1135 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/stefan-kehayov/food-ontology#"
+     xml:base="http://www.semanticweb.org/stefan-kehayov/food-ontology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-2="http://www.semanticweb.org/fmi/ontologies/2019/1/untitled-ontology-2#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#image -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#image">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#seeAlso"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#hasBase -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasBase">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasIngredient"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#isBaseOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaBase"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#hasCountryOfOrigin -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasCountryOfOrigin">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Country"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#hasIngredient -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasIngredient">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#isIngredientOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Food"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Food"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#hasSpice -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasSpice">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasIngredient"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#isSpiceOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Spice"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasIngredient"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#isToppingOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaTopping"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#isBaseOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#isBaseOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#isIngredientOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaBase"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#isIngredientOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#isIngredientOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Food"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Food"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#isSpiceOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#isSpiceOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#isIngredientOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#isToppingOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#isToppingOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#isIngredientOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#hasCalorieValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasCalorieValue"/>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#hasImage -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasImage">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#AnchovyPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#AnchovyPizza">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#NamedPizza"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasSpice"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#OreganoSpice"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#AnchovyTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MozzarelaTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#TomatoTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasCalorieValue"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">anchovy pizza</rdfs:label>
+        <rdfs:label xml:lang="bg">пица аншоа</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#AnchovyTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#AnchovyTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#SeafoodTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#AppleTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#AppleTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#FruitTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#ArtichokesTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ArtichokesTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#BaconTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#BaconTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#BlueCheeseTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#BlueCheeseTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#BoringPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#BoringPizza">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#NamedPizza"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MozzarelaTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#OlivesTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#OnionTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#TomatoTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>boring pizza</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#CheesePizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheesePizza">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#VeganPizza"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#ChickenTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ChickenTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#CornTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#CornTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#Country -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Country">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#America"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Italy"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#FettaTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#FettaTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#FiladelphiaPizzaBase -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#FiladelphiaPizzaBase">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaBase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#Food -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Food"/>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#FruitPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#FruitPizza">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#FruitTopping"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#FruitTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#FruitTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#GaudaTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#GaudaTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#HamTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#HamTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#HawaiPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#HawaiPizza">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#NamedPizza"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#HamTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PineappleTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#TomatoTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#YellowCheeseTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#Hot -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Hot">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Spiciness"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#IceCream -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#IceCream">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#ItallianPizzaBase -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ItallianPizzaBase">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaBase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#KaprichosaPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#KaprichosaPizza">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#NamedPizza"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#ChickenTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#CornTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#HamTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MozzarelaTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#TomatoTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#MargarittaPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#MargarittaPizza">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#NamedPizza"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MozzarelaTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#TomatoTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#MozzarelaTopping"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#TomatoTopping"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#MashrumTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#MashrumTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatPizza">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatTopping"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#Medium -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Medium">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Spiciness"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#Mild -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Mild">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Spiciness"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#MozzarelaTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#MozzarelaTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#NamedPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#NamedPizza">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#OlivesTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#OlivesTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#OnionTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#OnionTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#OrangeTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#OrangeTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#FruitTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#OreganoSpice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#OreganoSpice">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Spice"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#SeaSalt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#ParmesanTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ParmesanTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#PeperoniPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#PeperoniPizza">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#NamedPizza"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#ParmesanTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PeperoniTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#TomatoTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasCountryOfOrigin"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Italy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#PeperoniTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#PeperoniTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#PepperTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#PepperTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#PineappleTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#PineappleTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#FruitTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Food"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasBase"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaBase"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaBase -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaBase">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Topping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#QuatroFormaggi2 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#QuatroFormaggi2">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#NamedPizza"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#QuatroFormaggiPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#QuatroFormaggiPizza">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#NamedPizza"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#BlueCheeseTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MozzarelaTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#ParmesanTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#TomatoTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#YellowCheeseTopping"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#SalamiTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#SalamiTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#SalmonTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#SalmonTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#SeafoodTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#SaousageTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#SaousageTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#SeaSalt -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#SeaSalt">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Spice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#SeafoodPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#SeafoodPizza">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#SeafoodTopping"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#SeafoodTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#SeafoodTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#ShrimpTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ShrimpTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#SeafoodTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#Spice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Spice">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#Spiciness -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Spiciness">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Hot"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Medium"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Mild"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#ValuePartition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#ThinAndCripsyPizzaBase -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ThinAndCripsyPizzaBase">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaBase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#TomatoTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#TomatoTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#Topping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Topping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#TunaTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#TunaTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#SeafoodTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#ValuePartition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ValuePartition"/>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#VeganPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#VeganPizza">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#VegeterianPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegeterianPizza">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#hasTopping"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#YellowCheeseTopping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#YellowCheeseTopping">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#America -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#America">
+        <rdf:type rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Country"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#Italy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Italy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#Country"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#SomeTestPizzaIndv -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#SomeTestPizzaIndv">
+        <rdf:type rdf:resource="http://www.semanticweb.org/stefan-kehayov/food-ontology#MargarittaPizza"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/stefan-kehayov/food-ontology#UnknownIndv -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#UnknownIndv"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#AnchovyPizza"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#BoringPizza"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#HawaiPizza"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#KaprichosaPizza"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#MargarittaPizza"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#PeperoniPizza"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#QuatroFormaggi2"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#QuatroFormaggiPizza"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#AppleTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#OrangeTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#PineappleTopping"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#BlueCheeseTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#FettaTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#GaudaTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#MozzarelaTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ParmesanTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#YellowCheeseTopping"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#CheeseTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#FruitTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#MeatTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#SeafoodTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#VegetableTopping"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Country"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Food"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ValuePartition"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#FiladelphiaPizzaBase"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ItallianPizzaBase"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ThinAndCripsyPizzaBase"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Hot"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Medium"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Mild"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#IceCream"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaBase"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Spice"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Topping"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Pizza"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#PizzaBase"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Spice"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#Topping"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#SalmonTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#ShrimpTopping"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/stefan-kehayov/food-ontology#TunaTopping"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
