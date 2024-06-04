@@ -1,1 +1,1 @@
-http://host.docker.internal:65298/acc
+http://stefan-pc:57866/acc

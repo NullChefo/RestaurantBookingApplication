@@ -42,7 +42,7 @@ public class OntologyManagerService {
 	public OntologyManagerService() {
 		ontologyManager = OWLManager.createOWLOntologyManager();
 		dataFactory = ontologyManager.getOWLDataFactory();
-		loadOntologyFromFile("src/main/resources/ontology/food/food.owl");
+		loadOntologyFromFile("src/main/resources/ontology/food/food-ontology.owl");
 
 		ontologyIRIStr = ontology.getOntologyID()
 									  .getOntologyIRI().toString() + "#";
@@ -243,109 +243,109 @@ public class OntologyManagerService {
 
 	}
 
-	public void removeToppingFromPizza(String pizzaName, String toppingName) {
-
-		//Класа на пициата към която щше добавяме топинг
-		OWLClass pizzaClass = dataFactory.getOWLClass(
-				IRI.create(ontologyIRIStr + pizzaName));
-
-		//Топинг класа който ще сложим към пицата
-		OWLClass toppingClass = dataFactory.getOWLClass(
-				IRI.create(ontologyIRIStr + toppingName));
-
-		System.out.println("Pizza: " + pizzaName + " Topping: " + toppingName);
-
-		//Взимаме инстанция на hasTopping property
-		OWLObjectProperty hasTopping = dataFactory.getOWLObjectProperty(
-				IRI.create(ontologyIRIStr + "hasTopping")
-																	   );
-
-		OWLClassExpression classExpression = dataFactory.getOWLObjectSomeValuesFrom(
-				hasTopping, toppingClass);
-
-		OWLSubClassOfAxiom axiom = dataFactory.getOWLSubClassOfAxiom(
-				pizzaClass, classExpression);
-
-
-		RemoveAxiom removeAxiom = new RemoveAxiom(ontology, axiom);
-
-		ontologyManager.applyChange(removeAxiom);
-
-		saveOntology();
-
-	}
-
-	public void renameTopping(String oldName, String newName) {
-
-		OWLEntityRenamer renamer = new OWLEntityRenamer(ontologyManager,
-														ontology.getImportsClosure());
-
-		IRI newIRI = IRI.create(ontologyIRIStr + newName);
-		IRI oldIRI = IRI.create(ontologyIRIStr + oldName);
-
-		ontologyManager.applyChanges(renamer.changeIRI(oldIRI, newIRI));
-
-		saveOntology();
-
-	}
-
-	public ArrayList<Pizza> getPizzaByTopping(String topping){
-
-		ArrayList<Pizza> result = new ArrayList<>();
-
-		OWLObjectProperty hasTopping = dataFactory
-				.getOWLObjectProperty(
-						IRI.create(ontologyIRIStr + "hasTopping"));
-
-		OWLClass toppingClass = dataFactory.getOWLClass(
-				IRI.create(ontologyIRIStr + topping));
-
-
-		for(OWLAxiom axiom :
-				toppingClass.getReferencingAxioms(ontology)) {
-
-
-			if(axiom.getAxiomType() == AxiomType.SUBCLASS_OF) {
-
-
-				for(OWLObjectProperty op:
-						axiom.getObjectPropertiesInSignature()) {
-
-
-					if(op.getIRI().equals(hasTopping.getIRI())) {
-
-
-						for(OWLClass classInAxiom:
-								axiom.getClassesInSignature()) {
-
-							if(containsSuperClass(
-									classInAxiom.getSuperClasses(ontology),
-									dataFactory.getOWLClass(
-											IRI.create(ontologyIRIStr + "Pizza")))) {
-
-								contains = false;
-
-								Pizza p = new Pizza();
-								p.setName(getClassFriendlyName(classInAxiom));
-								p.setId(classInAxiom.getIRI().toQuotedString());
-
-								p.setTopping(getAllToppings(classInAxiom
-										, hasTopping));
-
-								result.add(p);
-							}
-
-						}
-					}
-
-				}
-
-			}
-
-		}
-
-		return result;
-	}
+//	public void removeToppingFromPizza(String pizzaName, String toppingName) {
+//
+//		//Класа на пициата към която щше добавяме топинг
+//		OWLClass pizzaClass = dataFactory.getOWLClass(
+//				IRI.create(ontologyIRIStr + pizzaName));
+//
+//		//Топинг класа който ще сложим към пицата
+//		OWLClass toppingClass = dataFactory.getOWLClass(
+//				IRI.create(ontologyIRIStr + toppingName));
+//
+//		System.out.println("Pizza: " + pizzaName + " Topping: " + toppingName);
+//
+//		//Взимаме инстанция на hasTopping property
+//		OWLObjectProperty hasTopping = dataFactory.getOWLObjectProperty(
+//				IRI.create(ontologyIRIStr + "hasTopping")
+//																	   );
+//
+//		OWLClassExpression classExpression = dataFactory.getOWLObjectSomeValuesFrom(
+//				hasTopping, toppingClass);
+//
+//		OWLSubClassOfAxiom axiom = dataFactory.getOWLSubClassOfAxiom(
+//				pizzaClass, classExpression);
+//
+//
+//		RemoveAxiom removeAxiom = new RemoveAxiom(ontology, axiom);
+//
+//		ontologyManager.applyChange(removeAxiom);
+//
+//		saveOntology();
+//
+//	}
+//
+//	public void renameTopping(String oldName, String newName) {
+//
+//		OWLEntityRenamer renamer = new OWLEntityRenamer(ontologyManager,
+//														ontology.getImportsClosure());
+//
+//		IRI newIRI = IRI.create(ontologyIRIStr + newName);
+//		IRI oldIRI = IRI.create(ontologyIRIStr + oldName);
+//
+//		ontologyManager.applyChanges(renamer.changeIRI(oldIRI, newIRI));
+//
+//		saveOntology();
+//
+//	}
+//
+//	public ArrayList<Pizza> getPizzaByTopping(String topping){
+//
+//		ArrayList<Pizza> result = new ArrayList<>();
+//
+//		OWLObjectProperty hasTopping = dataFactory
+//				.getOWLObjectProperty(
+//						IRI.create(ontologyIRIStr + "hasTopping"));
+//
+//		OWLClass toppingClass = dataFactory.getOWLClass(
+//				IRI.create(ontologyIRIStr + topping));
+//
+//
+//		for(OWLAxiom axiom :
+//				toppingClass.getReferencingAxioms(ontology)) {
+//
+//
+//			if(axiom.getAxiomType() == AxiomType.SUBCLASS_OF) {
+//
+//
+//				for(OWLObjectProperty op:
+//						axiom.getObjectPropertiesInSignature()) {
+//
+//
+//					if(op.getIRI().equals(hasTopping.getIRI())) {
+//
+//
+//						for(OWLClass classInAxiom:
+//								axiom.getClassesInSignature()) {
+//
+//							if(containsSuperClass(
+//									classInAxiom.getSuperClasses(ontology),
+//									dataFactory.getOWLClass(
+//											IRI.create(ontologyIRIStr + "Pizza")))) {
+//
+//								contains = false;
+//
+//								Pizza p = new Pizza();
+//								p.setName(getClassFriendlyName(classInAxiom));
+//								p.setId(classInAxiom.getIRI().toQuotedString());
+//
+//								p.setTopping(getAllToppings(classInAxiom
+//										, hasTopping));
+//
+//								result.add(p);
+//							}
+//
+//						}
+//					}
+//
+//				}
+//
+//			}
+//
+//		}
+//
+//		return result;
+//	}
 
 
 
