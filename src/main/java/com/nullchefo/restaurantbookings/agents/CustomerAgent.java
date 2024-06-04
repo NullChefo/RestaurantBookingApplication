@@ -10,7 +10,6 @@ public class CustomerAgent extends Agent {
 	// pays for the table
 	// leaves the restaurant
 
-
 	@Override
 	protected void setup() {
 		super.setup();

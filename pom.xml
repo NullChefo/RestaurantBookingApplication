@@ -36,10 +36,10 @@
 
 		<!--		JAVA Agent Development Framework-->
 
-			<repository>
-				<id>jitpack.io</id>
-				<url>https://jitpack.io</url>
-			</repository>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
 
 	</repositories>
 
@@ -207,7 +207,7 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
-<!--		JAVA Agent Development Framework-->
+		<!--		JAVA Agent Development Framework-->
 		<dependency>
 			<groupId>com.gitlab.jade-project</groupId>
 			<artifactId>jade</artifactId>
@@ -227,9 +227,6 @@
 			<artifactId>owlapi-distribution</artifactId>
 			<version>3.5.0</version>
 		</dependency>
-
-
-
 
 
 	</dependencies>

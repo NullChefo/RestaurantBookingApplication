@@ -206,17 +206,11 @@ public class HydrateDatabase {
 															 .restaurant(restaurant)
 															 .build();
 
-
 			//  TODO set cuisine
 
 			// TODO set menu
 
 			// TODO set menu items
-
-
-
-
-
 
 			restaurant.setLocation(location);
 			restaurant.setReviews(List.of(review));
