@@ -1,0 +1,664 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/stefan-kehayov/food-ontodology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/stefan-kehayov/food-ontodology">
+    <Prefix name="" IRI="http://www.semanticweb.org/stefan-kehayov/food-ontodology/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Appetizer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Baklava"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Banitsa"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Beef"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bell_peppers"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Black_pepper"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bob_Chorba"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bread"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Breakfast"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bulgur_Salad"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Butter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cabbage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Carrots"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chicken"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cinnamon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cloves"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cucumbers"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cuisine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cumin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dairy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dessert"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dill"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dinner"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Eggplants"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Eggs"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Feta_cheese"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fish_roe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Flour"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Food"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Garlic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Grain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Greek_yogurt"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ground_beef"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Honey"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ingredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Kavarma"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Kebapche"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Kozunak"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Kyufte"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lahmacun"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lemon_juice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lemon_zest"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lukanka"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lunch"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lyutenitsa"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Main"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Meal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Meat"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Medovinka"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Milk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mint"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Moussaka"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mushrooms"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nutmeg"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nuts"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Olive_oil"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Onions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Oregano"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Other"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Palachinki"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Paprika"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Parsley"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Patatnik"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Peppers"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Phyllo_dough"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pistachios"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Potatoes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pumpkin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Red_pepper_flakes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Rice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sarmi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Shish_Kebab"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Shopska_Salad"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sirene_cheese"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Snack"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Spanakopita"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Spice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Spinach"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sugar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tarama"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tarator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tikvenik"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tomatoes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tzatziki"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Vegetable"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Walnuts"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#White_beans"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Yogurt"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bulgarian"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Greek"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Turkish"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Cuisine"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Bulgarian"/>
+            <NamedIndividual IRI="#Greek"/>
+            <NamedIndividual IRI="#Turkish"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Appetizer"/>
+        <Class IRI="#Dish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Baklava"/>
+        <Class IRI="#Dessert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Banitsa"/>
+        <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Beef"/>
+        <Class IRI="#Meat"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bell_peppers"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Black_pepper"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bob_Chorba"/>
+        <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bread"/>
+        <Class IRI="#Dairy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Breakfast"/>
+        <Class IRI="#Meal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <Class IRI="#Appetizer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Butter"/>
+        <Class IRI="#Dairy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cabbage"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Carrots"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chicken"/>
+        <Class IRI="#Meat"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cinnamon"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cloves"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cucumbers"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cumin"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dairy"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dessert"/>
+        <Class IRI="#Dish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dill"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dinner"/>
+        <Class IRI="#Meal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dish"/>
+        <Class IRI="#Food"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Eggplants"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Eggs"/>
+        <Class IRI="#Other"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Feta_cheese"/>
+        <Class IRI="#Dairy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fish_roe"/>
+        <Class IRI="#Other"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Flour"/>
+        <Class IRI="#Grain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Garlic"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Grain"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Greek_yogurt"/>
+        <Class IRI="#Dairy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ground_beef"/>
+        <Class IRI="#Meat"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Honey"/>
+        <Class IRI="#Other"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ingredient"/>
+        <Class IRI="#Food"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kavarma"/>
+        <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kebapche"/>
+        <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kozunak"/>
+        <Class IRI="#Dessert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kyufte"/>
+        <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
+        <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lemon_juice"/>
+        <Class IRI="#Other"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lemon_zest"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lukanka"/>
+        <Class IRI="#Appetizer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lunch"/>
+        <Class IRI="#Meal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lyutenitsa"/>
+        <Class IRI="#Appetizer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Main"/>
+        <Class IRI="#Dish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Meal"/>
+        <Class IRI="#Food"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Meat"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medovinka"/>
+        <Class IRI="#Dessert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Milk"/>
+        <Class IRI="#Dairy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mint"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moussaka"/>
+        <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mushrooms"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nutmeg"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nuts"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Olive_oil"/>
+        <Class IRI="#Other"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Onions"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Oregano"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Other"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Palachinki"/>
+        <Class IRI="#Dessert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Paprika"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Parsley"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patatnik"/>
+        <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Peppers"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Phyllo_dough"/>
+        <Class IRI="#Grain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pistachios"/>
+        <Class IRI="#Nuts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Potatoes"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pumpkin"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Red_pepper_flakes"/>
+        <Class IRI="#Spice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Rice"/>
+        <Class IRI="#Grain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sarmi"/>
+        <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shopska_Salad"/>
+        <Class IRI="#Appetizer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sirene_cheese"/>
+        <Class IRI="#Dairy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Snack"/>
+        <Class IRI="#Meal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spanakopita"/>
+        <Class IRI="#Appetizer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spice"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spinach"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sugar"/>
+        <Class IRI="#Other"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tarama"/>
+        <Class IRI="#Appetizer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tarator"/>
+        <Class IRI="#Appetizer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tikvenik"/>
+        <Class IRI="#Dessert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tomatoes"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tzatziki"/>
+        <Class IRI="#Appetizer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vegetable"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Walnuts"/>
+        <Class IRI="#Nuts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#White_beans"/>
+        <Class IRI="#Grain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Yogurt"/>
+        <Class IRI="#Dairy"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Cuisine"/>
+        <NamedIndividual IRI="#Bulgarian"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Cuisine"/>
+        <NamedIndividual IRI="#Greek"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Cuisine"/>
+        <NamedIndividual IRI="#Turkish"/>
+    </ClassAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
