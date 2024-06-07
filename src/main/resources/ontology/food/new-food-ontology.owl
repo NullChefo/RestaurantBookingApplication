@@ -136,9 +136,6 @@
         <Class IRI="#Lemon_zest"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Lukanka"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Main"/>
     </Declaration>
     <Declaration>
@@ -355,15 +352,85 @@
         <Class IRI="#Dish"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Appetizer"/>
+        <Class IRI="#Baklava"/>
+        <Class IRI="#Dessert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Baklava"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasGrain"/>
+            <Class IRI="#Phyllo_dough"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Baklava"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasNuts"/>
+            <Class IRI="#Pistachios"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Baklava"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasNuts"/>
+            <Class IRI="#Walnuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Baklava"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Honey"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Baklava"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Butter"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Baklava"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Cinnamon"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Baklava"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Cloves"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Baklava"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Sugar"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Baklava"/>
         <ObjectHasValue>
-            <ObjectProperty IRI="#isMealType"/>
-            <NamedIndividual IRI="#Snack"/>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
         </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Baklava"/>
-        <Class IRI="#Dessert"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Turkish"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Baklava"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Snack"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Banitsa"/>
@@ -589,14 +656,14 @@
     <SubClassOf>
         <Class IRI="#Bulgur_Salad"/>
         <ObjectHasValue>
-            <ObjectProperty IRI="#isFromCuisine"/>
+            <ObjectProperty IRI="#isMealType"/>
             <NamedIndividual IRI="#Dinner"/>
         </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Bulgur_Salad"/>
         <ObjectHasValue>
-            <ObjectProperty IRI="#isFromCuisine"/>
+            <ObjectProperty IRI="#isMealType"/>
             <NamedIndividual IRI="#Lunch"/>
         </ObjectHasValue>
     </SubClassOf>
@@ -865,15 +932,15 @@
     <SubClassOf>
         <Class IRI="#Lahmacun"/>
         <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasMeat"/>
-            <Class IRI="#Beef"/>
+            <ObjectProperty IRI="#hasGrain"/>
+            <Class IRI="#Flour"/>
         </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Lahmacun"/>
         <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasSpice"/>
-            <Class IRI="#Black_pepper"/>
+            <ObjectProperty IRI="#hasMeat"/>
+            <Class IRI="#Ground_beef"/>
         </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
@@ -885,16 +952,58 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Lahmacun"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Paprika"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Parsley"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Red_pepper_flakes"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Onions"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Tomatoes"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
         <ObjectHasValue>
             <ObjectProperty IRI="#isFromCuisine"/>
-            <NamedIndividual IRI="#Bulgarian"/>
+            <NamedIndividual IRI="#Turkish"/>
         </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Lahmacun"/>
         <ObjectHasValue>
             <ObjectProperty IRI="#isMealType"/>
-            <NamedIndividual IRI="#Snack"/>
+            <NamedIndividual IRI="#Dinner"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Lunch"/>
         </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
@@ -904,10 +1013,6 @@
     <SubClassOf>
         <Class IRI="#Lemon_zest"/>
         <Class IRI="#Spice"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Lukanka"/>
-        <Class IRI="#Appetizer"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Main"/>
@@ -1301,6 +1406,83 @@
         <Class IRI="#Main"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasMeat"/>
+            <Class IRI="#Beef"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Lemon_juice"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Olive_oil"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Cumin"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Oregano"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Bell_peppers"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Onions"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Tomatoes"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Turkish"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Dinner"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shish_Kebab"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Lunch"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Shopska_Salad"/>
         <Class IRI="#Appetizer"/>
     </SubClassOf>
@@ -1642,6 +1824,13 @@
         </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Tzatziki"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Snack"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Vegetable"/>
         <Class IRI="#Ingredient"/>
     </SubClassOf>
@@ -1721,14 +1910,6 @@
         <Class IRI="#Phyllo_dough"/>
         <Class IRI="#Rice"/>
         <Class IRI="#White_beans"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Bulgur_Salad"/>
-        <Class IRI="#Lukanka"/>
-        <Class IRI="#Shopska_Salad"/>
-        <Class IRI="#Spanakopita"/>
-        <Class IRI="#Tarator"/>
-        <Class IRI="#Tzatziki"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#Butter"/>
@@ -2101,6 +2282,346 @@
         <DataProperty IRI="#hasImage"/>
         <DataProperty abbreviatedIRI="owl:topDataProperty"/>
     </SubDataPropertyOf>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Appetizer</IRI>
+        <Literal xml:lang="en">Appetizer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Appetizer</IRI>
+        <Literal xml:lang="bg">Предястие</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Baklava</IRI>
+        <Literal xml:lang="en">Baklava</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Baklava</IRI>
+        <Literal xml:lang="bg">Баклава</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Banitsa</IRI>
+        <Literal xml:lang="en">Banitsa</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Banitsa</IRI>
+        <Literal xml:lang="bg">Баница</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Bob_Chorba</IRI>
+        <Literal xml:lang="en">Bob chorba</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Bob_Chorba</IRI>
+        <Literal xml:lang="bg">Боб чорба</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Bulgur_Salad</IRI>
+        <Literal xml:lang="en">Bulgur salad</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Bulgur_Salad</IRI>
+        <Literal xml:lang="bg">Булгур салата</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Cuisine</IRI>
+        <Literal xml:lang="en">Cuisine</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Cuisine</IRI>
+        <Literal xml:lang="bg">Кухня</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Dairy</IRI>
+        <Literal xml:lang="en">Dairy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Dairy</IRI>
+        <Literal xml:lang="bg">Млечни продукти</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Dessert</IRI>
+        <Literal xml:lang="en">Dessert</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Dessert</IRI>
+        <Literal xml:lang="bg">Десерт</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Dish</IRI>
+        <Literal xml:lang="en">Dish</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Dish</IRI>
+        <Literal xml:lang="bg">Ястир</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Food</IRI>
+        <Literal xml:lang="en">Food</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Food</IRI>
+        <Literal xml:lang="bg">Храна</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Grain</IRI>
+        <Literal xml:lang="en">Grain</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Grain</IRI>
+        <Literal xml:lang="bg">Зърнеста</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Ingredient</IRI>
+        <Literal xml:lang="en">Ingredient</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Ingredient</IRI>
+        <Literal xml:lang="bg">Съставки</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Kavarma</IRI>
+        <Literal xml:lang="en">Kavarma</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Kavarma</IRI>
+        <Literal xml:lang="bg">Каварма</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Kebapche</IRI>
+        <Literal xml:lang="en">Kebapche</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Kebapche</IRI>
+        <Literal xml:lang="bg">Кебапче</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Kozunak</IRI>
+        <Literal xml:lang="en">Kozunak</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Kozunak</IRI>
+        <Literal xml:lang="bg">Козунак</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Lahmacun</IRI>
+        <Literal xml:lang="en">Lahmacun</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Lahmacun</IRI>
+        <Literal xml:lang="bg">Лахмачун</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Main</IRI>
+        <Literal xml:lang="en">Main</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Main</IRI>
+        <Literal xml:lang="bg">Основно</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Meal_Type</IRI>
+        <Literal xml:lang="en">Meal type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Meal_Type</IRI>
+        <Literal xml:lang="bg">Тип хранене</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Meat</IRI>
+        <Literal xml:lang="en">Meat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Meat</IRI>
+        <Literal xml:lang="bg">Месо</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Medovinka</IRI>
+        <Literal xml:lang="en">Medovinka</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Medovinka</IRI>
+        <Literal xml:lang="bg">Медовинка</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Moussaka</IRI>
+        <Literal xml:lang="en">Moussaka</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Moussaka</IRI>
+        <Literal xml:lang="bg">Мусака</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Nuts</IRI>
+        <Literal xml:lang="en">Nuts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Nuts</IRI>
+        <Literal xml:lang="bg">Ядки</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Other</IRI>
+        <Literal xml:lang="en">Other</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Other</IRI>
+        <Literal xml:lang="bg">Други</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Palachinki</IRI>
+        <Literal xml:lang="en">Palachinki</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Palachinki</IRI>
+        <Literal xml:lang="bg">Палачинки</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Patatnik</IRI>
+        <Literal xml:lang="en">Patatnik</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Patatnik</IRI>
+        <Literal xml:lang="bg">Пататник</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sarmi</IRI>
+        <Literal xml:lang="en">Sarmi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sarmi</IRI>
+        <Literal xml:lang="bg">Сарми</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Shish_Kebab</IRI>
+        <Literal xml:lang="en">Shish kebab</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Shish_Kebab</IRI>
+        <Literal xml:lang="bg">Шиш кебап</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Shopska_Salad</IRI>
+        <Literal xml:lang="en">Shopska salad</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Shopska_Salad</IRI>
+        <Literal xml:lang="bg">Шопска салата</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Spanakopita</IRI>
+        <Literal xml:lang="en">Spanakopita</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Spanakopita</IRI>
+        <Literal xml:lang="bg">Спанакопита</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Spice</IRI>
+        <Literal xml:lang="en">Spice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Spice</IRI>
+        <Literal xml:lang="bg">Подправки</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Tarator</IRI>
+        <Literal xml:lang="en">Tarator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Tarator</IRI>
+        <Literal xml:lang="bg">Таратор</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Tikvenik</IRI>
+        <Literal xml:lang="en">Tikvenik</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Tikvenik</IRI>
+        <Literal xml:lang="bg">Тиквеник</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Tzatziki</IRI>
+        <Literal xml:lang="en">Tzatziki</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Tzatziki</IRI>
+        <Literal xml:lang="bg">Дзацики</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Vegetable</IRI>
+        <Literal xml:lang="en">Vegetable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Vegetable</IRI>
+        <Literal xml:lang="bg">Зеленчук</Literal>
+    </AnnotationAssertion>
 </Ontology>
 
 
