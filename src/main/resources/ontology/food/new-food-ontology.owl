@@ -37,7 +37,7 @@
         <Class IRI="#Bread"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Breakfast"/>
+        <Class IRI="#Bulgur"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Bulgur_Salad"/>
@@ -77,9 +77,6 @@
     </Declaration>
     <Declaration>
         <Class IRI="#Dill"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Dinner"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Dish"/>
@@ -130,9 +127,6 @@
         <Class IRI="#Kozunak"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Kyufte"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Lahmacun"/>
     </Declaration>
     <Declaration>
@@ -145,16 +139,10 @@
         <Class IRI="#Lukanka"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Lunch"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Lyutenitsa"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Main"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Meal"/>
+        <Class IRI="#Meal_Type"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Meat"/>
@@ -238,9 +226,6 @@
         <Class IRI="#Sirene_cheese"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Snack"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Spanakopita"/>
     </Declaration>
     <Declaration>
@@ -251,9 +236,6 @@
     </Declaration>
     <Declaration>
         <Class IRI="#Sugar"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Tarama"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Tarator"/>
@@ -280,10 +262,82 @@
         <Class IRI="#Yogurt"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#hasDairy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGrain"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasMeat"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasNuts"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOther"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSpice"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasVegetable"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isDairyOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isFromCuisine"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isGrainOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isMealType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isMeatOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isNutsOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isOtherOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isSpiceOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isVegetableOf"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasCaloriesValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasImage"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Breakfast"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Bulgarian"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Dinner"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Greek"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Lunch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Snack"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Turkish"/>
@@ -301,12 +355,68 @@
         <Class IRI="#Dish"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Appetizer"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Snack"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Baklava"/>
         <Class IRI="#Dessert"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Banitsa"/>
         <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Banitsa"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Sirene_cheese"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Banitsa"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Yogurt"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Banitsa"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasGrain"/>
+            <Class IRI="#Phyllo_dough"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Banitsa"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Eggs"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Banitsa"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Banitsa"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Breakfast"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Banitsa"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Snack"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Beef"/>
@@ -325,16 +435,170 @@
         <Class IRI="#Main"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Bread"/>
-        <Class IRI="#Dairy"/>
+        <Class IRI="#Bob_Chorba"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasGrain"/>
+            <Class IRI="#White_beans"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Breakfast"/>
-        <Class IRI="#Meal"/>
+        <Class IRI="#Bob_Chorba"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Mint"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bob_Chorba"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Paprika"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bob_Chorba"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Carrots"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bob_Chorba"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Onions"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bob_Chorba"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Peppers"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bob_Chorba"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Tomatoes"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bob_Chorba"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bob_Chorba"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Dinner"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bob_Chorba"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Lunch"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bread"/>
+        <Class IRI="#Grain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur"/>
+        <Class IRI="#Grain"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Bulgur_Salad"/>
         <Class IRI="#Appetizer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasGrain"/>
+            <Class IRI="#Bulgur"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Lemon_juice"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Olive_oil"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Mint"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Parsley"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Cucumbers"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Onions"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Peppers"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Tomatoes"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Dinner"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulgur_Salad"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Lunch"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Butter"/>
@@ -379,10 +643,6 @@
     <SubClassOf>
         <Class IRI="#Dill"/>
         <Class IRI="#Spice"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Dinner"/>
-        <Class IRI="#Meal"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Dish"/>
@@ -437,20 +697,205 @@
         <Class IRI="#Main"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Kavarma"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasMeat"/>
+            <Class IRI="#Chicken"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kavarma"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Mushrooms"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kavarma"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Onions"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kavarma"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Peppers"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kavarma"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Tomatoes"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kavarma"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kavarma"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Dinner"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Kebapche"/>
         <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kebapche"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasMeat"/>
+            <Class IRI="#Beef"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kebapche"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Black_pepper"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kebapche"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Cumin"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kebapche"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kebapche"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Dinner"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kebapche"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Lunch"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Kozunak"/>
         <Class IRI="#Dessert"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Kyufte"/>
-        <Class IRI="#Main"/>
+        <Class IRI="#Kozunak"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Butter"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kozunak"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Milk"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kozunak"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasGrain"/>
+            <Class IRI="#Flour"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kozunak"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Eggs"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kozunak"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Sugar"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kozunak"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Lemon_zest"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kozunak"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kozunak"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Breakfast"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kozunak"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Snack"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Lahmacun"/>
         <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasMeat"/>
+            <Class IRI="#Beef"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Black_pepper"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Cumin"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lahmacun"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Snack"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Lemon_juice"/>
@@ -465,20 +910,8 @@
         <Class IRI="#Appetizer"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Lunch"/>
-        <Class IRI="#Meal"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Lyutenitsa"/>
-        <Class IRI="#Appetizer"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#Main"/>
         <Class IRI="#Dish"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Meal"/>
-        <Class IRI="#Food"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Meat"/>
@@ -487,6 +920,55 @@
     <SubClassOf>
         <Class IRI="#Medovinka"/>
         <Class IRI="#Dessert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medovinka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Butter"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medovinka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasGrain"/>
+            <Class IRI="#Flour"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medovinka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Eggs"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medovinka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Honey"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medovinka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Cinnamon"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medovinka"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medovinka"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Snack"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Milk"/>
@@ -499,6 +981,76 @@
     <SubClassOf>
         <Class IRI="#Moussaka"/>
         <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moussaka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Yogurt"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moussaka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasMeat"/>
+            <Class IRI="#Ground_beef"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moussaka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Eggs"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moussaka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Paprika"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moussaka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Onions"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moussaka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Potatoes"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moussaka"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Tomatoes"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moussaka"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moussaka"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Dinner"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moussaka"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Lunch"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Mushrooms"/>
@@ -533,6 +1085,62 @@
         <Class IRI="#Dessert"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Palachinki"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Butter"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Palachinki"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Milk"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Palachinki"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasGrain"/>
+            <Class IRI="#Flour"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Palachinki"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Eggs"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Palachinki"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Sugar"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Palachinki"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Palachinki"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Breakfast"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Palachinki"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Snack"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Paprika"/>
         <Class IRI="#Spice"/>
     </SubClassOf>
@@ -543,6 +1151,55 @@
     <SubClassOf>
         <Class IRI="#Patatnik"/>
         <Class IRI="#Main"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patatnik"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Sirene_cheese"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patatnik"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Eggs"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patatnik"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Mint"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patatnik"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Onions"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patatnik"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Potatoes"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patatnik"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Dinner"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patatnik"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Lunch"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Peppers"/>
@@ -577,6 +1234,69 @@
         <Class IRI="#Main"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Sarmi"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasGrain"/>
+            <Class IRI="#Rice"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sarmi"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasMeat"/>
+            <Class IRI="#Ground_beef"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sarmi"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Dill"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sarmi"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Paprika"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sarmi"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Cabbage"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sarmi"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Onions"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sarmi"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sarmi"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Dinner"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sarmi"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Lunch"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Shish_Kebab"/>
         <Class IRI="#Main"/>
     </SubClassOf>
@@ -585,16 +1305,159 @@
         <Class IRI="#Appetizer"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Shopska_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Sirene_cheese"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shopska_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Parsley"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shopska_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Cucumbers"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shopska_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Onions"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shopska_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Peppers"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shopska_Salad"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Tomatoes"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shopska_Salad"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shopska_Salad"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Dinner"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shopska_Salad"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Lunch"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shopska_Salad"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasCaloriesValue"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">250</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Sirene_cheese"/>
         <Class IRI="#Dairy"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Snack"/>
-        <Class IRI="#Meal"/>
+        <Class IRI="#Spanakopita"/>
+        <Class IRI="#Appetizer"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Spanakopita"/>
-        <Class IRI="#Appetizer"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Feta_cheese"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spanakopita"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasGrain"/>
+            <Class IRI="#Phyllo_dough"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spanakopita"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Eggs"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spanakopita"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Olive_oil"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spanakopita"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Dill"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spanakopita"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Nutmeg"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spanakopita"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Onions"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spanakopita"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Spinach"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spanakopita"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Greek"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spanakopita"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Breakfast"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spanakopita"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Snack"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Spice"/>
@@ -609,16 +1472,117 @@
         <Class IRI="#Other"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Tarama"/>
-        <Class IRI="#Appetizer"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#Tarator"/>
         <Class IRI="#Appetizer"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Tarator"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Yogurt"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tarator"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasNuts"/>
+            <Class IRI="#Walnuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tarator"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Dill"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tarator"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Cucumbers"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tarator"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Garlic"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tarator"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tarator"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Dinner"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tarator"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Lunch"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Tikvenik"/>
         <Class IRI="#Dessert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tikvenik"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasGrain"/>
+            <Class IRI="#Phyllo_dough"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tikvenik"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasNuts"/>
+            <Class IRI="#Walnuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tikvenik"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Sugar"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tikvenik"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Cinnamon"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tikvenik"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Pumpkin"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tikvenik"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Bulgarian"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tikvenik"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isMealType"/>
+            <NamedIndividual IRI="#Snack"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Tomatoes"/>
@@ -627,6 +1591,55 @@
     <SubClassOf>
         <Class IRI="#Tzatziki"/>
         <Class IRI="#Appetizer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tzatziki"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDairy"/>
+            <Class IRI="#Greek_yogurt"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tzatziki"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Lemon_juice"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tzatziki"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Olive_oil"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tzatziki"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSpice"/>
+            <Class IRI="#Dill"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tzatziki"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Cucumbers"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tzatziki"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVegetable"/>
+            <Class IRI="#Garlic"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tzatziki"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#isFromCuisine"/>
+            <NamedIndividual IRI="#Greek"/>
+        </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Vegetable"/>
@@ -644,18 +1657,450 @@
         <Class IRI="#Yogurt"/>
         <Class IRI="#Dairy"/>
     </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Appetizer"/>
+        <Class IRI="#Dessert"/>
+        <Class IRI="#Main"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Baklava"/>
+        <Class IRI="#Kozunak"/>
+        <Class IRI="#Medovinka"/>
+        <Class IRI="#Palachinki"/>
+        <Class IRI="#Tikvenik"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Banitsa"/>
+        <Class IRI="#Bob_Chorba"/>
+        <Class IRI="#Kavarma"/>
+        <Class IRI="#Kebapche"/>
+        <Class IRI="#Lahmacun"/>
+        <Class IRI="#Moussaka"/>
+        <Class IRI="#Patatnik"/>
+        <Class IRI="#Sarmi"/>
+        <Class IRI="#Shish_Kebab"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Beef"/>
+        <Class IRI="#Chicken"/>
+        <Class IRI="#Ground_beef"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Bell_peppers"/>
+        <Class IRI="#Cabbage"/>
+        <Class IRI="#Carrots"/>
+        <Class IRI="#Cucumbers"/>
+        <Class IRI="#Eggplants"/>
+        <Class IRI="#Garlic"/>
+        <Class IRI="#Mushrooms"/>
+        <Class IRI="#Onions"/>
+        <Class IRI="#Peppers"/>
+        <Class IRI="#Potatoes"/>
+        <Class IRI="#Pumpkin"/>
+        <Class IRI="#Spinach"/>
+        <Class IRI="#Tomatoes"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Black_pepper"/>
+        <Class IRI="#Cinnamon"/>
+        <Class IRI="#Cloves"/>
+        <Class IRI="#Cumin"/>
+        <Class IRI="#Dill"/>
+        <Class IRI="#Lemon_zest"/>
+        <Class IRI="#Mint"/>
+        <Class IRI="#Nutmeg"/>
+        <Class IRI="#Oregano"/>
+        <Class IRI="#Paprika"/>
+        <Class IRI="#Parsley"/>
+        <Class IRI="#Red_pepper_flakes"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Bread"/>
+        <Class IRI="#Bulgur"/>
+        <Class IRI="#Flour"/>
+        <Class IRI="#Phyllo_dough"/>
+        <Class IRI="#Rice"/>
+        <Class IRI="#White_beans"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Bulgur_Salad"/>
+        <Class IRI="#Lukanka"/>
+        <Class IRI="#Shopska_Salad"/>
+        <Class IRI="#Spanakopita"/>
+        <Class IRI="#Tarator"/>
+        <Class IRI="#Tzatziki"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Butter"/>
+        <Class IRI="#Feta_cheese"/>
+        <Class IRI="#Greek_yogurt"/>
+        <Class IRI="#Milk"/>
+        <Class IRI="#Sirene_cheese"/>
+        <Class IRI="#Yogurt"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Cuisine"/>
+        <Class IRI="#Food"/>
+        <Class IRI="#Meal_Type"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Eggs"/>
+        <Class IRI="#Fish_roe"/>
+        <Class IRI="#Honey"/>
+        <Class IRI="#Lemon_juice"/>
+        <Class IRI="#Olive_oil"/>
+        <Class IRI="#Sugar"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Pistachios"/>
+        <Class IRI="#Walnuts"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Meal_Type"/>
+        <NamedIndividual IRI="#Breakfast"/>
+    </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Cuisine"/>
         <NamedIndividual IRI="#Bulgarian"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Meal_Type"/>
+        <NamedIndividual IRI="#Dinner"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Cuisine"/>
         <NamedIndividual IRI="#Greek"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Meal_Type"/>
+        <NamedIndividual IRI="#Lunch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Meal_Type"/>
+        <NamedIndividual IRI="#Snack"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Cuisine"/>
         <NamedIndividual IRI="#Turkish"/>
     </ClassAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasDairy"/>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGrain"/>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasMeat"/>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasNuts"/>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasOther"/>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasSpice"/>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasVegetable"/>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isDairyOf"/>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isGrainOf"/>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isMeatOf"/>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isNutsOf"/>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isOtherOf"/>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isSpiceOf"/>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isVegetableOf"/>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasDairy"/>
+        <ObjectProperty IRI="#isDairyOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasGrain"/>
+        <ObjectProperty IRI="#isGrainOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasMeat"/>
+        <ObjectProperty IRI="#isMeatOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasNuts"/>
+        <ObjectProperty IRI="#isNutsOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasOther"/>
+        <ObjectProperty IRI="#isOtherOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasSpice"/>
+        <ObjectProperty IRI="#isSpiceOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasVegetable"/>
+        <ObjectProperty IRI="#isVegetableOf"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasDairy"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasGrain"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasMeat"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasNuts"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasOther"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasSpice"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasVegetable"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isDairyOf"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isFromCuisine"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isGrainOf"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isMeatOf"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isNutsOf"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isOtherOf"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isSpiceOf"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isVegetableOf"/>
+    </FunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hasDairy"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hasGrain"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hasMeat"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hasNuts"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hasOther"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hasSpice"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#isDairyOf"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#isGrainOf"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#isMeatOf"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#isNutsOf"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#isOtherOf"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#isSpiceOf"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#isVegetableOf"/>
+    </InverseFunctionalObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDairy"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGrain"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasMeat"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasNuts"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasOther"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSpice"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasVegetable"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isDairyOf"/>
+        <Class IRI="#Dairy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isFromCuisine"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isGrainOf"/>
+        <Class IRI="#Grain"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isIngredientOf"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isMealType"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isMeatOf"/>
+        <Class IRI="#Meat"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isNutsOf"/>
+        <Class IRI="#Nuts"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isOtherOf"/>
+        <Class IRI="#Other"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isSpiceOf"/>
+        <Class IRI="#Spice"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isVegetableOf"/>
+        <Class IRI="#Vegetable"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDairy"/>
+        <Class IRI="#Dairy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGrain"/>
+        <Class IRI="#Grain"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasMeat"/>
+        <Class IRI="#Meat"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasNuts"/>
+        <Class IRI="#Nuts"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasOther"/>
+        <Class IRI="#Other"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSpice"/>
+        <Class IRI="#Spice"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasVegetable"/>
+        <Class IRI="#Vegetable"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isDairyOf"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isFromCuisine"/>
+        <Class IRI="#Cuisine"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isGrainOf"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isIngredientOf"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isMealType"/>
+        <Class IRI="#Meal_Type"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isMeatOf"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isNutsOf"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isOtherOf"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isSpiceOf"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isVegetableOf"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasImage"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
 </Ontology>
 
 
