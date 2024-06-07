@@ -17,8 +17,6 @@
  */
 package com.nullchefo.restaurantbookings;
 
-import static com.nullchefo.restaurantbookings.configuration.jade.JadeConfiguration.initJade;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -38,12 +36,10 @@ import com.vaadin.flow.theme.Theme;
 @Push
 public class Application implements AppShellConfigurator {
 
-	private static final boolean IS_HEADLESS = false;
-
 	public static void main(String[] args) {
-		initJade(false);
+
 		SpringApplication.run(Application.class, args);
-		
+
 	}
 
 	//	@Bean

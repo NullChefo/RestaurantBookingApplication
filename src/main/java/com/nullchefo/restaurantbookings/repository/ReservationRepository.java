@@ -1,6 +1,6 @@
 package com.nullchefo.restaurantbookings.repository;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,16 +15,20 @@ import com.nullchefo.restaurantbookings.entity.User;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, UUID>,
 		JpaSpecificationExecutor<Reservation> {
-	List<Reservation> findAllByReservationTime(LocalDate date);
+	List<Reservation> findAllByReservationTime(LocalDateTime date);
 
 	//	@Query("SELECT r FROM Reservation r WHERE r.reservationTime = :date AND r.table IN :tables")
 	//	List<Reservation> findAllByReservationTimeAndContainingTable(@Param("date") LocalDate date, @Param("tables") List<RestaurantTable> tables);
 
-	List<Reservation> findAllByReservationTimeAndTableIn(LocalDate date, List<RestaurantTable> tables);
+	List<Reservation> findAllByReservationTimeAndTableIn(LocalDateTime date, List<RestaurantTable> tables);
 
 	List<Reservation> findAllByOrderByReservationTimeDesc();
 
 	List<Reservation> findAllByUserOrderByReservationTimeDesc(User user);
 
 	List<Reservation> findAllByTableInOrderByReservationTimeDesc(List<RestaurantTable> tables);
+
+	List<Reservation> findAllByReservationTimeBetween(
+			final LocalDateTime reservationTime,
+			final LocalDateTime reservationTime2);
 }

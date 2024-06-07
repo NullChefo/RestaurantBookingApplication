@@ -1,18 +1,16 @@
 package com.nullchefo.restaurantbookings.agents;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.nullchefo.restaurantbookings.entity.Reservation;
 import com.nullchefo.restaurantbookings.service.OntologyManagerService;
 import com.nullchefo.restaurantbookings.service.ReservationService;
 import com.nullchefo.restaurantbookings.service.UserService;
 
 import jade.core.Agent;
 
-public class HostessAgent extends Agent {
-
+@Component
+public class ClientAgent extends Agent {
 
 	@Autowired
 	private OntologyManagerService ontologyManagerService;
@@ -24,14 +22,7 @@ public class HostessAgent extends Agent {
 	@Override
 	protected void setup() {
 
+		// i need the reservationId
+
 	}
-
-	// knows the current time
-	// knows the current table
-	// knows the current customer
-	// knows the current order
-	// knows the current menu
-	// knows the current waiter
-
-
 }

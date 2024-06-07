@@ -17,7 +17,7 @@
  */
 package com.nullchefo.restaurantbookings.service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,12 +44,12 @@ public class ReservationService extends BaseService<Reservation> {
 		return this.reservationRepository;
 	}
 
-	public List<Reservation> finAllByReservationDate(final LocalDate date) {
+	public List<Reservation> finAllByReservationDate(final LocalDateTime date) {
 		return this.reservationRepository.findAllByReservationTime(date);
 	}
 
 	public List<Reservation> findAllByReservationTimeAndTableIn(
-			final LocalDate date,
+			final LocalDateTime date,
 			final List<RestaurantTable> tables) {
 		return this.reservationRepository.findAllByReservationTimeAndTableIn(date, tables);
 	}
@@ -64,5 +64,11 @@ public class ReservationService extends BaseService<Reservation> {
 
 	public List<Reservation> findAllByRestaurantTablesAndSortedByReservationTime(final List<RestaurantTable> tables) {
 		return this.reservationRepository.findAllByTableInOrderByReservationTimeDesc(tables);
+	}
+
+	public List<Reservation> findAllReservationsFromDateToDate(final LocalDateTime from, final LocalDateTime to) {
+
+		return this.reservationRepository.findAllByReservationTimeBetween(from, to);
+
 	}
 }

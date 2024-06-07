@@ -12,7 +12,7 @@ spring:
   output.ansi.enabled: ALWAYS
   devtools:
     livereload:
-      enabled: true
+      enabled: false
 
   #  thymeleaf:
   #    prefix: classpath:/templates/email
@@ -46,7 +46,7 @@ spring:
     sql:
       init:
         mode: always
-    show-sql: true
+    show-sql: false
     ## TODO make true
   flyway:
     enabled: false

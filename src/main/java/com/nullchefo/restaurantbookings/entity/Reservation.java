@@ -17,7 +17,7 @@
  */
 package com.nullchefo.restaurantbookings.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -44,10 +44,30 @@ public class Reservation extends BaseEntity {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private RestaurantTable table;
 
-	private LocalDate reservationTime;
+	private LocalDateTime reservationTime;
 	private byte reservedSeats;
 
-	@ManyToOne(optional = true)
-	private Order preOrderMeal;
+	// Todo make it better
+	private String preOrderDishes;
+
 	private String notes;
+
+	@Override
+	public int hashCode() {
+		return getId().hashCode();
+	}
+
+	// Override equals and hashCode to ensure correct behavior for the map keys
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Reservation that = (Reservation) o;
+		return getId().equals(that.getId());
+	}
+
 }

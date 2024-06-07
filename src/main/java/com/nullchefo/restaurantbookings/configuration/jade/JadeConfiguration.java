@@ -1,9 +1,10 @@
 package com.nullchefo.restaurantbookings.configuration.jade;
 
+import org.springframework.stereotype.Component;
+
+import com.nullchefo.restaurantbookings.agents.ClientAgent;
 import com.nullchefo.restaurantbookings.agents.CookAgent;
-import com.nullchefo.restaurantbookings.agents.CustomerAgent;
 import com.nullchefo.restaurantbookings.agents.HostessAgent;
-import com.nullchefo.restaurantbookings.agents.TestAgent;
 import com.nullchefo.restaurantbookings.agents.WaiterAgent;
 
 import jade.core.Profile;
@@ -12,19 +13,23 @@ import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
+import jakarta.annotation.PostConstruct;
 
+@Component
 public class JadeConfiguration {
 
-	private static final Runtime runtime = Runtime.instance();
-	private static final Profile profile = new ProfileImpl();
-	private static AgentContainer MAIN_AGENT_CONTAINER = null;
+	private final Runtime runtime = Runtime.instance();
+	private final Profile profile = new ProfileImpl();
+	private final boolean IS_HEADLESS = false;// make it config
+	private AgentContainer MAIN_AGENT_CONTAINER = null;
 
-	public static void initJade(boolean isHostHeadless) {
+	@PostConstruct
+	public void initJade() {
 
 		profile.setParameter(Profile.MAIN_HOST, "localhost");
 		profile.setParameter(Profile.MAIN_PORT, "1098");// the default port 1099
 
-		if (isHostHeadless) {
+		if (IS_HEADLESS) {
 			profile.setParameter(Profile.GUI, "false");
 		} else {
 			// if not set spring not working
@@ -35,11 +40,11 @@ public class JadeConfiguration {
 		MAIN_AGENT_CONTAINER = runtime.createMainContainer(profile);
 
 		try {
+
 			AgentController cookAgent = MAIN_AGENT_CONTAINER.createNewAgent("Cook", CookAgent.class.getName(), null);
 			AgentController customerAgent = MAIN_AGENT_CONTAINER.createNewAgent(
-					"Customer",
-					CustomerAgent.class.getName(),
-					null);
+					"Client",
+					ClientAgent.class.getName(), null);
 			AgentController hostessAgent = MAIN_AGENT_CONTAINER.createNewAgent(
 					"Hostess",
 					HostessAgent.class.getName(),
@@ -54,9 +59,6 @@ public class JadeConfiguration {
 			hostessAgent.start();
 			waiterAgent.start();
 
-			AgentController testAgent = MAIN_AGENT_CONTAINER.createNewAgent("Test", TestAgent.class.getName(), null);
-			testAgent.start();
-
 		} catch (StaleProxyException e) {
 			System.out.println("Could not instantiate agents");
 			throw new RuntimeException(e);
@@ -64,24 +66,31 @@ public class JadeConfiguration {
 
 	}
 
-	public static AgentController addAgentToMainContainer(
+	public void addAgentToMainContainer(
 			final String nickname,
 			final String className,
 			final Object[] args) {
+
+		AgentController agentController = null;
 
 		if (MAIN_AGENT_CONTAINER == null) {
 			throw new RuntimeException("Jade is not initialized");
 		}
 
 		try {
-			return MAIN_AGENT_CONTAINER.createNewAgent(nickname, className, args);
+			agentController = MAIN_AGENT_CONTAINER.createNewAgent(nickname, className, args);
 		} catch (StaleProxyException e) {
 			System.out.println("Could not instantiate agents");
 			throw new RuntimeException(e);
 		}
+		if (agentController == null) {
+			throw new RuntimeException("Could not instantiate agents");
+		}
+
+		startAgent(agentController);
 	}
 
-	public static void startAgent(final AgentController agentController) {
+	public void startAgent(final AgentController agentController) {
 
 		if (MAIN_AGENT_CONTAINER == null) {
 			throw new RuntimeException("Jade is not initialized");

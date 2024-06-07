@@ -1,6 +1,6 @@
 package com.nullchefo.restaurantbookings.views.reservation;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +17,7 @@ import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.icon.Icon;
@@ -45,7 +45,7 @@ public class ReserveTableDialog extends Dialog {
 	private RestaurantTableGrid availableTablesGrid;
 	private ReservationGrid reservationGrid;
 
-	private DatePicker datePicker;
+	private DateTimePicker datePicker;
 
 	public ReserveTableDialog(
 			User user,
@@ -196,8 +196,8 @@ public class ReserveTableDialog extends Dialog {
 	private HorizontalLayout createDatePicker() {
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.setAlignItems(FlexComponent.Alignment.BASELINE);
-		datePicker = new DatePicker("Reservation date");
-		datePicker.setRequired(true);
+		datePicker = new DateTimePicker("Reservation date");
+		//		datePicker.setRequired(true);
 		Button searchButton = new Button(new Icon("lumo", "search"));
 		searchButton.addClickListener(l -> {
 			reloadGridElements();
@@ -213,8 +213,11 @@ public class ReserveTableDialog extends Dialog {
 		this.reserveTableButton.setEnabled(false);
 		this.reserveTableButton.addClickListener(l -> {
 			Dialog dialog = new Dialog();
+			LocalDateTime reservationTime = datePicker.getValue();
+			reservationTime = reservationTime.withMinute(0).withSecond(0).withNano(0);
+
 			RestaurantTable value = availableTablesGrid.asSingleSelect().getValue();
-			dialog.setHeaderTitle("Are you sure you want to reserve this table for:" + datePicker.getValue());
+			dialog.setHeaderTitle("Are you sure you want to reserve this table for:" + reservationTime);
 			Button ok = new Button("Yes", ll -> {
 				Reservation reservation = Reservation.builder().table(value)
 													 .reservationTime(datePicker.getValue())
@@ -234,7 +237,9 @@ public class ReserveTableDialog extends Dialog {
 	private void reloadGridElements() {
 
 		if (datePicker.getValue() == null) {
-			datePicker.setValue(LocalDate.now());
+			LocalDateTime localDateTimeNow = LocalDateTime.now();
+			localDateTimeNow = localDateTimeNow.withMinute(0).withSecond(0).withNano(0);
+			datePicker.setValue(localDateTimeNow);
 		}
 
 		List<RestaurantTable> restaurantTables = this.restaurantTableService.findAllByRestaurant(this.restaurant);

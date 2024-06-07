@@ -247,6 +247,9 @@
         <Class IRI="#Tzatziki"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#UncategorizedDish"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Vegetable"/>
     </Declaration>
     <Declaration>
@@ -1831,6 +1834,10 @@
         </ObjectHasValue>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#UncategorizedDish"/>
+        <Class IRI="#Dish"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Vegetable"/>
         <Class IRI="#Ingredient"/>
     </SubClassOf>
@@ -1850,6 +1857,7 @@
         <Class IRI="#Appetizer"/>
         <Class IRI="#Dessert"/>
         <Class IRI="#Main"/>
+        <Class IRI="#UncategorizedDish"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#Baklava"/>
