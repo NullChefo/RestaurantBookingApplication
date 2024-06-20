@@ -9,9 +9,11 @@ import com.nullchefo.restaurantbookings.entity.Restaurant;
 import com.nullchefo.restaurantbookings.entity.RestaurantTable;
 import com.nullchefo.restaurantbookings.entity.User;
 import com.nullchefo.restaurantbookings.entity.enums.RoleEnum;
+import com.nullchefo.restaurantbookings.service.OntologyManagerService;
 import com.nullchefo.restaurantbookings.service.ReservationService;
 import com.nullchefo.restaurantbookings.service.RestaurantService;
 import com.nullchefo.restaurantbookings.service.RestaurantTableService;
+import com.nullchefo.restaurantbookings.views.reservation.edit.ReservationDialog;
 import com.nullchefo.restaurantbookings.views.restaurantTable.RestaurantTableGrid;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
@@ -47,16 +49,21 @@ public class ReserveTableDialog extends Dialog {
 
 	private DateTimePicker datePicker;
 
+
+	private final OntologyManagerService ontologyManagerService;
+
 	public ReserveTableDialog(
 			User user,
 			Restaurant restaurant,
 			RestaurantTableService restaurantTableService,
-			RestaurantService restaurantService, ReservationService reservationService) {
+			RestaurantService restaurantService, ReservationService reservationService,
+			final OntologyManagerService ontologyManagerService) {
 		this.user = user;
 		this.restaurant = restaurant;
 		this.restaurantTableService = restaurantTableService;
 		this.restaurantService = restaurantService;
 		this.reservationService = reservationService;
+		this.ontologyManagerService = ontologyManagerService;
 		initContent();
 	}
 
@@ -102,7 +109,7 @@ public class ReserveTableDialog extends Dialog {
 	}
 
 	private void openReservationDialog(final Reservation reservation) {
-		ReservationDialog dialog = new ReservationDialog(reservation, this.reservationService);
+		ReservationDialog dialog = new ReservationDialog(reservation, this.reservationService, ontologyManagerService);
 
 		dialog.addSaveClickListener(ll -> {
 			reloadGridElements();

@@ -26,11 +26,12 @@ import com.nullchefo.restaurantbookings.entity.Restaurant;
 import com.nullchefo.restaurantbookings.entity.RestaurantTable;
 import com.nullchefo.restaurantbookings.entity.User;
 import com.nullchefo.restaurantbookings.entity.enums.RoleEnum;
+import com.nullchefo.restaurantbookings.service.OntologyManagerService;
 import com.nullchefo.restaurantbookings.service.ReservationService;
 import com.nullchefo.restaurantbookings.service.RestaurantService;
 import com.nullchefo.restaurantbookings.service.RestaurantTableService;
 import com.nullchefo.restaurantbookings.views.MainLayout;
-import com.nullchefo.restaurantbookings.views.reservation.ReservationDialog;
+import com.nullchefo.restaurantbookings.views.reservation.edit.ReservationDialog;
 import com.nullchefo.restaurantbookings.views.reservation.ReservationGrid;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -61,13 +62,17 @@ public class ListReservationsView extends VerticalLayout {
 	private Button editReservationButton;
 	private ReservationGrid reservationGrid;
 
+	private final OntologyManagerService ontologyManagerService;
+
 	public ListReservationsView(
 			ReservationService reservationService, AuthenticatedUser authenticatedUser,
-			RestaurantService restaurantService, RestaurantTableService restaurantTableService) {
+			RestaurantService restaurantService, RestaurantTableService restaurantTableService,
+			final OntologyManagerService ontologyManagerService) {
 		this.reservationService = reservationService;
 		this.authenticatedUser = authenticatedUser;
 		this.restaurantService = restaurantService;
 		this.restaurantTableService = restaurantTableService;
+		this.ontologyManagerService = ontologyManagerService;
 
 		this.user = this.authenticatedUser.get().orElse(null);
 
@@ -119,7 +124,7 @@ public class ListReservationsView extends VerticalLayout {
 	}
 
 	private void openReservationDialog(final Reservation reservation) {
-		ReservationDialog dialog = new ReservationDialog(reservation, this.reservationService);
+		ReservationDialog dialog = new ReservationDialog(reservation, this.reservationService,ontologyManagerService);
 
 		dialog.addSaveClickListener(ll -> {
 			reloadGridElements();

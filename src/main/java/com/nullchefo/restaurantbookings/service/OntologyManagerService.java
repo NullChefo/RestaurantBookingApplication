@@ -35,6 +35,7 @@ import org.springframework.stereotype.Service;
 
 import com.nullchefo.restaurantbookings.entity.Dish;
 import com.nullchefo.restaurantbookings.entity.Ingredient;
+import com.nullchefo.restaurantbookings.views.reservation.edit.IngredientClass;
 
 @Service
 public class OntologyManagerService {
@@ -499,6 +500,60 @@ public class OntologyManagerService {
 
 
 	}
+
+
+
+	public List<IngredientClass> getAllIngredients() {
+		List<IngredientClass> ingredients = new ArrayList<>();
+
+		// Get the Food class (assuming Food is the top-level class in your ontology)
+		OWLClass foodClass = dataFactory.getOWLClass(IRI.create(ontologyIRIStr + "Food"));
+
+		// Get the Ingredient class (which is a subclass of Food)
+		OWLClass ingredientClass = getDirectSubClass(foodClass, "Ingredient");
+		if (ingredientClass == null) {
+			// Handle the case where the Ingredient class is not found
+			System.err.println("Ingredient class not found in the ontology.");
+			return ingredients;
+		}
+
+		// Get subclasses of Ingredient (e.g., dairy, grain, etc.)
+		for (OWLClass ingredientSubClass : getSubClasses(ingredientClass)) {
+			String typeName = getClassFriendlyName(ingredientSubClass); // Assuming you have a method to get a friendly name
+			// Get subclasses of each ingredient category
+			for (OWLClass ingredient : getSubClasses(ingredientSubClass)) {
+				String id = ingredient.getIRI().toString();
+				String name = getClassFriendlyName(ingredient); // Assuming you have a method to get a friendly name
+				ingredients.add(new IngredientClass(id, name, typeName));
+			}
+		}
+
+		return ingredients;
+	}
+
+	private OWLClass getDirectSubClass(OWLClass parentClass, String subClassName) {
+		for (OWLClassExpression subClassExpr : parentClass.getSubClasses(ontology)) {
+			if (subClassExpr instanceof OWLClass) {
+				OWLClass subClass = (OWLClass) subClassExpr;
+				if (getClassFriendlyName(subClass).equals(subClassName)) {
+					return subClass;
+				}
+			}
+		}
+		return null;
+	}
+
+	private Set<OWLClass> getSubClasses(OWLClass owlClass) {
+		Set<OWLClass> subClasses = new HashSet<>();
+		for (OWLClassExpression subClassExpr : owlClass.getSubClasses(ontology)) {
+			if (subClassExpr instanceof OWLClass) {
+				subClasses.add((OWLClass) subClassExpr);
+			}
+		}
+		return subClasses;
+	}
+
+
 
 
 }

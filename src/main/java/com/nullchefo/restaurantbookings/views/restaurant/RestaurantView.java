@@ -8,6 +8,7 @@ import com.nullchefo.restaurantbookings.entity.User;
 import com.nullchefo.restaurantbookings.entity.enums.EntityStatus;
 import com.nullchefo.restaurantbookings.entity.enums.RoleEnum;
 import com.nullchefo.restaurantbookings.service.LocationService;
+import com.nullchefo.restaurantbookings.service.OntologyManagerService;
 import com.nullchefo.restaurantbookings.service.OrderService;
 import com.nullchefo.restaurantbookings.service.ReservationService;
 import com.nullchefo.restaurantbookings.service.RestaurantService;
@@ -46,17 +47,21 @@ public class RestaurantView extends VerticalLayout {
 	//	private Button orderFoodButton;
 	private Button reserveTableButton;
 
+
+	private final OntologyManagerService ontologyManagerService;
+
 	@Autowired
 	public RestaurantView(
 			AuthenticatedUser authenticatedUser, RestaurantService restaurantService,
 			LocationService locationService, OrderService orderService, RestaurantTableService restaurantTableService,
-			ReservationService reservationService) {
+			ReservationService reservationService, final OntologyManagerService ontologyManagerService) {
 		this.authenticatedUser = authenticatedUser;
 		this.restaurantService = restaurantService;
 		this.locationService = locationService;
 		this.orderService = orderService;
 		this.restaurantTableService = restaurantTableService;
 		this.reservationService = reservationService;
+		this.ontologyManagerService = ontologyManagerService;
 
 		this.user = this.authenticatedUser.get().orElseThrow(() -> new RuntimeException("User should be logged in"));
 		initContent();
@@ -102,7 +107,7 @@ public class RestaurantView extends VerticalLayout {
 				restaurant,
 				restaurantTableService,
 				restaurantService,
-				this.reservationService);
+				this.reservationService, ontologyManagerService);
 		restaurantTableDialog.addSaveClickListener(ll -> {
 			//			reloadGrid();
 			restaurantTableDialog.close();
