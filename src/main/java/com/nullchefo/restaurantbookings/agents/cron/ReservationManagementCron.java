@@ -1,6 +1,7 @@
 package com.nullchefo.restaurantbookings.agents.cron;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,11 +47,11 @@ public class ReservationManagementCron {
 	@Scheduled(fixedDelay = 5000)
 	private void processReservation() {
 		LocalDateTime now = LocalDateTime.now();
-		// get reservation for now and the next 30 minutes
+		// get reservation for now and the next 60 minutes
 
 		List<Reservation> reservations = reservationService.findAllReservationsFromDateToDate(
-				now.minusMinutes(30),
-				now.plusMinutes(30));
+				now.minusMinutes(60),
+				now.plusMinutes(60));
 
 		if (reservations.isEmpty()) {
 			log.debug("No reservations found");
@@ -95,8 +96,10 @@ public class ReservationManagementCron {
 			String clientName = clientNameBuilder.toString();
 
 			try {
-				Object[] args = new Object[]{reservation.getId().toString()};
+				Object[] args = new Object[]{reservation.getNotes()};
 				jadeConfiguration.addAgentToMainContainer(clientName, ClientAgent.class.getName(), args);
+				log.debug("Agent {} created", clientName);
+				log.debug("args {}", Arrays.toString(args));
 			} catch (Exception e) {
 				log.error("Could not instantiate agent", e);
 			}

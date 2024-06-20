@@ -553,7 +553,42 @@ public class OntologyManagerService {
 		return subClasses;
 	}
 
+	public ArrayList<Dish> getDishesThatDoesNotContainIngredients(final String ingredient) {
+		List<String> ignoreIngredientNames = new ArrayList<>();
 
+		// Check if reservationNote contains IgnoreIngredients=
+		if (ingredient != null && ingredient.startsWith("IgnoreIngredients=")) {
+			// Get the substring after "IgnoreIngredients="
+			String ingredientsString = ingredient.substring("IgnoreIngredients=".length());
 
+			// Split the string by commas to get individual ingredient names
+			String[] ingredientNames = ingredientsString.split(",");
 
+			// Add each ingredient name to the list
+			ignoreIngredientNames.addAll(List.of(ingredientNames));
+		}
+
+		final ArrayList<Dish> allDishes = getAllDishes();
+
+		if( ignoreIngredientNames.isEmpty()) {
+			return allDishes;
+		}
+
+		List<Dish> filteredDishes = new ArrayList<>();
+
+		for (Dish dish : allDishes) {
+			List<String> dishIngredients = new ArrayList<>();
+			dishIngredients = dish.getIngredient().getAllIngredients();
+
+			// if dish ingredients contains any of the ignore ingredients don't add it to the list
+			if (!Collections.disjoint(dishIngredients, ignoreIngredientNames)) {
+				continue;
+			}
+			filteredDishes.add(dish);
+		}
+
+		// return filteredDishes as a ArrayList
+		return new ArrayList<>(filteredDishes);
+
+	}
 }

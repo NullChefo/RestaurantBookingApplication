@@ -71,12 +71,18 @@ public class HostessAgent extends Agent {
 
 				ACLMessage reply = msg.createReply();
 
+				// TODO it is null fix it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				System.out.println("Dish searching for " + ingredient);
-				// todo change
-				ArrayList<Dish> result = ontologyManagerService.getDishByVegetable(ingredient);
 
-				System.out.println(result.size() + " dishes found");
-				if (result.size() > 0) {
+				final ArrayList<Dish> dishesThatDoesNotContainIngredients = ontologyManagerService.getDishesThatDoesNotContainIngredients(
+						ingredient);
+
+				int size = dishesThatDoesNotContainIngredients.size();
+
+				Dish[] result = dishesThatDoesNotContainIngredients.toArray(new Dish[size]);
+
+				System.out.println(size + " dishes found");
+				if (size > 0) {
 					System.out.println("We have such dish");
 
 					reply.setPerformative(ACLMessage.PROPOSE);
@@ -95,7 +101,7 @@ public class HostessAgent extends Agent {
 				} else {
 					reply.setPerformative(ACLMessage.INFORM_REF);
 					reply.setContent("No food for you");
-//					System.out.println("No food found");
+				System.out.println("No food found");
 				}
 
 				myAgent.send(reply);

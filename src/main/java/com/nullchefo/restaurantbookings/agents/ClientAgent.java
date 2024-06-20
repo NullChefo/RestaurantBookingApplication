@@ -38,7 +38,7 @@ public class ClientAgent extends Agent {
 	private ReservationService reservationService;
 
 	private List<AID> restaurants;
-	private String searchedIngredients = "Kozunak";
+	private String unwantedIngredients;
 
 	@Override
 	protected void setup() {
@@ -47,14 +47,12 @@ public class ClientAgent extends Agent {
 
 		final Object[] arguments = this.getArguments();
 
-		if (arguments != null && arguments.length > 0) {
-			final String restaurantId = (String) arguments[0];
 
-//			System.out.printf("RestaurantId: " + restaurantId);
-//			Reservation reservation = new Reservation();
-//			reservation = reservationService.findById(UUID.fromString(restaurantId));
-//
-//			System.out.printf(reservation.toString());
+		if (arguments != null && arguments.length > 0) {
+			final String unwantedIngredientsArgs = (String) arguments[0];
+			this.unwantedIngredients = unwantedIngredientsArgs;
+
+			System.out.printf(unwantedIngredientsArgs);
 
 			addBehaviour(oneShotBehaviour);
 
@@ -114,7 +112,7 @@ public class ClientAgent extends Agent {
 					cfp.addReceiver(restaurants.get(i));
 				}
 
-				cfp.setContent(searchedIngredients);
+				cfp.setContent(unwantedIngredients);
 				cfp.setConversationId("restaurant things");
 				cfp.setReplyWith("cfp" + System.currentTimeMillis());
 
@@ -149,7 +147,7 @@ public class ClientAgent extends Agent {
 						}
 
 					}else {
-//						System.out.println(reply.getSender() + ": There is no Dish like this");
+						System.out.println(reply.getSender() + ": There is no Dish like this");
 					}
 
 					replyCounter++;
