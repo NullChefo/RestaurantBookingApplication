@@ -92,7 +92,8 @@ springdoc:
     enabled: true
 
 vaadin:
-  launch-browser: true
+  # TODO set to true
+  launch-browser: false
   whitelisted-packages: com.vaadin, org.vaadin, dev.hilla, com.nullchefo
   pnpm:
     enable: true

@@ -12,6 +12,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 
+
 public class ReservationDialog extends Dialog {
 
 	private final Reservation reservation;
@@ -40,6 +41,11 @@ public class ReservationDialog extends Dialog {
 		binder = new Binder<>(Reservation.class);
 
 		TextField note = new TextField("Note");
+
+
+
+
+
 
 		binder.forField(note).bind(Reservation::getNotes, Reservation::setNotes);
 

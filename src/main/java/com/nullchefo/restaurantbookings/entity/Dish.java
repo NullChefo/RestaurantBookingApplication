@@ -11,13 +11,22 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor//Need public constructor for serialization
+@NoArgsConstructor
 @Builder
 @AllArgsConstructor
 public class Dish implements Serializable {
 
 	private String id;
 	private String name;
-	private List<String> ingredients;
+	private Ingredient ingredient;
+
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Dish id=" + id + ", name=" + name + " With: \n");
+		sb.append(ingredient.toString());
+		return sb.toString();
+	}
 
 }

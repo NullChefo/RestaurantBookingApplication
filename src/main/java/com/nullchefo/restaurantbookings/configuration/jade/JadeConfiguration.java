@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import com.nullchefo.restaurantbookings.agents.ClientAgent;
 import com.nullchefo.restaurantbookings.agents.CookAgent;
 import com.nullchefo.restaurantbookings.agents.HostessAgent;
-import com.nullchefo.restaurantbookings.agents.WaiterAgent;
 
 import jade.core.Profile;
 import jade.core.ProfileImpl;
@@ -49,15 +48,10 @@ public class JadeConfiguration {
 					"Hostess",
 					HostessAgent.class.getName(),
 					null);
-			AgentController waiterAgent = MAIN_AGENT_CONTAINER.createNewAgent(
-					"Waiter",
-					WaiterAgent.class.getName(),
-					null);
 
 			cookAgent.start();
 			customerAgent.start();
 			hostessAgent.start();
-			waiterAgent.start();
 
 		} catch (StaleProxyException e) {
 			System.out.println("Could not instantiate agents");

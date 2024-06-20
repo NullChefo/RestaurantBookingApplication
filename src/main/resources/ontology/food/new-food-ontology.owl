@@ -342,6 +342,15 @@
     <Declaration>
         <NamedIndividual IRI="#Turkish"/>
     </Declaration>
+    <Declaration>
+        <Class IRI="#New"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NewOne"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#"/>
+    </Declaration>
     <EquivalentClasses>
         <Class IRI="#Cuisine"/>
         <ObjectOneOf>
@@ -744,7 +753,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Grain"/>
-        <Class IRI="#Ingredient"/>
+        <Class IRI="#Nuts"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Greek_yogurt"/>
@@ -1163,6 +1172,28 @@
     <SubClassOf>
         <Class IRI="#Mushrooms"/>
         <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#New"/>
+        <Class IRI="#UncategorizedDish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#New"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NewOne"/>
+        <Class IRI="#UncategorizedDish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NewOne"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Nutmeg"/>
@@ -1933,6 +1964,18 @@
         <Class IRI="#Meal_Type"/>
     </DisjointClasses>
     <DisjointClasses>
+        <Class IRI="#Dairy"/>
+        <Class IRI="#Meat"/>
+        <Class IRI="#Nuts"/>
+        <Class IRI="#Other"/>
+        <Class IRI="#Spice"/>
+        <Class IRI="#Vegetable"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Dish"/>
+        <Class IRI="#Ingredient"/>
+    </DisjointClasses>
+    <DisjointClasses>
         <Class IRI="#Eggs"/>
         <Class IRI="#Fish_roe"/>
         <Class IRI="#Honey"/>
@@ -2141,9 +2184,6 @@
     <InverseFunctionalObjectProperty>
         <ObjectProperty IRI="#isSpiceOf"/>
     </InverseFunctionalObjectProperty>
-    <InverseFunctionalObjectProperty>
-        <ObjectProperty IRI="#isVegetableOf"/>
-    </InverseFunctionalObjectProperty>
     <TransitiveObjectProperty>
         <ObjectProperty IRI="#hasIngredient"/>
     </TransitiveObjectProperty>
@@ -2156,6 +2196,10 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasGrain"/>
+        <Class IRI="#Food"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasIngredient"/>
         <Class IRI="#Food"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -2225,6 +2269,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasGrain"/>
         <Class IRI="#Grain"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <Class IRI="#Food"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasMeat"/>

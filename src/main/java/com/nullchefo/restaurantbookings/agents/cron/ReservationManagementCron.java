@@ -21,7 +21,6 @@ import com.nullchefo.restaurantbookings.service.UserService;
 
 @Configuration
 @EnableScheduling
-
 public class ReservationManagementCron {
 
 	private static final Logger log = LoggerFactory.getLogger(ReservationManagementCron.class);
@@ -43,7 +42,7 @@ public class ReservationManagementCron {
 		this.jadeConfiguration = jadeConfiguration;
 	}
 
-	// every 20 seconds
+	// every 5 seconds
 	@Scheduled(fixedDelay = 5000)
 	private void processReservation() {
 		LocalDateTime now = LocalDateTime.now();
@@ -95,16 +94,14 @@ public class ReservationManagementCron {
 							 .append(reservation.getId());
 			String clientName = clientNameBuilder.toString();
 
-
-
 			try {
-				jadeConfiguration.addAgentToMainContainer(clientName, ClientAgent.class.getName(), null);
+				Object[] args = new Object[]{reservation.getId().toString()};
+				jadeConfiguration.addAgentToMainContainer(clientName, ClientAgent.class.getName(), args);
 			} catch (Exception e) {
 				log.error("Could not instantiate agent", e);
 			}
 
 			setForProccesingMap.put(reservation, user);
-
 		}
 
 	}

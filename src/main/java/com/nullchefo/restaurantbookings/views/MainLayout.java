@@ -37,6 +37,7 @@ import com.nullchefo.restaurantbookings.views.informational.jobs.JobsView;
 import com.nullchefo.restaurantbookings.views.informational.legalInformation.LegalInformationView;
 import com.nullchefo.restaurantbookings.views.informational.privacyPolicy.PrivacyPolicyView;
 import com.nullchefo.restaurantbookings.views.informational.termsOfService.TermsOfServiceView;
+import com.nullchefo.restaurantbookings.views.ontology.OntologyView;
 import com.nullchefo.restaurantbookings.views.reservation.list.ListReservationsView;
 import com.nullchefo.restaurantbookings.views.restaurant.RestaurantView;
 import com.nullchefo.restaurantbookings.views.starterProjectNotInUse.admindashboard.AdminDashboardView;
@@ -113,6 +114,14 @@ public class MainLayout extends AppLayout {
 
 		if (accessChecker.hasAccess(HomeView.class)) {
 			nav.addItem(new SideNavItem("Home", HomeView.class, LineAwesomeIcon.HOME_SOLID.create()));
+
+		}
+
+		if (accessChecker.hasAccess(OntologyView.class)) {
+			nav.addItem(new SideNavItem(
+					"Ontology",
+					OntologyView.class,
+					LineAwesomeIcon.STOP_CIRCLE.create()));
 
 		}
 
