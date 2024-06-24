@@ -44,7 +44,7 @@ public class ReservationManagementCron {
 	}
 
 	// every 5 seconds
-	@Scheduled(fixedDelay = 5000)
+	@Scheduled(fixedDelay = 10000)
 	private void processReservation() {
 		LocalDateTime now = LocalDateTime.now();
 		// get reservation for now and the next 60 minutes

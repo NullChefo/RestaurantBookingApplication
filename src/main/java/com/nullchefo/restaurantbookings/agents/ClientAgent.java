@@ -48,12 +48,8 @@ public class ClientAgent extends Agent {
 		final Object[] arguments = this.getArguments();
 
 
-		if (arguments != null && arguments.length > 0) {
-			final String unwantedIngredientsArgs = (String) arguments[0];
-			this.unwantedIngredients = unwantedIngredientsArgs;
-
-			System.out.printf(unwantedIngredientsArgs);
-
+		if (arguments != null) {
+			this.unwantedIngredients = (String) arguments[0];
 			addBehaviour(oneShotBehaviour);
 
 		}
